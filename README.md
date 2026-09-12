@@ -120,3 +120,15 @@ gcloud beta run domain-mappings describe --domain=zclthesis.com \
 gcloud beta run domain-mappings describe --domain=www.zclthesis.com \
   --region=us-central1 --project=myzclthesis-20260912
 ```
+
+## Funding and monetary-policy thesis
+
+The editorial sections distinguish the owner's competition/incentive argument
+from source descriptions. ZIP 214 documents different historical funding streams;
+“foundation reward” is explicitly defined as broad shorthand, not a current claim
+about ZF receiving all development funding. Allocation reductions are distinguished
+from reductions in total issuance. ZIP 234 is described as Draft as reviewed on
+September 12, 2026, with the stated cap and proponents' security rationale intact.
+The owner's preference for unchanged issuance is an opinion with a stated burden
+of proof and a counterargument. ZIP 233's deliberate removal mechanism is kept
+separate from any lost-key or dormancy inference. Sources are linked on the page.
