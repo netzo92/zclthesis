@@ -2,7 +2,8 @@
 
 Standalone, responsive editorial site about the ZCL counterweight thesis.
 The content distinguishes Braun's ZEC argument from the owner's ZCL interpretation.
-No frontend dependencies, analytics, wallet connections, or live market data.
+No frontend dependencies, analytics, or wallet connections. A live strip reports
+explorer block height and the NonKYC ZCL/USDT last trade.
 
 Run from the repository root with Node 22+:
 
@@ -30,7 +31,7 @@ bash deploy.sh
 This builds only this app directory and creates/updates a public `myzclthesis`
 Cloud Run service in `us-central1` (override `GCP_REGION`). Set `GCP_RUNTIME_SERVICE_ACCOUNT` to select a dedicated runtime identity.
 The Docker image runs
-as a non-root user and serves only three explicit routes. Minimum instances is
+as a non-root user and exposes only an explicit static-asset allowlist and `/api/live`. Minimum instances is
 zero; maximum is two. Builds, image storage and requests can incur charges;
 instance limits are not a spending cap. The deployment returns a managed HTTPS
 URL. A custom domain needs separate domain ownership and DNS configuration.
@@ -61,3 +62,34 @@ The browser reported no JavaScript or console errors.
 
 The Where to buy section links to the owner-provided NonKYC.io referral URL.
 The button opens a new tab and is labeled with a possible commission disclosure.
+
+## Live data and rich-list research
+
+`live-data.mjs` fetches fixed, public HTTPS endpoints server-side. `/api/live`
+returns independent chain/market status and timestamps. Each instance caches
+successful results for 60 seconds, coalesces concurrent refreshes and throttles
+failed retries. Requests time out after 8 seconds with a 256 KiB response limit.
+No credentials or user-selected upstream URLs are accepted. Memory-only caches
+are lost on cold starts; no historical observations are persisted.
+
+Sources:
+- https://explorer.zcl.zelcore.io/api/blocks?limit=1
+- https://api.nonkyc.io/api/v2/market/getbysymbol/ZCL_USDT
+
+The price is in USDT, not USD, and comes from one exchange's last trade.
+Source block/trade times and server fetch times are displayed separately.
+Block timestamps older than 30 minutes, trade timestamps older than one hour,
+paused markets, fetch failures, or cached fetches older than three minutes are
+marked stale. These are display thresholds, not judgments of consensus validity.
+The browser polls once per minute while visible and retains labeled stale values
+when a refresh fails. No-JavaScript visitors can follow the source links.
+
+The rich-list section describes a proposed transparent-address/UTXO index; it
+contains no fabricated ranks, owner identities, loss probabilities, or supply
+adjustments. Inactivity is an exploratory signal, not proof of lost keys.
+A complete index with spend history and a stated snapshot height is still needed;
+shielded balances cannot be ranked by public address. The tested Zelcore
+`/api/richlist` endpoint returned 404 on September 12, 2026.
+
+Validate with `node --test tests/*.test.mjs` and browser checks of `/api/live`,
+mobile layout, referral links and failure/stale states after each publication.

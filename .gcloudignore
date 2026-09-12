@@ -3,3 +3,4 @@
 !server.mjs
 !public/
 !public/**
+!live-data.mjs
