@@ -1,7 +1,8 @@
 # myzclthesis
 
 Standalone, responsive editorial site about the ZCL counterweight thesis.
-The content distinguishes Braun's ZEC argument from the owner's ZCL interpretation.
+The content distinguishes Braun's ZEC argument from the owner's ZCL interpretation,
+and treats consensus, development funding, and issuance timing as separate choices.
 No frontend dependencies, analytics, or wallet connections. A live strip reports
 explorer block height and the NonKYC ZCL/USDT last trade.
 
@@ -31,7 +32,8 @@ bash deploy.sh
 This builds only this app directory and creates/updates a public `myzclthesis`
 Cloud Run service in `us-central1` (override `GCP_REGION`). Set `GCP_RUNTIME_SERVICE_ACCOUNT` to select a dedicated runtime identity.
 The Docker image runs
-as a non-root user and exposes only an explicit static-asset allowlist and `/api/live`. Minimum instances is
+as a non-root user and exposes an explicit static-asset allowlist plus the bounded
+live-data, network, market-comparison, and rich-list API routes. Minimum instances is
 zero; maximum is two. Builds, image storage and requests can incur charges;
 instance limits are not a spending cap. The deployment returns a managed HTTPS
 URL. A custom domain needs separate domain ownership and DNS configuration.
@@ -236,7 +238,9 @@ Linux and Windows bundles are expandable. Commands are pinned to the official
 v2.1.2-beta6 release. The Mac archive SHA-256 and both Unix archive directory names
 were verified against the release downloads. Wallet RPCs were checked in the
 matching source: backupwallet requires an export directory and a filename, and
-wallet encryption is experimental in this release. No wallet or miner was run.
+wallet encryption is experimental in this release. Native installation commands
+were checked against release artifacts and source; browser solver tests are
+documented separately in the webminer repository.
 
 The mining example uses miniZ on Linux/Windows with Equihash 192,7 and ZcashPoW,
 and its documented zpool ZCL-only configuration. macOS has a wallet recipe, not
@@ -251,3 +255,43 @@ web monitoring path. The guide does not provision GPU workers or pool services.
 The pool FAQ notes legacy configuration incompatibilities. Dual-mining copy is
 scoped to miniZ's documented NVIDIA support, distinguishes it from merged mining,
 and links current removal notices so stale coin pairs are not recommended.
+
+## Network page and offline wallet
+
+`/network/` and `/es/network/` show our node's height, peer connections, reported
+difficulty, estimated network solutions per second, synchronization estimate,
+timestamps, and validation provenance. `network-data.mjs` allowlists the fixed
+public pool feed into `/api/network`. Source export age and block age remain
+distinct, including during initial sync. The browser refreshes every 30 seconds
+while visible and marks exports older than three minutes stale. The market-cap
+panel refreshes independently every five minutes. No private RPC is exposed.
+
+`/offline-wallet.html` downloads a self-contained, bilingual key generator;
+`/offline-wallet.sha256` supplies its build checksum. The generator works only
+from a saved `file:` page after explicit offline acknowledgement. It uses the
+browser CSPRNG and pinned, bundled cryptographic libraries, makes no network
+requests, and never displays a private key until requested. Saving a file and
+disconnecting do not protect against an already compromised device. Build,
+dependency provenance, known-key vectors, and offline browser checks are in
+`offline-wallet/`. This generates a key pair, not a synchronized wallet or a
+transaction-signing application. No owner's private wallet exists in this repo.
+
+## Separate pool and browser miner
+
+- Pool software: <https://github.com/netzo92/zclthesis-pool>
+- Browser GPU miner: <https://github.com/netzo92/zclthesis-webminer>
+- Pool status: <https://pool.zclthesis.com/>
+- Miner interface: <https://pool.zclthesis.com/mine/>, Spanish `/mine/es/`
+
+`#browser-mining` explains the experimental WebGPU path and its approximately
+3.26 GiB memory requirement. A visitor supplies a public payout address and
+explicitly starts a bounded session; hiding the tab or pressing Stop ends it.
+The separate bridge enforces current-node and pool-launch admission checks.
+Linking the preview does not mean public mining has opened; the pool status
+artifact is the current authority for readiness. The pool host coordinates
+visitors' miners and does not run a cloud GPU miner.
+
+The fee is 0.8% of allocated block rewards, with the specific comparison
+“20% lower than a 1% pool fee.” This is not a universal competitor claim.
+Unpaid pool credits are distinct from a wallet's confirmed on-chain balance.
+Pool/admin credentials and operator wallet material are outside all public repos.
