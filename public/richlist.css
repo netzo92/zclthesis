@@ -1,0 +1,42 @@
+.richlist-app{margin-top:28px;min-width:0;font-size:14px;color:var(--ink,#172e25)}
+.richlist-app [hidden]{display:none!important}
+.richlist-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:15px;border-block:1px solid var(--line,#d7d9ce)}
+.richlist-app .richlist-status{margin:0;font-size:13px;max-width:630px;line-height:1.6}
+.richlist-status[data-state="stale"],.richlist-status[data-state="unavailable"]{color:#7c4722}
+.richlist-actions{display:flex;flex-wrap:wrap;gap:9px;flex-shrink:0}
+.richlist-button{border:1px solid var(--ink,#172e25);border-radius:3px;background:var(--ink,#172e25);color:var(--paper,#f5f3eb);padding:11px 14px;font:inherit;font-size:12px;cursor:pointer}
+.richlist-button+button{background:transparent;color:var(--ink,#172e25)}
+.richlist-button:hover:not(:disabled){background:#33573e;color:white}
+.richlist-button:disabled{opacity:.5;cursor:default}
+.richlist-stats{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:25px;margin:0;padding:25px 0;border-bottom:1px solid var(--line,#d7d9ce)}
+.richlist-stats dt{font:10px/1.5 monospace;letter-spacing:.5px;text-transform:uppercase;color:var(--muted,#59645c)}
+.richlist-stats dd{font:clamp(19px,2.1vw,28px)/1.5 Georgia,'Times New Roman',serif;margin:8px 0 0;overflow-wrap:anywhere}
+.richlist-details{display:grid;grid-template-columns:1fr 1fr;gap:13px 30px;font-size:11px;margin:20px 0 25px}
+.richlist-details>div{min-width:0}
+.richlist-details dt{color:var(--muted,#59645c);margin-bottom:4px}
+.richlist-details dd{margin:0;line-height:1.6;overflow-wrap:anywhere}
+.richlist-hash{font-family:monospace}
+.richlist-controls{display:flex;flex-wrap:wrap;gap:20px;align-items:end;margin-top:20px}
+.richlist-controls label{display:flex;flex:1;min-width:220px;flex-direction:column;gap:8px;font-size:12px}
+.richlist-controls input,.richlist-controls select{width:100%;min-height:43px;padding:10px 12px;border:1px solid #aeb7a4;border-radius:3px;background:#fbfaf6;color:var(--ink,#172e25);font:inherit;font-size:14px}
+.richlist-controls input::placeholder{color:#64705c}
+.richlist-app .richlist-results{font-size:12px;line-height:1.7;margin:20px 0 12px;color:var(--muted,#59645c)}
+.richlist-table-scroll{overflow-x:auto;border:1px solid var(--line,#d7d9ce);border-radius:3px;max-width:100%;overscroll-behavior-x:contain}
+.richlist-table-scroll table{width:100%;min-width:800px;border-collapse:collapse;font-size:12px;text-align:left}
+.richlist-table-scroll th{font-weight:500;font-size:11px;color:#40523c;background:#e9ede0;vertical-align:bottom;line-height:1.6}
+.richlist-table-scroll th,.richlist-table-scroll td{padding:14px 12px;border-bottom:1px solid var(--line,#d7d9ce)}
+.richlist-table-scroll tbody tr:last-child td{border-bottom:0}
+.richlist-table-scroll tbody tr:hover{background:#eeeee4}
+.richlist-rank{color:var(--muted,#59645c);font-variant-numeric:tabular-nums}
+.richlist-address{font-family:monospace;white-space:nowrap;font-size:11px}
+.richlist-address a{text-underline-offset:4px}
+.richlist-number{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.richlist-table-scroll th:nth-child(n+3){text-align:right}
+.richlist-table-scroll .richlist-empty{text-align:center;padding:30px;color:var(--muted,#59645c)}
+.richlist-app .richlist-explanation{font-size:12px;line-height:1.7;color:var(--muted,#59645c);max-width:950px;margin:18px 0 0}
+.richlist-app button:focus-visible,.richlist-app input:focus-visible,.richlist-app select:focus-visible,.richlist-table-scroll:focus-visible{outline:3px solid #789d42;outline-offset:3px}
+.richlist-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:850px){.richlist-toolbar{align-items:flex-start;flex-direction:column;gap:12px}.richlist-stats{gap:15px}.richlist-stats dd{font-size:22px}}
+@media(max-width:600px){.richlist-stats{grid-template-columns:1fr 1fr}.richlist-stats>div:first-child{grid-column:1/-1}.richlist-details{grid-template-columns:1fr}.richlist-controls{gap:15px}.richlist-controls label{flex-basis:100%;min-width:0}.richlist-controls input,.richlist-controls select{font-size:16px}.richlist-button{padding:11px 12px}.richlist-table-scroll th,.richlist-table-scroll td{padding:13px 10px}}
+
+.richlist-scroll-hint{display:none}@media(max-width:600px){.richlist-scroll-hint{display:block;font-size:12px;color:var(--muted)}}

@@ -4,3 +4,7 @@
 !public/
 !public/**
 !live-data.mjs
+!market-comparison.mjs
+!richlist-data.mjs
+!data/
+!data/richlist.json

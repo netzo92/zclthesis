@@ -84,12 +84,17 @@ marked stale. These are display thresholds, not judgments of consensus validity.
 The browser polls once per minute while visible and retains labeled stale values
 when a refresh fails. No-JavaScript visitors can follow the source links.
 
-The rich-list section describes a proposed transparent-address/UTXO index; it
-contains no fabricated ranks, owner identities, loss probabilities, or supply
-adjustments. Inactivity is an exploratory signal, not proof of lost keys.
-A complete index with spend history and a stated snapshot height is still needed;
-shielded balances cannot be ranked by public address. The tested Zelcore
-`/api/richlist` endpoint returned 404 on September 12, 2026.
+The rich list now uses a complete, dated transparent-UTXO snapshot. See the
+reproducible workflow in `scripts/README.md`. `/api/richlist` serves the immutable
+export from `data/richlist.json`. Its block date is displayed separately from
+the export date. An older-than-one-day snapshot is marked historical (`stale`).
+Search and exact block-age filters run across all attributable positive-balance
+addresses; the table and CSV show at most the top 100 matching addresses.
+
+Block-age filters require every positive-value output in an address balance to
+be at least 100,000, 500,000, or 1,000,000 blocks old relative to the snapshot.
+They do not estimate calendar years, last outgoing spends, owner identities,
+lost-key probabilities, or lost supply. Shielded balances cannot be ranked.
 
 Validate with `node --test tests/*.test.mjs` and browser checks of `/api/live`,
 mobile layout, referral links and failure/stale states after each publication.
@@ -140,6 +145,39 @@ proposed/testnet reward allocations from mainnet facts and cites both the Januar
 2026 mechanism-design audit and May 2026 feature-net report. Safety of finalized
 history is distinguished from progress of finality and recovery from stalls.
 
-Both public NonKYC links (the live price panel and Where to buy section) use
-the owner-provided referral URL and display commission disclosures. The backend
-continues to read the public market API for price data.
+Only the Where to buy button uses the owner-provided referral URL, with its
+commission disclosure there. The live price panel links to that section; the
+backend continues to read the public market API for price data.
+
+## English and Spanish
+
+The complete English page is at `/` and Spanish at `/es/`. Keep
+`public/index.html` and `public/es/index.html` synchronized when editing copy.
+The header language links work without JavaScript. With JavaScript,
+`public/language.js` preserves the section anchor and remembers an explicit
+choice in localStorage (`zcl-language`); no preference leaves the browser.
+An explicit `?lang=en` or `?lang=es` overrides the saved choice. Direct Spanish
+visits select Spanish; root visits honor the saved preference. Storage failures
+do not prevent navigation. `public/live.js` localizes status messages, numbers,
+and dates using the document language. Both versions share the same data API
+and owner-provided referral links.
+
+## History, relative valuation, and miners
+
+The bilingual history section links the official launch records: Zcash
+October 28, 2016 and Zclassic November 6, 2016 (nine days apart). Age is
+distinguished from present security and adoption. The owner's preference for
+ZCL's miner reward model is explicitly a fairness judgment. The Crosslink
+section links the PoS discussion to its proposed hybrid design and presents
+the miner-concession precedent argument as a risk, not an inevitable outcome.
+
+`market-comparison.mjs` fetches CoinGecko's ZCL/ZEC market data in one bounded
+request, validates both identities and timestamps, and caches the pair for five
+minutes. `/api/comparison` returns the same-source USD market caps and derived
+ratio/percentage. A failed refresh retains the previous pair as stale; a first
+failure reports unavailable. Source observations older than one hour are stale.
+The frontend uses the page language and distinguishes market cap from invested
+cash, guaranteed execution prices, or proof of undervaluation.
+
+The rich-list payload is precompressed at startup and fetched only when its
+section approaches the viewport (or the visitor requests a refresh).

@@ -1,0 +1,1 @@
+{"private":true,"type":"module","description":"Offline Zclassic chainstate snapshot export tools; not shipped to Cloud Run","dependencies":{"classic-level":"3.0.0"}}

@@ -1,0 +1,27 @@
+{
+  "snapshot": {
+    "height": 3126937,
+    "hash": "00000663e40f1fe0bc32a7e7282fac25de5fe8ecefd9c627e2fd948d388f7053",
+    "commitment": "4efb67005d842e9d5bab21831fef8905a7fcb89e7264e43bd1aa00623f5a585f",
+    "blockAt": "2026-05-27T17:31:18.000Z",
+    "generatedAt": "2026-09-12T04:44:50.659Z",
+    "source": "https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta6",
+    "verification": "compiled-anchor",
+    "scope": "transparent-utxos",
+    "addressCount": 64422,
+    "utxoCount": 1345131,
+    "totalZatoshis": "1038990325019599",
+    "unattributedZatoshis": "494777654985"
+  },
+  "artifactSha256": "f42f1966c0a96b48b1732d6281490a21ebda229d78920bc14a51596ffbcb62f6",
+  "download": {
+    "files": 213,
+    "bytes": 406616941,
+    "peers": [
+      "74.50.74.102:8033",
+      "205.209.104.118:8033"
+    ]
+  },
+  "verification": "Recomputed release hash_chainstate_full matched the compiled anchor. No genesis replay; upstream commitment does not bind transaction-ID keys.",
+  "ageMethod": "snapshot.height - output creation height, exact block counts; no calendar-year approximation"
+}
