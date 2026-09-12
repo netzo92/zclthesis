@@ -422,6 +422,9 @@ not reset on redeployment, cold starts or refreshed quotes. Preserve it when pub
 CoinGecko's [one-day market-chart endpoint](https://docs.coingecko.com/demo/reference/coins-id-market-chart)
 provides five-minute observations. Its historical date endpoint reports midnight UTC,
 which was not used as a substitute for the intraday launch reference. The banner
-labels the reference timestamp and explains its relation to launch in both languages.
+labels the reference timestamp and prominently displays the full site launch date
+and time (September 12, 2026 at 03:23:13 UTC), distinct from the 03:20 UTC source
+observation, in both languages. The shared comparison script has a versioned asset
+URL so returning visitors receive the banner update despite earlier browser caches.
 `market-performance.mjs` validates the reference identity, source and chronology;
 `public/performance.js` consumes the shared comparison event and derives the display.
