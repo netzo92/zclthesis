@@ -387,3 +387,41 @@ and 71 live integrity/access checks. A real isolated browser submitted a pagevie
 and referral click through the public relay and rendered their totals in the private
 dashboard. Its synthetic events were then removed without touching other browsers.
 The Mac launcher is installed in the operator's existing ZCLThesis analytics folder.
+
+
+## ZCL market cap since website launch
+
+The English and Spanish homepages show a banner above the existing block/price strip:
+fixed launch-reference market cap, current market cap and percentage gain/loss. Both
+values use CoinGecko USD market capitalization. The change is calculated from full
+precision values as `(current / reference - 1) * 100`, independently verified by the
+browser, and labeled as market-cap change. It is not a portfolio-return calculation.
+The current value uses the same `/api/comparison` response as the ZCL/ZEC panel, so the
+banner adds no independent market fetch. Refresh is every five minutes while visible;
+failures or observations older than an hour are explicitly marked stale. Unavailable
+measurements never become a zero return, and tiny changes that round to zero display
+“Unchanged” rather than a misleading negative zero.
+
+The immutable reference in `data/market-baseline.json` is **USD 3,086,200.138912376** at
+**2026-09-12T03:20:00Z**. It is the latest actual provider observation at or before the
+site's first successful public Cloud Run service readiness,
+**2026-09-12T03:23:13.198605Z**. Public invocation was granted at 03:22:42.151778Z and the
+first logged HTTP 200 occurred at 03:23:40.159548Z. The provider point is 193.198605 seconds
+before launch; it is a reference near launch, not an exact launch-instant quotation.
+No interpolation or current value was substituted. The actual source was retrieved
+retrospectively at 22:19:45.115143Z on September 12, 2026.
+
+`data/market-baseline-evidence.json` preserves the full public CoinGecko payload,
+selected public deployment timestamps and source documentation. The reference file
+contains its SHA-256. Tests require the pinned value to equal the last actual
+`market_caps` point before the publicly accessible launch. The source's next 03:25
+point is after launch and is deliberately excluded. These are historical observations,
+not test fixtures. The compact reference is included in the Cloud Run image; it does
+not reset on redeployment, cold starts or refreshed quotes. Preserve it when publishing.
+
+CoinGecko's [one-day market-chart endpoint](https://docs.coingecko.com/demo/reference/coins-id-market-chart)
+provides five-minute observations. Its historical date endpoint reports midnight UTC,
+which was not used as a substitute for the intraday launch reference. The banner
+labels the reference timestamp and explains its relation to launch in both languages.
+`market-performance.mjs` validates the reference identity, source and chronology;
+`public/performance.js` consumes the shared comparison event and derives the display.

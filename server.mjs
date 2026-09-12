@@ -4,9 +4,11 @@ const collectAnalytics=createAnalyticsRelay({enabled:process.env.ANALYTICS_ENABL
 import {createLiveData} from './live-data.mjs';
 const getLiveData=createLiveData();
 import {createMarketComparison} from './market-comparison.mjs';
+import {parseLaunchBaseline} from './market-performance.mjs';
 import {createNetworkData} from './network-data.mjs';
 import {createRichListStore,createRichListComparison} from './richlist-feeds.mjs';
-const getComparison=createMarketComparison();
+const launchBaseline=parseLaunchBaseline(JSON.parse(await readFile(new URL('./data/market-baseline.json',import.meta.url),'utf8')));
+const getComparison=createMarketComparison({baseline:launchBaseline});
 const getNetworkData=createNetworkData();
 const getRichList=await createRichListStore();
 const getRichListComparison=createRichListComparison({getZcl:getRichList});
@@ -34,6 +36,8 @@ const files = new Map([
   ['/language.js', ['language.js', 'text/javascript; charset=utf-8']],
   ['/live.js', ['live.js', 'text/javascript; charset=utf-8']],
   ['/comparison.js', ['comparison.js', 'text/javascript; charset=utf-8']],
+  ['/performance.js', ['performance.js', 'text/javascript; charset=utf-8']],
+  ['/performance.css', ['performance.css', 'text/css; charset=utf-8']],
   ['/comparison.css', ['comparison.css', 'text/css; charset=utf-8']],
   ['/richlist.js', ['richlist.js', 'text/javascript; charset=utf-8']],
   ['/richlist.css', ['richlist.css', 'text/css; charset=utf-8']],

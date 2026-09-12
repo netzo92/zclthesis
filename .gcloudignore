@@ -6,8 +6,10 @@
 !public/**
 !live-data.mjs
 !market-comparison.mjs
+!market-performance.mjs
 !network-data.mjs
 !richlist-data.mjs
 !richlist-feeds.mjs
 !data/
 !data/richlist.json
+!data/market-baseline.json

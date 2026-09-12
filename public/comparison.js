@@ -78,6 +78,7 @@
     return data;
   }
   function render(data, failed = false) {
+    window.dispatchEvent(new CustomEvent('zcl-market-comparison', {detail: {data, failed}}));
     mount.dataset.status = data ? failed ? 'stale' : data.status : 'unavailable';
     for (const symbol of ['zcl', 'zec']) {
       const coin = data?.coins[symbol];

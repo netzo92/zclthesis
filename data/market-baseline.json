@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "assetId": "zclassic",
+  "currency": "usd",
+  "marketCapUsd": 3086200.138912376,
+  "launchedAt": "2026-09-12T03:23:13.198605Z",
+  "observedAt": "2026-09-12T03:20:00Z",
+  "capturedAt": "2026-09-12T22:19:45.115143Z",
+  "source": "https://api.coingecko.com/api/v3/coins/zclassic/market_chart?vs_currency=usd&days=1",
+  "method": "nearest-observation",
+  "selection": "Latest actual observation at or before launch; never a post-launch observation or interpolated value.",
+  "evidence": {
+    "file": "market-baseline-evidence.json",
+    "sha256": "3fcaca9d0cb27c203bec73cf7d485c66c9461f67174c3bdece54bdc8a33efbc3"
+  }
+}

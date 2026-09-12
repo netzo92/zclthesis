@@ -1,3 +1,4 @@
+import {compareWithLaunch} from './market-performance.mjs';
 export const COMPARISON_SOURCE = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=zclassic%2Czcash&sparkline=false';
 const MAX_AGE = 60 * 60 * 1000;
 const positive = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
@@ -46,7 +47,7 @@ async function fetchJSON(url) {
   return JSON.parse(Buffer.concat(chunks).toString('utf8'));
 }
 
-export function createMarketComparison({load = fetchJSON, clock = Date.now, ttl = 300000} = {}) {
+export function createMarketComparison({load = fetchJSON, clock = Date.now, ttl = 300000, baseline = null} = {}) {
   let snapshot, pending, failed = false, lastAttempt = -Infinity;
   async function refresh() {
     try {
@@ -65,11 +66,12 @@ export function createMarketComparison({load = fetchJSON, clock = Date.now, ttl 
     }
     if (!snapshot) return {
       status: 'unavailable', fetchedAt: null, source: COMPARISON_SOURCE,
-      coins: null, zecToZclRatio: null, zclPercentOfZec: null,
+      coins: null, zecToZclRatio: null, zclPercentOfZec: null, sinceLaunch: compareWithLaunch(null, baseline),
     };
     const now = clock();
     const aged = now - Date.parse(snapshot.fetchedAt) > MAX_AGE ||
       Object.values(snapshot.coins).some(coin => now - Date.parse(coin.updatedAt) > MAX_AGE);
-    return {...structuredClone(snapshot), status: failed || aged ? 'stale' : 'ok', source: COMPARISON_SOURCE};
+    return {...structuredClone(snapshot), status: failed || aged ? 'stale' : 'ok', source: COMPARISON_SOURCE,
+      sinceLaunch: compareWithLaunch(snapshot.coins.zcl, baseline)};
   };
 }
