@@ -1,0 +1,29 @@
+[Unit]
+Description=ZCL Thesis private analytics and event collector
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=zcl-analytics
+Group=zcl-analytics
+WorkingDirectory=/opt/zcl-analytics
+EnvironmentFile=/etc/zcl-analytics/collector.env
+ExecStart=/usr/bin/python3 -B /opt/zcl-analytics/collector.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+UMask=0077
+MemoryMax=128M
+CPUQuota=20%
+TasksMax=96
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/zcl-analytics
+RestrictAddressFamilies=AF_INET AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

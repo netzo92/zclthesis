@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Thesis analytics · ZCL Thesis</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to analytics</a>
+  <header class="site-header">
+    <a class="wordmark" href="https://zclthesis.com/" target="_blank" rel="noopener noreferrer">zcl<span>thesis</span><span class="brand-dot">.</span></a>
+    <div class="header-right"><span class="private-label">Private analytics</span><a class="quiet-link" href="https://zclthesis.com/" target="_blank" rel="noopener noreferrer">Open website <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">ZCL THESIS / AUDIENCE</p><h1 id="page-title">Thesis analytics</h1><p class="lede">Recorded visits, reading activity, and clicks through to NonKYC.</p></div>
+      <div class="controls" aria-label="Dashboard controls">
+        <label for="period">Date range <span class="utc-label">UTC</span></label>
+        <div class="control-row"><select id="period"><option value="1">Today</option><option value="7" selected>Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select><button type="button" id="refresh">Refresh <span aria-hidden="true">↻</span></button></div>
+        <label class="auto-refresh"><input type="checkbox" id="auto-refresh"> Refresh every 60 seconds while visible</label>
+      </div>
+    </section>
+
+    <div class="observation" id="observation" data-state="loading">
+      <div class="observation-main"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite">Loading analytics…</p></div>
+      <p id="range">Date range will appear when data is available.</p>
+    </div>
+    <p class="notice" id="error" role="alert" hidden></p>
+    <noscript><p class="notice">Enable JavaScript to load this private dashboard. No analytics values are available in this view without it.</p></noscript>
+
+    <section class="metrics" aria-label="Totals for the displayed range" id="metrics" aria-busy="true">
+      <article class="metric"><h2>Visitors <span>approx.</span></h2><p class="metric-value" id="visitors">—</p><p class="metric-note">Distinct browser IDs in this range</p></article>
+      <article class="metric"><h2>Visits</h2><p class="metric-value" id="visits">—</p><p class="metric-note">Recorded visits to the website</p></article>
+      <article class="metric"><h2>Pageviews</h2><p class="metric-value" id="pageviews">—</p><p class="metric-note">Recorded page views, including repeats</p></article>
+      <article class="metric"><h2>NonKYC clicks</h2><p class="metric-value" id="referral-clicks">—</p><p class="metric-note">Clicks on the referral link</p></article>
+      <article class="metric metric-accent"><h2>Visits with a click</h2><p class="metric-value" id="click-rate">—</p><p class="metric-note" id="click-rate-detail">Clicking visits ÷ recorded visits</p></article>
+    </section>
+
+    <section class="panel trend-panel" aria-labelledby="trend-title">
+      <div class="panel-heading"><div><p class="eyebrow">DAY BY DAY</p><h2 id="trend-title">Visits &amp; referral clicks</h2></div><div class="legend" aria-label="Chart legend"><span><i class="legend-visits" aria-hidden="true"></i>Visits</span><span><i class="legend-clicks" aria-hidden="true"></i>NonKYC clicks</span></div></div>
+      <p class="section-note">Daily totals use UTC. Select a day for its exact counts.</p>
+      <p class="empty-state" id="chart-empty">Waiting for analytics data.</p>
+      <div id="chart-content" hidden>
+        <div class="chart-topline"><span id="chart-scale">—</span><span>Count per day</span></div>
+        <div class="chart-scroll" tabindex="0" aria-label="Daily chart; scroll horizontally for longer ranges"><div class="daily-plot" id="daily-plot" role="group" aria-label="Daily activity"></div></div>
+        <p class="day-detail" id="day-detail" aria-live="polite">Select a day to inspect its counts.</p>
+      </div>
+    </section>
+
+    <div class="table-grid">
+      <section class="panel" aria-labelledby="pages-title">
+        <div class="panel-heading"><div><p class="eyebrow">READING</p><h2 id="pages-title">Page performance</h2></div></div>
+        <div class="table-scroll" tabindex="0" aria-label="Page performance table"><table><caption class="sr-only">Recorded views and referral clicks by page</caption><thead><tr><th scope="col">Page</th><th scope="col" class="numeric">Pageviews</th><th scope="col" class="numeric">Clicks</th></tr></thead><tbody id="pages-body"><tr><td colspan="3" class="table-empty">Waiting for analytics data.</td></tr></tbody></table></div>
+      </section>
+      <section class="panel" aria-labelledby="sources-title">
+        <div class="panel-heading"><div><p class="eyebrow">ARRIVAL</p><h2 id="sources-title">Source categories</h2></div></div>
+        <div class="table-scroll" tabindex="0" aria-label="Source category table"><table><caption class="sr-only">Recorded visits and referral clicks by source category</caption><thead><tr><th scope="col">Source</th><th scope="col" class="numeric">Visits</th><th scope="col" class="numeric">Clicks</th></tr></thead><tbody id="sources-body"><tr><td colspan="3" class="table-empty">Waiting for analytics data.</td></tr></tbody></table></div>
+      </section>
+    </div>
+
+    <section class="measurement" aria-labelledby="measurement-title">
+      <div><p class="eyebrow">READ THESE AS ESTIMATES</p><h2 id="measurement-title">What the numbers cover</h2></div>
+      <div class="measurement-copy"><p>Visitors are approximate distinct browser IDs, not verified people. IDs expire after 30 days; another browser, cleared storage, or an expired ID can count as another visitor.</p><p>Visits with JavaScript disabled, Do Not Track (DNT), Global Privacy Control (GPC), or a blocking ad blocker are excluded. Automated traffic can still affect the counts.</p><p>A referral click is <strong>not a registration or a trade</strong>. The percentage above counts visits with at least one click, so repeat clicks within a visit do not increase that percentage. Events are retained for 90 days.</p></div>
+    </section>
+    <section class="collection-meta" aria-label="Collection timestamps in UTC"><div><span>Recording started</span><strong id="recording-started">Not yet available</strong></div><div><span>Last recorded event</span><strong id="last-event">Not yet available</strong></div><div><span>Summary generated</span><strong id="generated-at">Not yet available</strong></div></section>
+  </main>
+  <footer><span>ZCL Thesis · Private analytics</span><span>All dates and times shown in UTC</span></footer>
+</body>
+</html>

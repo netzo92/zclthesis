@@ -14,8 +14,9 @@
     }
   } catch { preferred=explicit; }
   if((preferred==='es'||preferred==='en')&&preferred!==current) {
-    const section=/^\/(?:es\/)?network(?:\/|$)/.test(url.pathname)?'network/':'';
-    url.pathname=(preferred==='es'?'/es/':'/')+section;
+    const section=/^\/(?:es\/)?(network|privacy)(?:\/|$)/.exec(url.pathname)?.[1];
+    const suffix=section?section+'/':'';
+    url.pathname=(preferred==='es'?'/es/':'/')+suffix;
     location.replace(url.href);
     return;
   }

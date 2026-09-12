@@ -3,7 +3,8 @@
 Standalone, responsive editorial site about the ZCL counterweight thesis.
 The content distinguishes Braun's ZEC argument from the owner's ZCL interpretation,
 and treats consensus, development funding, and issuance timing as separate choices.
-No frontend dependencies, analytics, or wallet connections. A live strip reports
+No frontend dependencies or wallet connections. First-party analytics count
+website visits and NonKYC referral clicks, with a private operator dashboard. A live strip reports
 explorer block height and the NonKYC ZCL/USDT last trade.
 
 Run from the repository root with Node 22+:
@@ -33,7 +34,7 @@ This builds only this app directory and creates/updates a public `myzclthesis`
 Cloud Run service in `us-central1` (override `GCP_REGION`). Set `GCP_RUNTIME_SERVICE_ACCOUNT` to select a dedicated runtime identity.
 The Docker image runs
 as a non-root user and exposes an explicit static-asset allowlist plus the bounded
-live-data, network, market-comparison, and rich-list API routes. Minimum instances is
+live-data, network, market-comparison, and rich-list API routes, plus a bounded write-only analytics event endpoint. Minimum instances is
 zero; maximum is two. Builds, image storage and requests can incur charges;
 instance limits are not a spending cap. The deployment returns a managed HTTPS
 URL. A custom domain needs separate domain ownership and DNS configuration.
@@ -52,7 +53,7 @@ Deployed September 12, 2026 (UTC):
 - Initial revision: `myzclthesis-00001-5rv`
 - Latest revision: `myzclthesis-00013-gdv` (100% traffic, September 12, 2026)
 - Latest deployment source commit: `10012ce`
-- Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted.
+- Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
 address. Custom domain setup is recorded below. Automatic deployment from GitHub is not configured.
@@ -325,3 +326,53 @@ The fee is 0.8% of allocated block rewards, with the specific comparison
 “20% lower than a 1% pool fee.” This is not a universal competitor claim.
 Unpaid pool credits are distinct from a wallet's confirmed on-chain balance.
 Pool/admin credentials and operator wallet material are outside all public repos.
+
+## Private visitor and referral analytics
+
+The public website posts bounded events to `/api/analytics/event`. `analytics-relay.mjs`
+validates exact fields, canonical page/source categories, UUIDv4 identifiers, origin,
+privacy signals, body size, and concurrency/request budgets before forwarding to the
+fixed pool collector. It strips all browser headers and authenticates with a dedicated
+relay credential supplied through GCP Secret Manager. No analytics read API or admin
+HTML is exposed by Cloud Run. Referral links keep the owner's exact destination;
+measurement does not delay navigation and cannot report exchange registrations or trades.
+
+`analytics/collector.py` is a Python standard-library service on the existing pool VM.
+A separate unprivileged account owns `/var/lib/zcl-analytics/analytics.sqlite3`, which
+is outside every repository and Cloud Run image. SQLite WAL and transactions preserve
+counts across service restarts and concurrent submissions. Duplicate event IDs are
+idempotent; server UTC timestamps determine the reporting day. Runtime memory, CPU,
+connections, event sizes and event volumes are bounded. Events are retained for the
+current UTC day plus 89 preceding days; minute maintenance checks enforce daily pruning.
+Only coarse allowlisted source/page categories and hashes of random browser/session IDs
+are stored. No IP, user agent, arbitrary URL, wallet address or key enters this database.
+Infrastructure request/security logs are separate from the analytics database.
+
+Public Caddy exposes only the exact POST collector route to loopback port 8792.
+The dashboard and summary API bind loopback port 8091 and are reached through an
+IAP-authenticated SSH tunnel. No new public firewall port is required. Its Host/Origin
+checks protect the localhost dashboard against DNS rebinding and cross-origin requests.
+Google Cloud project/VM administrators are trusted. The website service identity can
+submit events but has no dashboard or database access.
+
+Run `analytics/open-analytics.command` on the operator's Mac while signed into the
+existing authorized gcloud account. It opens `http://127.0.0.1:18091/`; keep the Terminal
+window open while using the dashboard. Counts cover Today, 7, 30 or 90 UTC days and show
+approximate distinct browser IDs, visits (tab sessions renewed after 30 minutes of
+inactivity), pageviews, NonKYC clicks, daily activity, page/source breakdowns and the
+percentage of visits with at least one referral click. Distinct visitors across a
+range are not the sum of daily distinct counts. A browser identifier expires after
+30 days, so longer ranges can count a returning browser more than once. No historical
+traffic is backfilled or invented. Test events must not remain in production totals.
+
+Only the English/Spanish thesis and network pages include `public/analytics.js`.
+`/privacy/` and `/es/privacy/` explain collection and provide a browser opt-out.
+Do Not Track, Global Privacy Control, unavailable storage and automated headless
+browsers suppress collection. The offline wallet is unchanged and contains no tracker.
+Counts are approximate: ad blockers, disabled JavaScript, automation and forged requests
+can affect them. The source category is the session's first observed referrer category;
+referrer URLs themselves are never sent. Clicking a link does not establish a trade.
+
+See [analytics deployment instructions](analytics/README.md) for install, secrets,
+access and checks. Validate with `node --test tests/*.test.mjs` and
+`python3 -m unittest discover -s tests -p 'test_analytics.py'`.

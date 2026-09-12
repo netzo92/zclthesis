@@ -5,3 +5,8 @@ node_modules/
 
 __pycache__/
 *.pyc
+
+# Private analytics runtime data must never enter this public repository.
+analytics/data/
+*.sqlite3
+*.sqlite3-*

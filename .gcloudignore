@@ -1,6 +1,7 @@
 *
 !Dockerfile
 !server.mjs
+!analytics-relay.mjs
 !public/
 !public/**
 !live-data.mjs

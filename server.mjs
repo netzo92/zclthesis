@@ -1,4 +1,6 @@
 import http from 'node:http';
+import {createAnalyticsRelay} from './analytics-relay.mjs';
+const collectAnalytics=createAnalyticsRelay({enabled:process.env.ANALYTICS_ENABLED!=='0'});
 import {createLiveData} from './live-data.mjs';
 const getLiveData=createLiveData();
 import {createMarketComparison} from './market-comparison.mjs';
@@ -23,6 +25,12 @@ const files = new Map([
   ['/es/network/index.html', ['es/network/index.html', 'text/html; charset=utf-8']],
   ['/network.js', ['network.js', 'text/javascript; charset=utf-8']],
   ['/network.css', ['network.css', 'text/css; charset=utf-8']],
+  ['/analytics.js', ['analytics.js', 'text/javascript; charset=utf-8']],
+  ['/privacy.js', ['privacy.js', 'text/javascript; charset=utf-8']],
+  ['/privacy', ['privacy/index.html', 'text/html; charset=utf-8']],
+  ['/privacy/', ['privacy/index.html', 'text/html; charset=utf-8']],
+  ['/es/privacy', ['es/privacy/index.html', 'text/html; charset=utf-8']],
+  ['/es/privacy/', ['es/privacy/index.html', 'text/html; charset=utf-8']],
   ['/language.js', ['language.js', 'text/javascript; charset=utf-8']],
   ['/live.js', ['live.js', 'text/javascript; charset=utf-8']],
   ['/comparison.js', ['comparison.js', 'text/javascript; charset=utf-8']],
@@ -40,9 +48,10 @@ http.createServer(async (req,res) => {
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
   res.setHeader('Content-Security-Policy',"default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
-  if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}
   let path;
   try { path = new URL(req.url,'http://localhost').pathname; } catch {res.writeHead(400);res.end();return;}
+  if(path==='/api/analytics/event'){await collectAnalytics(req,res);return;}
+  if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}
   if(path==='/api/richlist') {
     const richList=await getRichList();
     res.setHeader('Content-Type','application/json; charset=utf-8');
