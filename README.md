@@ -52,7 +52,7 @@ Deployed September 12, 2026 (UTC):
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
-address. A custom domain and automatic deployment from GitHub are not configured.
+address. Custom domain setup is recorded below. Automatic deployment from GitHub is not configured.
 Source deployments use the existing default build account permissions.
 
 
@@ -93,3 +93,30 @@ shielded balances cannot be ranked by public address. The tested Zelcore
 
 Validate with `node --test tests/*.test.mjs` and browser checks of `/api/live`,
 mobile layout, referral links and failure/stale states after each publication.
+
+## Custom domain
+
+`zclthesis.com` was registered through Cloud Domains on September 12, 2026,
+with automatic renewal and redacted public contact information. Registration
+expires September 12, 2027 unless renewed. Registrant details are deliberately
+excluded from this repository.
+
+The `zclthesis-com` public Cloud DNS zone is in `myzclthesis-20260912`.
+The apex A records are `216.239.32.21`, `216.239.34.21`, `216.239.36.21`,
+and `216.239.38.21`. AAAA records are `2001:4860:4802:32::15`,
+`2001:4860:4802:34::15`, `2001:4860:4802:36::15`, and
+`2001:4860:4802:38::15`. The `www` CNAME is `ghs.googlehosted.com.`.
+All records use a 300-second TTL and match Cloud Run's domain-mapping output.
+Both names map to the existing `myzclthesis` service in `us-central1`.
+
+At configuration time, registration was ACTIVE and apex public DNS resolved.
+Managed HTTPS certificates were still provisioning. Registrar contact-email
+verification remains a separate required owner action. The run.app URL continues
+to work while provisioning completes. Inspect current status with:
+
+```bash
+gcloud beta run domain-mappings describe --domain=zclthesis.com \
+  --region=us-central1 --project=myzclthesis-20260912
+gcloud beta run domain-mappings describe --domain=www.zclthesis.com \
+  --region=us-central1 --project=myzclthesis-20260912
+```
