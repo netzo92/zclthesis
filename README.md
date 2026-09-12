@@ -110,9 +110,10 @@ All records use a 300-second TTL and match Cloud Run's domain-mapping output.
 Both names map to the existing `myzclthesis` service in `us-central1`.
 
 At configuration time, registration was ACTIVE and apex public DNS resolved.
-Managed HTTPS certificates were still provisioning. Registrar contact-email
-verification remains a separate required owner action. The run.app URL continues
-to work while provisioning completes. Inspect current status with:
+Apex HTTPS returned 200 with certificate verification enabled at 04:08 UTC on
+September 12, 2026. The www certificate was still provisioning at that check.
+The registrar reports ACTIVE with no outstanding issues, including no
+unverified-email issue. The run.app URL continues to work. Inspect current status with:
 
 ```bash
 gcloud beta run domain-mappings describe --domain=zclthesis.com \
