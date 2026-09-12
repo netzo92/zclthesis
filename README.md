@@ -141,6 +141,20 @@ gcloud beta run domain-mappings describe --domain=www.zclthesis.com \
 
 ## Funding and monetary-policy thesis
 
+`#consensus` compares PoW resource expenditure with PoS collateral, using Ethereum
+as the PoS example. It distinguishes validator block votes, slashable behavior,
+and off-chain protocol governance. `#staking-incentives` explains the different
+interests of passive holders, stakers, and fee-charging service providers with an
+explicitly hypothetical dilution example; it does not predict unanimous support
+for inflation or treat a nominal staking yield as a dollar profit.
+
+`#ethereum-money` critiques the “ultrasound money” narrative through the separate
+effects of Merge issuance reduction, EIP-1559 burning, and Dencun's blob market.
+The return to net inflation is a dated observation from Glassnode/CME's May 29,
+2025 report, not a live ETH metric or evidence of a coinholder ballot to increase
+issuance. Primary sources and the authors' staking-economics analysis are linked
+in both languages. Preserve these qualifications when updating the argument.
+
 The editorial sections distinguish the owner's competition/incentive argument
 from source descriptions. ZIP 214 documents different historical funding streams;
 “foundation reward” is explicitly defined as broad shorthand, not a current claim
@@ -293,7 +307,8 @@ transaction-signing application. No owner's private wallet exists in this repo.
 
 `#browser-mining` explains the experimental WebGPU path and its approximately
 3.26 GiB memory requirement. A visitor supplies a public payout address and
-explicitly starts a bounded session; hiding the tab or pressing Stop ends it.
+explicitly chooses a timed session or “Until I stop”; hiding the tab or pressing
+Stop ends it.
 The separate bridge enforces current-node and pool-launch admission checks.
 Linking the miner does not mean public mining has opened; the pool status
 artifact is the current authority for readiness. The pool host coordinates
