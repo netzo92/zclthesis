@@ -51,8 +51,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00013-gdv` (100% traffic, September 12, 2026)
-- Latest deployment source commit: `10012ce`
+- Latest revision: `myzclthesis-00014-w2d` (100% traffic, September 12, 2026)
+- Latest deployment source commit: `8efa6c8`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -64,8 +64,9 @@ Live validation passed: desktop and 390px mobile layouts, no horizontal overflow
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
 
-The latest deployment adds the PoW/PoS comparison, issuance-incentive explanation,
-and dated Ethereum burn analysis in English and Spanish. Both public HTML
+The latest deployment adds private visitor/referral analytics and equivalent English/Spanish
+privacy controls. It preserves the PoW/PoS comparison, issuance-incentive explanation,
+and dated Ethereum burn analysis in both languages. Both public HTML
 documents matched the clean deployment source byte-for-byte. Guide validation
 checked 14 identical command blocks, matching language-normalized links, new
 section and source anchors, language switching, and ten layouts from 320 to 1,440
@@ -376,3 +377,13 @@ referrer URLs themselves are never sent. Clicking a link does not establish a tr
 See [analytics deployment instructions](analytics/README.md) for install, secrets,
 access and checks. Validate with `node --test tests/*.test.mjs` and
 `python3 -m unittest discover -s tests -p 'test_analytics.py'`.
+
+
+Analytics deployment verified September 12, 2026: source `8efa6c8` is serving 100% of
+Cloud Run traffic on `myzclthesis-00014-w2d`; the private VM service uses matching
+collector/dashboard source, and the pool Caddy route is from `94008dc`. Validation
+passed 49 Node tests, 20 Python tests, isolated dashboard/EN/ES privacy browser checks,
+and 71 live integrity/access checks. A real isolated browser submitted a pageview
+and referral click through the public relay and rendered their totals in the private
+dashboard. Its synthetic events were then removed without touching other browsers.
+The Mac launcher is installed in the operator's existing ZCLThesis analytics folder.
