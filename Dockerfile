@@ -1,6 +1,6 @@
 FROM node:22-alpine
 WORKDIR /app
-COPY --chown=node:node server.mjs live-data.mjs market-comparison.mjs richlist-data.mjs ./
+COPY --chown=node:node server.mjs live-data.mjs market-comparison.mjs richlist-data.mjs richlist-feeds.mjs ./
 COPY --chown=node:node public ./public
 COPY --chown=node:node data ./data
 USER node

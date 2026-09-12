@@ -1,10 +1,11 @@
 # Reproducing the transparent rich list
 
-The website publishes a historical snapshot, not a current-balance feed. The
-initial export covers block **3,126,937, May 27, 2026 at 17:31:18 UTC**.
+The bundled fallback covers block **3,126,937, May 27, 2026 at 17:31:18 UTC**.
 `data/provenance.json` records the published artifact hash, counts and trust model.
-All tooling here runs offline/from a maintenance machine; none is in the runtime
-Docker image. No wallet, private key, node RPC credentials or account is needed.
+Tooling runs on a maintenance machine or the pool's scheduled exporter; none is
+in the website runtime Docker image. The historical rebuild needs no wallet,
+private key, node RPC credentials or account. Current exports use local read-only
+RPC metadata and a private consistent copy of chainstate.
 
 ## Retrieve and verify
 
@@ -58,8 +59,53 @@ positive balance meets that threshold. These are exploratory cutoffs, not years,
 last-spend timestamps, probabilities of lost keys, or an estimate of lost supply.
 Shielded holdings cannot be ranked. Address ownership is not clustered or inferred.
 
-A new current snapshot requires a separately verified newer chainstate and a
-reviewed update to the pinned anchor and corresponding metadata. There is no
-scheduled refresh of this historical artifact. Do not change its date to make it
-appear current. After regeneration, update provenance, verify the bilingual page
-and deploy the artifact with the app.
+## Scheduled exports from our node
+
+The historical anchor remains immutable. Current node exports have a distinct
+`own-node-snapshot` verification mode. The pool machine prepares a private atomic
+filesystem snapshot, allowing the pool's live node to continue running. Open a
+writable private copy of that snapshot for LevelDB recovery; never copy the live
+database file by file. Official guidance explicitly permits a filesystem
+snapshot: <https://github.com/ZclassicCommunity/zclassic/blob/v2.1.2-beta6/doc/bootstrap-snapshots.md>.
+
+Capture a local `gettxoutsetinfo` result and the matching block header. The
+node context file has this shape (replace values with actual node results):
+
+```json
+{
+  "verification": "own-node-snapshot",
+  "source": "https://pool.zclthesis.com",
+  "height": 3247700,
+  "hash": "<64 lowercase hexadecimal characters from bestblock>",
+  "commitment": "<hash_chainstate_full>",
+  "blockAt": "<matching block timestamp in ISO 8601 UTC>",
+  "totalZatoshis": "<total_amount converted exactly to integer zatoshis>",
+  "utxoCount": 1345131,
+  "bootstrapValidation": "anchored-fast-sync"
+}
+```
+
+`total_amount` must be converted with decimal arithmetic, not binary floating
+point. The listed count and height above are illustrative, not live measurements.
+Other recognized trust labels are `validated-from-genesis` and `unknown`; use
+the former only after actual full historical validation.
+
+```bash
+node scripts/export-state.mjs /private/consistent-snapshot /private/verified-export /private/node-context.json
+node scripts/build-richlist.mjs /private/verified-export /private/zcl.json
+```
+
+The recovered database's `B` best-block key must match the context block. The
+exporter recomputes the full commitment and requires the RPC's exact output count
+and total to match. If the node advanced between the RPC read and snapshot,
+retry with a coherent pair; never rewrite the context to disguise a mismatch.
+Check that the block remains canonical before publication. Publish only the
+validated aggregate JSON atomically to `/api/richlist/zcl.json`, targeting every
+two hours. Keep the previous valid artifact on failure.
+
+The pool's whole-datadir CoW snapshot may contain a wallet; keep the snapshot and
+working copy private, short-lived, and outside the web root. No raw snapshot,
+wallet, configuration, RPC credentials, or private key belongs in published
+artifacts. The website fetches only the aggregate JSON and displays its actual
+block date and trust mode. Fast sync followed by forward validation is not a
+claim that history was replayed from genesis.

@@ -15,14 +15,15 @@
     snapshot: 'Instantánea', block: 'Bloque', blockTime: 'Fecha del bloque (UTC)', generated: 'Instantánea generada (UTC)',
     source: 'Fuente', verification: 'Verificación', indexed: 'Saldo transparente indexado',
     addresses: 'Direcciones indexadas', outputs: 'Salidas sin gastar', unattributed: 'Saldo sin dirección atribuible',
-    current: 'Instantánea disponible. Los saldos corresponden al bloque indicado.',
-    stale: 'Instantánea histórica. Los saldos corresponden al bloque indicado y pueden haber cambiado desde entonces.',
+    current: 'Instantánea del nodo disponible. Los saldos corresponden al bloque indicado; la exportación tiene una cadencia prevista de dos horas.',
+    stale: 'Instantánea desactualizada o de respaldo. Los saldos corresponden al bloque indicado; la fuente tiene más de dos horas o no pudo actualizarse.',
     unavailable: 'No se pudo cargar una instantánea válida. Vuelve a intentarlo con «Actualizar instantánea».',
     retained: 'Falló la actualización. Se conserva la instantánea anterior; sus saldos pueden haber cambiado.',
     rank: 'Puesto', address: 'Dirección transparente', balance: 'Saldo (ZCL)', oldest: 'UTXO más antiguo (bloque)',
     newest: 'UTXO más reciente (bloque)', count: 'UTXO', empty: 'Ninguna dirección coincide con estos filtros.',
     region: 'Lista de saldos de direcciones transparentes', table: 'Saldos de direcciones; desplázate horizontalmente para ver todas las columnas',
     unknown: 'Desconocido', shownBalance: 'Saldo mostrado',
+    ownNode: 'Instantánea coherente de nuestro nodo; compromiso y totales contrastados con su RPC. La sincronización rápida anclada y la validación posterior no equivalen a reproducir toda la historia desde génesis.',
     compiledAnchor: 'El estado de la cadena coincide con el compromiso de Zclassic v2.1.2-beta6; no se reprodujo el historial desde el bloque génesis.',
     explanation: 'La antigüedad se mide exactamente en bloques: la altura de la instantánea menos la altura de creación de cada salida que sigue sin gastar (UTXO). Los filtros exigen que todo el saldo alcance el umbral. No indica el último gasto de la dirección ni demuestra que se hayan perdido las claves. No se convierte la antigüedad en bloques a años.',
     scrollHint: 'Desliza la tabla para ver los saldos y las alturas de bloque.',
@@ -37,14 +38,15 @@
     snapshot: 'Snapshot', block: 'Block', blockTime: 'Block date (UTC)', generated: 'Snapshot generated (UTC)',
     source: 'Source', verification: 'Verification', indexed: 'Indexed transparent balance',
     addresses: 'Indexed addresses', outputs: 'Unspent outputs', unattributed: 'Balance without an attributable address',
-    current: 'Snapshot available. Balances are as of the stated block.',
-    stale: 'Historical snapshot. Balances are as of the stated block and may have changed since then.',
+    current: 'Node snapshot available. Balances are as of the stated block; the export targets a two-hour cadence.',
+    stale: 'Stale or fallback snapshot. Balances are as of the stated block; the source is over two hours old or could not refresh.',
     unavailable: 'A valid snapshot could not be loaded. Try the Refresh snapshot button again.',
     retained: 'Refresh failed. The previous snapshot is retained; its balances may have changed.',
     rank: 'Rank', address: 'Transparent address', balance: 'Balance (ZCL)', oldest: 'Oldest UTXO (block)',
     newest: 'Newest UTXO (block)', count: 'UTXOs', empty: 'No addresses match these filters.',
     region: 'Transparent address balance list', table: 'Address balances; scroll horizontally to see every column',
     unknown: 'Unknown', shownBalance: 'Balance shown',
+    ownNode: 'Consistent snapshot of our node; commitment and totals checked against its RPC. Anchored fast sync with subsequent validation is not replaying the entire history from genesis.',
     compiledAnchor: 'Chainstate matched the commitment in Zclassic v2.1.2-beta6; history was not replayed from genesis.',
     explanation: 'Age is measured exactly in blocks: the snapshot height minus the creation height of each currently unspent output (UTXO). Filters require the entire balance to meet the threshold. This is not the address’s last spend and does not prove keys are lost. Block age is not converted into years.',
     scrollHint: 'Scroll sideways to see balances and block heights.',
@@ -195,7 +197,7 @@
       group.append(node('dt', t.source), value);
       details.append(group);
     } else if (typeof snapshot.source === 'string' && snapshot.source) metric(details, t.source, snapshot.source);
-    if (typeof snapshot.verification === 'string' && snapshot.verification) metric(details, t.verification, snapshot.verification === 'compiled-anchor' ? t.compiledAnchor : snapshot.verification);
+    if (typeof snapshot.verification === 'string' && snapshot.verification) metric(details, t.verification, snapshot.verification === 'compiled-anchor' ? t.compiledAnchor : snapshot.verification === 'own-node-snapshot' ? t.ownNode : snapshot.verification);
     if (BigInt(snapshot.unattributedZatoshis) > 0n) metric(details, t.unattributed, `${amount(snapshot.unattributedZatoshis)} ZCL`);
     metadata.replaceChildren(stats, details);
     metadata.hidden = false;
@@ -290,6 +292,7 @@
   filter.addEventListener('change', renderRows);
   refreshButton.addEventListener('click', refresh);
   downloadButton.addEventListener('click', download);
+  setInterval(() => { if (saved && !document.hidden) refresh(); }, 3600000);
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); refresh(); }

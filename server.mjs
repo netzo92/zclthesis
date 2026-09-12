@@ -2,10 +2,10 @@ import http from 'node:http';
 import {createLiveData} from './live-data.mjs';
 const getLiveData=createLiveData();
 import {createMarketComparison} from './market-comparison.mjs';
-import {loadRichList} from './richlist-data.mjs';
+import {createRichListStore,createRichListComparison} from './richlist-feeds.mjs';
 const getComparison=createMarketComparison();
-let richList;
-try {richList=await loadRichList();} catch {console.error('Rich-list snapshot is missing or invalid');}
+const getRichList=await createRichListStore();
+const getRichListComparison=createRichListComparison({getZcl:getRichList});
 import {readFile} from 'node:fs/promises';
 const files = new Map([
   ['/', ['index.html', 'text/html; charset=utf-8']],
@@ -19,6 +19,7 @@ const files = new Map([
   ['/comparison.css', ['comparison.css', 'text/css; charset=utf-8']],
   ['/richlist.js', ['richlist.js', 'text/javascript; charset=utf-8']],
   ['/richlist.css', ['richlist.css', 'text/css; charset=utf-8']],
+  ['/richlist-comparison.js', ['richlist-comparison.js', 'text/javascript; charset=utf-8']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
 ]);
 const assets = new Map(await Promise.all([...files].map(async ([url,[file,type]]) =>
@@ -31,6 +32,7 @@ http.createServer(async (req,res) => {
   let path;
   try { path = new URL(req.url,'http://localhost').pathname; } catch {res.writeHead(400);res.end();return;}
   if(path==='/api/richlist') {
+    const richList=await getRichList();
     res.setHeader('Content-Type','application/json; charset=utf-8');
     if(!richList){res.writeHead(503,{'Cache-Control':'no-store'});res.end(req.method==='HEAD'?undefined:'{"status":"unavailable"}');return;}
     res.setHeader('Cache-Control','public, max-age=300');
@@ -44,11 +46,11 @@ http.createServer(async (req,res) => {
     res.end(req.method==='HEAD'?undefined:body);
     return;
   }
-  if(path==='/api/live'||path==='/api/comparison') {
+  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison') {
     res.setHeader('Cache-Control','no-store');
     res.setHeader('Content-Type','application/json; charset=utf-8');
     if(req.method==='HEAD'){res.end();return;}
-    try {res.end(JSON.stringify(await (path==='/api/comparison'?getComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
+    try {res.end(JSON.stringify(await (path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
     return;
   }
   const asset = assets.get(path);

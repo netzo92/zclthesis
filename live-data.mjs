@@ -2,6 +2,7 @@ export const SOURCES = {
   chain: 'https://explorer.zcl.zelcore.io/api/blocks?limit=1',
   market: 'https://api.nonkyc.io/api/v2/market/getbysymbol/ZCL_USDT',
 };
+export const NODE_SOURCE = 'https://pool.zclthesis.com/api/node.json';
 const numeric = value => (typeof value === 'number' || (typeof value === 'string' && value.trim() !== '')) ? Number(value) : NaN;
 function validTime(value, now) { return Number.isFinite(value) && value > 1480000000000 && value <= now + 300000; }
 export function parseChain(data, now = Date.now()) {
@@ -9,13 +10,20 @@ export function parseChain(data, now = Date.now()) {
   if (!b || !Number.isSafeInteger(b.height) || b.height < 1 || !/^[a-f0-9]{64}$/.test(b.hash) || !validTime(b.time * 1000, now) || b.isMainChain !== true) throw Error('Invalid block response');
   return {height:b.height, hash:b.hash, blockAt:new Date(b.time * 1000).toISOString()};
 }
+export function parseOwnNode(data, now = Date.now()) {
+  const c=data?.chain, n=data?.node, generated=Date.parse(data?.generatedAt), block=Date.parse(c?.blockAt);
+  if(data?.schemaVersion!==1||data?.asset!=='ZCL'||n?.synced!==true||!Number.isSafeInteger(n.connections)||n.connections<1||
+      !Number.isSafeInteger(c?.height)||c.height<1||!/^[0-9a-f]{64}$/.test(c.hash)||!validTime(block,now)||now-block>1800000||
+      !validTime(generated,now)||now-generated>180000)throw Error('Our node is not current');
+  return {height:c.height,hash:c.hash,blockAt:c.blockAt};
+}
 export function parseMarket(data, now = Date.now()) {
   const price = numeric(data?.lastPrice), volume = numeric(data?.volumeSecondary), change = numeric(data?.changePercent);
   if (data?.symbol !== 'ZCL/USDT' || !Number.isFinite(price) || price <= 0 || !validTime(data.lastTradeAt, now)) throw Error('Invalid market response');
   return {price, quote:'USDT', tradeAt:new Date(data.lastTradeAt).toISOString(), volume24h:Number.isFinite(volume) && volume >= 0 ? volume : null, change24h:Number.isFinite(change) ? change : null, paused:data.isPaused === true || data.isActive === false};
 }
 async function fetchJSON(url) {
-  const response = await fetch(url,{signal:AbortSignal.timeout(8000),headers:{Accept:'application/json'}});
+  const response = await fetch(url,{signal:AbortSignal.timeout(url===NODE_SOURCE?2500:8000),headers:{Accept:'application/json'}});
   if (!response.ok) throw Error(`HTTP ${response.status}`);
   const reader=response.body.getReader(); let size=0; const chunks=[];
   try { while (true) {const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>262144)throw Error('Response too large');chunks.push(value);} }
@@ -26,7 +34,14 @@ export function createLiveData({load=fetchJSON, clock=Date.now, ttl=60000}={}) {
   const cache={}; let pending, lastAttempt=-Infinity;
   async function refresh() {
     await Promise.all(Object.entries(SOURCES).map(async ([name,url])=>{
-      try {const raw=await load(url);const now=clock();const value=(name==='chain'?parseChain:parseMarket)(raw,now);cache[name]={value,fetchedAt:new Date(now).toISOString(),failed:false};}
+      try {
+        let value,source=url;
+        if(name==='chain') {
+          try {value=parseOwnNode(await load(NODE_SOURCE),clock());source=NODE_SOURCE;}
+          catch {value=parseChain(await load(url),clock());}
+        }else value=parseMarket(await load(url),clock());
+        cache[name]={value,source,fetchedAt:new Date(clock()).toISOString(),failed:false};
+      }
       catch {cache[name]={...cache[name],failed:true};}
     }));
   }
@@ -37,7 +52,7 @@ export function createLiveData({load=fetchJSON, clock=Date.now, ttl=60000}={}) {
     for(const name of Object.keys(SOURCES)) {
       const entry=cache[name];const observed=entry?.value?.[name==='chain'?'blockAt':'tradeAt'];
       const aged=observed && now-Date.parse(observed)>(name==='chain'?1800000:3600000);
-      result[name]={...entry,source:SOURCES[name],status:!entry?.value?'unavailable':entry.failed || aged || entry.value.paused || now-Date.parse(entry.fetchedAt)>180000?'stale':'ok'};
+      result[name]={...entry,source:entry?.source||SOURCES[name],status:!entry?.value?'unavailable':entry.failed || aged || entry.value.paused || now-Date.parse(entry.fetchedAt)>180000?'stale':'ok'};
     }
     return result;
   };

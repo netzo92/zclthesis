@@ -5,12 +5,12 @@
   const number=new Intl.NumberFormat(locale,{maximumFractionDigits:5});
   const date=value=>new Date(value).toLocaleString(locale);
   const t=spanish?{
-    unavailable:'No disponible',stale:'Desactualizado · ',block:'Hora del bloque',fetched:'consultado',trade:'Última operación',volume:'volumen de 24 h',
+    node:'Nuestro nodo de la pool',fallback:'Explorador externo',unavailable:'No disponible',stale:'Desactualizado · ',block:'Hora del bloque',fetched:'consultado',trade:'Última operación',volume:'volumen de 24 h',
     explorer:'Explorador temporalmente no disponible.',market:'Datos de mercado temporalmente no disponibles.',ok:'Las fuentes responden.',
     partial:'Algunos datos están desactualizados o no disponibles; revisa las marcas de tiempo de las fuentes.',
     failed:'Falló la actualización. Los valores mostrados proceden de la última consulta exitosa.'
   }:{
-    unavailable:'Unavailable',stale:'Stale · ',block:'Block time',fetched:'fetched',trade:'Last trade',volume:'24h volume',
+    node:'Our pool node',fallback:'External explorer',unavailable:'Unavailable',stale:'Stale · ',block:'Block time',fetched:'fetched',trade:'Last trade',volume:'24h volume',
     explorer:'Explorer temporarily unavailable.',market:'Market data temporarily unavailable.',ok:'Sources responding.',
     partial:'Some data is stale or unavailable; check the source timestamps.',
     failed:'Refresh failed. Any displayed values are from the last successful fetch.'
@@ -19,7 +19,7 @@
   function render(data) {
     const chain=data.chain,market=data.market;
     el('block-value').textContent=chain?.value?number.format(chain.value.height):t.unavailable;
-    el('block-detail').textContent=chain?.value?`${chain.status==='stale'?t.stale:''}${t.block} ${date(chain.value.blockAt)} · ${t.fetched} ${date(chain.fetchedAt)}`:t.explorer;
+    el('block-detail').textContent=chain?.value?`${chain.status==='stale'?t.stale:''}${chain.source==='https://pool.zclthesis.com/api/node.json'?t.node:t.fallback} · ${t.block} ${date(chain.value.blockAt)} · ${t.fetched} ${date(chain.fetchedAt)}`:t.explorer;
     el('price-value').textContent=market?.value?`${number.format(market.value.price)} USDT`:t.unavailable;
     el('price-detail').textContent=market?.value?`${market.status==='stale'?t.stale:''}${t.trade} ${date(market.value.tradeAt)} · ${t.fetched} ${date(market.fetchedAt)}${market.value.volume24h===null?'':` · ${t.volume} ${number.format(market.value.volume24h)} USDT`}`:t.market;
     el('live-status').textContent=chain?.status==='ok'&&market?.status==='ok'?t.ok:t.partial;

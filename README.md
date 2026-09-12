@@ -68,11 +68,12 @@ The button opens a new tab and retains sponsored-link metadata.
 `live-data.mjs` fetches fixed, public HTTPS endpoints server-side. `/api/live`
 returns independent chain/market status and timestamps. Each instance caches
 successful results for 60 seconds, coalesces concurrent refreshes and throttles
-failed retries. Requests time out after 8 seconds with a 256 KiB response limit.
+failed retries. The node probe times out after 2.5 seconds; external requests after 8 seconds, each with a 256 KiB response limit.
 No credentials or user-selected upstream URLs are accepted. Memory-only caches
 are lost on cold starts; no historical observations are persisted.
 
 Sources:
+- https://pool.zclthesis.com/api/node.json
 - https://explorer.zcl.zelcore.io/api/blocks?limit=1
 - https://api.nonkyc.io/api/v2/market/getbysymbol/ZCL_USDT
 
@@ -84,10 +85,11 @@ marked stale. These are display thresholds, not judgments of consensus validity.
 The browser polls once per minute while visible and retains labeled stale values
 when a refresh fails. No-JavaScript visitors can follow the source links.
 
-The rich list now uses a complete, dated transparent-UTXO snapshot. See the
-reproducible workflow in `scripts/README.md`. `/api/richlist` serves the immutable
-export from `data/richlist.json`. Its block date is displayed separately from
-the export date. An older-than-one-day snapshot is marked historical (`stale`).
+The rich list uses a complete, dated transparent-UTXO snapshot. See the
+reproducible workflow in `scripts/README.md`. `/api/richlist` serves the current
+validated node export when available, falling back to the bundled historical
+`data/richlist.json`. Its block date is displayed separately from the export date.
+A snapshot older than two hours or a failed refresh is marked stale.
 Search and exact block-age filters run across all attributable positive-balance
 addresses; the table and CSV show at most the top 100 matching addresses.
 
@@ -179,8 +181,52 @@ failure reports unavailable. Source observations older than one hour are stale.
 The frontend uses the page language and distinguishes market cap from invested
 cash, guaranteed execution prices, or proof of undervaluation.
 
-The rich-list payload is precompressed at startup and fetched only when its
+The rich-list payload is precompressed when loaded and fetched only when its
 section approaches the viewport (or the visitor requests a refresh).
+
+## Current node and rich-list comparison
+
+`live-data.mjs` prefers `https://pool.zclthesis.com/api/node.json`, a public
+read-only artifact from the pool node. It requires a synced ZCL mainnet node,
+positive peer count, a recent block and an export no more than three minutes old.
+An unavailable, unsynced or stale node falls back to the existing Zelcore feed.
+The website never connects to wallet RPC. Prices retain their market source.
+
+`richlist-feeds.mjs` checks `https://pool.zclthesis.com/api/richlist/zcl.json`
+at most every five minutes per server instance. The pool exporter targets a
+two-hour cadence. Each `own-node-snapshot` artifact must pass the same address,
+integer amount, count, age and total reconciliation as the historical snapshot,
+plus the expected source and bootstrap trust metadata. A failed refresh retains
+the last valid artifact and marks it stale. The bundled May 27 snapshot remains
+an explicitly dated fallback. A fresh HTTP response never changes a block date.
+
+`/api/richlist-comparison` adds CipherScan's **top 100** Zcash transparent
+addresses, requested hourly from its documented, keyless `/api/rich-list`.
+Every row's exact `balanceZat` and the top-10/top-100 sums are validated; the
+provider's total must equal addressed plus addressless value. Owner labels and
+activity dates are discarded. Source: <https://cipherscan.app/docs>.
+
+The ZEC response is a provider index, not an atomic full-node snapshot. Its
+observed index-tip header and corresponding block time are shown separately from
+fetch time. CipherScan's route caches for 60 seconds, can retain data for 600
+seconds, and keys its cache by tip height; upstream responses explicitly marked
+stale are rejected. A two-hour-old block or failed refresh marks saved data stale.
+The provider's indexed total is not asserted to equal the node's value-pool total.
+See <https://github.com/Kenbak/cipherscan/blob/main/server/api/routes/address.js>.
+
+Both comparison denominators are **indexed transparent value**, including
+unattributed/addressless amounts, never market-reported circulating supply.
+Coverage and script resolution differ: ZCL resolves valid P2PK scripts to their
+public-key-hash address; CipherScan includes direct P2PK/bare multisig in its
+addressless denominator. ZCL supports full-index search and exact UTXO block-age
+filters; the ZEC table is top 100 only and has no fabricated UTXO-age fields.
+Neither table identifies owners, ranks shielded balances, or estimates lost keys.
+
+On September 12, 2026, ShieldedScan's rich-list rows and distribution response
+claimed the same height but disagreed on top-10/top-100 sums by 69.82468413 ZEC;
+its reported total also failed same-height node-pool reconciliation. It was not
+used. Blockchair's address dump was current only daily and its live stats returned
+negative circulation. Neither is silently substituted for hourly ZEC index data.
 
 ## Wallet and mining guides
 
