@@ -287,9 +287,15 @@ transaction-signing application. No owner's private wallet exists in this repo.
 3.26 GiB memory requirement. A visitor supplies a public payout address and
 explicitly starts a bounded session; hiding the tab or pressing Stop ends it.
 The separate bridge enforces current-node and pool-launch admission checks.
-Linking the preview does not mean public mining has opened; the pool status
+Linking the miner does not mean public mining has opened; the pool status
 artifact is the current authority for readiness. The pool host coordinates
 visitors' miners and does not run a cloud GPU miner.
+
+The EN/ES native miniZ examples point to `pool.zclthesis.com:2192`, use
+`c=ZCL`, and tell visitors to check the live readiness page before starting.
+The site recommends this pool subject to that check, documents proportional
+round rewards, and states the 0.05 ZCL payout minimum and operator-paid
+transaction fees.
 
 The fee is 0.8% of allocated block rewards, with the specific comparison
 “20% lower than a 1% pool fee.” This is not a universal competitor claim.
