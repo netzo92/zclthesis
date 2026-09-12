@@ -132,3 +132,9 @@ September 12, 2026, with the stated cap and proponents' security rationale intac
 The owner's preference for unchanged issuance is an opinion with a stated burden
 of proof and a counterargument. ZIP 233's deliberate removal mechanism is kept
 separate from any lost-key or dormancy inference. Sources are linked on the page.
+
+The Crosslink section presents the strongest affirmative case for hybrid finality,
+separately from issuance smoothing and full PoS replacement. It distinguishes
+proposed/testnet reward allocations from mainnet facts and cites both the January
+2026 mechanism-design audit and May 2026 feature-net report. Safety of finalized
+history is distinguished from progress of finality and recovery from stalls.
