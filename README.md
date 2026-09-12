@@ -50,8 +50,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00012-phr` (100% traffic, September 12, 2026)
-- Latest deployment source commit: `063c178`
+- Latest revision: `myzclthesis-00013-gdv` (100% traffic, September 12, 2026)
+- Latest deployment source commit: `10012ce`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -63,12 +63,13 @@ Live validation passed: desktop and 390px mobile layouts, no horizontal overflow
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
 
-The latest deployment publishes the pool's native connection instructions and
-browser-miner links in English and Spanish. Both public HTML documents matched
-the clean deployment source byte-for-byte. Guide validation checked 14 identical
-command blocks, matching language-normalized links, anchor targets, language
-switching, and ten layouts from 320 to 1,440 pixels without overflow or JavaScript
-errors. Pool admission remains controlled by its current public readiness feed.
+The latest deployment adds the PoW/PoS comparison, issuance-incentive explanation,
+and dated Ethereum burn analysis in English and Spanish. Both public HTML
+documents matched the clean deployment source byte-for-byte. Guide validation
+checked 14 identical command blocks, matching language-normalized links, new
+section and source anchors, language switching, and ten layouts from 320 to 1,440
+pixels without overflow or JavaScript errors. Pool admission remains controlled
+by its current public readiness feed.
 
 The Where to buy section links to the owner-provided NonKYC.io referral URL.
 The button opens a new tab and retains sponsored-link metadata.
