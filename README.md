@@ -139,3 +139,7 @@ separately from issuance smoothing and full PoS replacement. It distinguishes
 proposed/testnet reward allocations from mainnet facts and cites both the January
 2026 mechanism-design audit and May 2026 feature-net report. Safety of finalized
 history is distinguished from progress of finality and recovery from stalls.
+
+Both public NonKYC links (the live price panel and Where to buy section) use
+the owner-provided referral URL and display commission disclosures. The backend
+continues to read the public market API for price data.
