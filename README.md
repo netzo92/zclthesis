@@ -51,8 +51,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00014-w2d` (100% traffic, September 12, 2026)
-- Latest deployment source commit: `8efa6c8`
+- Latest revision: `myzclthesis-00016-xvd` (100% traffic, September 12, 2026)
+- Latest deployment source commit: `2e0c4ad`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -64,9 +64,9 @@ Live validation passed: desktop and 390px mobile layouts, no horizontal overflow
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
 
-The latest deployment adds private visitor/referral analytics and equivalent English/Spanish
-privacy controls. It preserves the PoW/PoS comparison, issuance-incentive explanation,
-and dated Ethereum burn analysis in both languages. Both public HTML
+The latest deployment adds the ZCL launch-reference market-cap banner and full
+launch date/time in English and Spanish. It preserves private visitor/referral
+analytics, bilingual privacy controls and the consensus/funding thesis sections. Both public HTML
 documents matched the clean deployment source byte-for-byte. Guide validation
 checked 14 identical command blocks, matching language-normalized links, new
 section and source anchors, language switching, and ten layouts from 320 to 1,440
@@ -428,3 +428,14 @@ observation, in both languages. The shared comparison script has a versioned ass
 URL so returning visitors receive the banner update despite earlier browser caches.
 `market-performance.mjs` validates the reference identity, source and chronology;
 `public/performance.js` consumes the shared comparison event and derives the display.
+
+
+Market-cap banner deployment: source `2e0c4ad` is serving 100% of Cloud Run traffic
+on revision `myzclthesis-00016-xvd` (September 12, 2026 UTC). All 65 Node tests passed,
+including reference provenance, gain/loss mathematics, refresh failures and browser
+staleness; focused page/renderer checks passed again after adding the full timestamp
+and versioned script URL. Local EN/ES layouts were checked from 320 to 1,440 pixels.
+Live verification confirmed the actual API's pinned reference and raw percentage
+calculation, matching rendered EN/ES values, one shared comparison fetch per load,
+and no test analytics events. The banner's reference remains the 03:20 UTC market
+observation; the full site launch timestamp is 03:23:13 UTC, displayed separately.
