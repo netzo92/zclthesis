@@ -51,8 +51,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00016-xvd` (100% traffic, September 12, 2026)
-- Latest deployment source commit: `2e0c4ad`
+- Latest revision: `myzclthesis-00017-cmg` (100% traffic, September 12, 2026)
+- Latest deployment source commit: `b7b3a8d`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -430,8 +430,8 @@ URL so returning visitors receive the banner update despite earlier browser cach
 `public/performance.js` consumes the shared comparison event and derives the display.
 
 
-Market-cap banner deployment: source `2e0c4ad` is serving 100% of Cloud Run traffic
-on revision `myzclthesis-00016-xvd` (September 12, 2026 UTC). All 65 Node tests passed,
+Market-cap banner deployment: source `b7b3a8d` is serving 100% of Cloud Run traffic
+on revision `myzclthesis-00017-cmg` (September 12, 2026 UTC). All 65 Node tests passed,
 including reference provenance, gain/loss mathematics, refresh failures and browser
 staleness; focused page/renderer checks passed again after adding the full timestamp
 and versioned script URL. Local EN/ES layouts were checked from 320 to 1,440 pixels.
@@ -439,3 +439,7 @@ Live verification confirmed the actual API's pinned reference and raw percentage
 calculation, matching rendered EN/ES values, one shared comparison fetch per load,
 and no test analytics events. The banner's reference remains the 03:20 UTC market
 observation; the full site launch timestamp is 03:23:13 UTC, displayed separately.
+
+At widths up to 360px, the cap cells stack so complete numbers and currency labels
+remain readable. The stylesheet URL is versioned, and final live HTML/CSS/JS bytes
+matched the tested source after publication.
