@@ -21,6 +21,8 @@ const files = new Map([
   ['/richlist.css', ['richlist.css', 'text/css; charset=utf-8']],
   ['/richlist-comparison.js', ['richlist-comparison.js', 'text/javascript; charset=utf-8']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
+  ['/offline-wallet.html', ['offline-wallet.html', 'text/html; charset=utf-8']],
+  ['/offline-wallet.sha256', ['offline-wallet.sha256', 'text/plain; charset=utf-8']],
 ]);
 const assets = new Map(await Promise.all([...files].map(async ([url,[file,type]]) =>
   [url, {body:await readFile(new URL(`./public/${file}`, import.meta.url)), type}])));
@@ -55,6 +57,8 @@ http.createServer(async (req,res) => {
   }
   const asset = assets.get(path);
   if (!asset) {res.writeHead(404,{'Content-Type':'text/plain'});res.end(req.method==='HEAD'?undefined:'Not found');return;}
+  if(path==='/offline-wallet.html') res.setHeader('Content-Disposition','attachment; filename="zcl-offline-wallet.html"');
+  if(path==='/offline-wallet.sha256') res.setHeader('Content-Disposition','attachment; filename="zcl-offline-wallet.sha256"');
   res.writeHead(200,{'Content-Type':asset.type,'Cache-Control':'public, max-age=300'});
   res.end(req.method==='HEAD'?undefined:asset.body);
 }).listen(Number(process.env.PORT || 8080),'0.0.0.0',()=>console.log('myzclthesis listening'));
