@@ -2,8 +2,10 @@ import http from 'node:http';
 import {createLiveData} from './live-data.mjs';
 const getLiveData=createLiveData();
 import {createMarketComparison} from './market-comparison.mjs';
+import {createNetworkData} from './network-data.mjs';
 import {createRichListStore,createRichListComparison} from './richlist-feeds.mjs';
 const getComparison=createMarketComparison();
+const getNetworkData=createNetworkData();
 const getRichList=await createRichListStore();
 const getRichListComparison=createRichListComparison({getZcl:getRichList});
 import {readFile} from 'node:fs/promises';
@@ -13,6 +15,14 @@ const files = new Map([
   ['/es', ['es/index.html', 'text/html; charset=utf-8']],
   ['/es/', ['es/index.html', 'text/html; charset=utf-8']],
   ['/es/index.html', ['es/index.html', 'text/html; charset=utf-8']],
+  ['/network', ['network/index.html', 'text/html; charset=utf-8']],
+  ['/network/', ['network/index.html', 'text/html; charset=utf-8']],
+  ['/network/index.html', ['network/index.html', 'text/html; charset=utf-8']],
+  ['/es/network', ['es/network/index.html', 'text/html; charset=utf-8']],
+  ['/es/network/', ['es/network/index.html', 'text/html; charset=utf-8']],
+  ['/es/network/index.html', ['es/network/index.html', 'text/html; charset=utf-8']],
+  ['/network.js', ['network.js', 'text/javascript; charset=utf-8']],
+  ['/network.css', ['network.css', 'text/css; charset=utf-8']],
   ['/language.js', ['language.js', 'text/javascript; charset=utf-8']],
   ['/live.js', ['live.js', 'text/javascript; charset=utf-8']],
   ['/comparison.js', ['comparison.js', 'text/javascript; charset=utf-8']],
@@ -48,11 +58,11 @@ http.createServer(async (req,res) => {
     res.end(req.method==='HEAD'?undefined:body);
     return;
   }
-  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison') {
+  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison'||path==='/api/network') {
     res.setHeader('Cache-Control','no-store');
     res.setHeader('Content-Type','application/json; charset=utf-8');
     if(req.method==='HEAD'){res.end();return;}
-    try {res.end(JSON.stringify(await (path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
+    try {res.end(JSON.stringify(await (path==='/api/network'?getNetworkData():path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
     return;
   }
   const asset = assets.get(path);

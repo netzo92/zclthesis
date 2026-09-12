@@ -14,7 +14,8 @@
     }
   } catch { preferred=explicit; }
   if((preferred==='es'||preferred==='en')&&preferred!==current) {
-    url.pathname=preferred==='es'?'/es/':'/';
+    const section=/^\/(?:es\/)?network(?:\/|$)/.test(url.pathname)?'network/':'';
+    url.pathname=(preferred==='es'?'/es/':'/')+section;
     location.replace(url.href);
     return;
   }
