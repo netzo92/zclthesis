@@ -58,3 +58,6 @@ Source deployments use the existing default build account permissions.
 Live validation passed: desktop and 390px mobile layouts, no horizontal overflow,
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
+
+The Where to buy section links to the owner-provided NonKYC.io referral URL.
+The button opens a new tab and is labeled with a possible commission disclosure.
