@@ -50,7 +50,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Deployment source commit: `1ceca78`
+- Latest revision: `myzclthesis-00012-phr` (100% traffic, September 12, 2026)
+- Latest deployment source commit: `063c178`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -61,6 +62,13 @@ Source deployments use the existing default build account permissions.
 Live validation passed: desktop and 390px mobile layouts, no horizontal overflow,
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
+
+The latest deployment publishes the pool's native connection instructions and
+browser-miner links in English and Spanish. Both public HTML documents matched
+the clean deployment source byte-for-byte. Guide validation checked 14 identical
+command blocks, matching language-normalized links, anchor targets, language
+switching, and ten layouts from 320 to 1,440 pixels without overflow or JavaScript
+errors. Pool admission remains controlled by its current public readiness feed.
 
 The Where to buy section links to the owner-provided NonKYC.io referral URL.
 The button opens a new tab and retains sponsored-link metadata.
@@ -243,7 +251,7 @@ were checked against release artifacts and source; browser solver tests are
 documented separately in the webminer repository.
 
 The mining example uses miniZ on Linux/Windows with Equihash 192,7 and ZcashPoW,
-and its documented zpool ZCL-only configuration. macOS has a wallet recipe, not
+and its documented ZCL-only pool configuration. macOS has a wallet recipe, not
 a claimed native miniZ miner. Recheck upstream downloads and pool settings when
 updating. The shared-development section distinguishes potential reuse of Zcash
 research/code from automatic compatibility or adopting stake-based consensus.
