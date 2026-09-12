@@ -61,7 +61,7 @@ anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
 
 The Where to buy section links to the owner-provided NonKYC.io referral URL.
-The button opens a new tab and is labeled with a possible commission disclosure.
+The button opens a new tab and retains sponsored-link metadata.
 
 ## Live data and rich-list research
 
@@ -145,8 +145,8 @@ proposed/testnet reward allocations from mainnet facts and cites both the Januar
 2026 mechanism-design audit and May 2026 feature-net report. Safety of finalized
 history is distinguished from progress of finality and recovery from stalls.
 
-Only the Where to buy button uses the owner-provided referral URL, with its
-commission disclosure there. The live price panel links to that section; the
+Only the Where to buy button uses the owner-provided referral URL. The visible
+commission notice was removed at the owner’s request. The live price panel links to that section; the
 backend continues to read the public market API for price data.
 
 ## English and Spanish
@@ -181,3 +181,27 @@ cash, guaranteed execution prices, or proof of undervaluation.
 
 The rich-list payload is precompressed at startup and fetched only when its
 section approaches the viewport (or the visitor requests a refresh).
+
+## Wallet and mining guides
+
+Both language pages contain `#wallet` and `#mine`. Maintain equivalent copy and
+identical command blocks. The Apple Silicon Terminal recipe is open by default;
+Linux and Windows bundles are expandable. Commands are pinned to the official
+v2.1.2-beta6 release. The Mac archive SHA-256 and both Unix archive directory names
+were verified against the release downloads. Wallet RPCs were checked in the
+matching source: backupwallet requires an export directory and a filename, and
+wallet encryption is experimental in this release. No wallet or miner was run.
+
+The mining example uses miniZ on Linux/Windows with Equihash 192,7 and ZcashPoW,
+and its documented zpool ZCL-only configuration. macOS has a wallet recipe, not
+a claimed native miniZ miner. Recheck upstream downloads and pool settings when
+updating. The shared-development section distinguishes potential reuse of Zcash
+research/code from automatic compatibility or adopting stake-based consensus.
+The owner requested removal of the visible commission notice; the sole referral
+URL per language remains in the Where to buy button with sponsored metadata.
+
+miniZ's optional localhost telemetry and a Mac SSH tunnel provide a documented
+web monitoring path. The guide does not provision GPU workers or pool services.
+The pool FAQ notes legacy configuration incompatibilities. Dual-mining copy is
+scoped to miniZ's documented NVIDIA support, distinguishes it from merged mining,
+and links current removal notices so stale coin pairs are not recommended.
