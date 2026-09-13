@@ -1,0 +1,470 @@
+{
+  "target": "b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+  "retrievalStartedAt": "2026-09-13T18:25:55.912643+00:00",
+  "source": "https://explorer.zcl.zelcore.io/api/tx/{txid}",
+  "maxConcurrency": 2,
+  "entries": [
+    {
+      "txid": "aa52b4380a74d62b17a28794697c9664b98e4c93f3fd0aa17005bea03dc4260c",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/aa52b4380a74d62b17a28794697c9664b98e4c93f3fd0aa17005bea03dc4260c",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:56.476385+00:00",
+      "sha256": "9bb4a13fdac346020be887d4753c42fb98c400f9424045839d25bd043209b389",
+      "bytes": 6363
+    },
+    {
+      "txid": "e9d4509c0ee40dafd7733b5deb5ef84e735632e80409bdfcc46ca742e1ca2911",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/e9d4509c0ee40dafd7733b5deb5ef84e735632e80409bdfcc46ca742e1ca2911",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:56.466885+00:00",
+      "sha256": "a03f5ce375287f1dfa4e13957a413df4be01715c5cde17ef1592125d5f8f5596",
+      "bytes": 6364
+    },
+    {
+      "txid": "197cf5a67fd9b04a79f5440ec7c4474fcc69dd9e108c33378983a1e400c0e828",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/197cf5a67fd9b04a79f5440ec7c4474fcc69dd9e108c33378983a1e400c0e828",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:56.976817+00:00",
+      "sha256": "c7d4e61a4c6740a8e1266736c37a4c4791086fb2f71ed7c170025e01375e79ca",
+      "bytes": 6364
+    },
+    {
+      "txid": "60e97f9f5a70f22c17346bcb0b41ea6380edae7e4b3cda0018de11d73a970a32",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/60e97f9f5a70f22c17346bcb0b41ea6380edae7e4b3cda0018de11d73a970a32",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:57.278631+00:00",
+      "sha256": "5746879edadccce2dc5300ac9b3afbf28349996a671bf36a8bb86dbda9297e59",
+      "bytes": 6364
+    },
+    {
+      "txid": "5e1e4c74521d953fca3a714ba5c2450760efba13eb554b1ec0b2878a9e3c5b46",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/5e1e4c74521d953fca3a714ba5c2450760efba13eb554b1ec0b2878a9e3c5b46",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:58.067565+00:00",
+      "sha256": "264354c3daca9cae2835f42d7a07b65d1ddd460cd8d67bf09a103d4a5606a482",
+      "bytes": 6364
+    },
+    {
+      "txid": "e64836c6ecaac00de0578f45762ee309156b6e7848870293b36145587af9b767",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/e64836c6ecaac00de0578f45762ee309156b6e7848870293b36145587af9b767",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:58.089760+00:00",
+      "sha256": "020c1195a5814184448f26b273493b2e8094eea535029ea83e6a55c960e3868b",
+      "bytes": 4495
+    },
+    {
+      "txid": "f6f32d557eda619bb6f05d85a2363f1c8e9bd924ad96b4312443936d8b438179",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/f6f32d557eda619bb6f05d85a2363f1c8e9bd924ad96b4312443936d8b438179",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:58.612101+00:00",
+      "sha256": "328cdfa0a339e1ca7823aef21d6942b82fce2f35740d78840ce544e122b50063",
+      "bytes": 7205
+    },
+    {
+      "txid": "528c3edb3e825d45ccaf907581c69eb0f31c60ea9020d76f41dfba40e439267e",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/528c3edb3e825d45ccaf907581c69eb0f31c60ea9020d76f41dfba40e439267e",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:58.612414+00:00",
+      "sha256": "6699a083dc47d0fce80abd3e3a1d9a488d79d5fc58a6dd5c4a654940c1863b5c",
+      "bytes": 6363
+    },
+    {
+      "txid": "548fcfd7c4a7789fec9d2b2b8358387bbf2beb27b70722d7c3f70fc188fc8c8a",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/548fcfd7c4a7789fec9d2b2b8358387bbf2beb27b70722d7c3f70fc188fc8c8a",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:59.126859+00:00",
+      "sha256": "795ac9d0c1bfadb69b1ea1f0d21e5309b5c034f3ea3af13876e35c9c20cc7a64",
+      "bytes": 6363
+    },
+    {
+      "txid": "68bd317db95967c72c47c2026bcfb74a479f9b5f818da68148e133cd498f5292",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/68bd317db95967c72c47c2026bcfb74a479f9b5f818da68148e133cd498f5292",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:59.147194+00:00",
+      "sha256": "97bf8505ce8d3129f33eeebf79dc079b3aa9a363e95db407eb99a371443cf804",
+      "bytes": 7205
+    },
+    {
+      "txid": "113abd312d41de94461cf48e6cb4837786ec7f9c4aa38838223dbf23f8c46d93",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/113abd312d41de94461cf48e6cb4837786ec7f9c4aa38838223dbf23f8c46d93",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:59.645078+00:00",
+      "sha256": "42f093715696092e3831d7758d03bf16700e8805ce242a44d2ec12d83eafddb8",
+      "bytes": 7206
+    },
+    {
+      "txid": "f9593a9489835d1ecbd946774d1e312c95d1e5920cdee67e91120358ba7c19b5",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/f9593a9489835d1ecbd946774d1e312c95d1e5920cdee67e91120358ba7c19b5",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:25:59.980044+00:00",
+      "sha256": "2e028c5fa36d04e07aeeffda6f4790f3fb9600c873d9bc5e7f128452f65ae873",
+      "bytes": 6364
+    },
+    {
+      "txid": "0fc948c9732efcf9b1cc59d725edc54f1cb204526f645ec44134955ddf3773b7",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/0fc948c9732efcf9b1cc59d725edc54f1cb204526f645ec44134955ddf3773b7",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:00.813732+00:00",
+      "sha256": "defbea0aa1b58177bad4c7e410b6546dc2d0597b30a3a0f9c680b5328353b8c4",
+      "bytes": 5522
+    },
+    {
+      "txid": "baa30b892b789587907ffc0702fa4e71f3133b587925eddd83322fd0697fb1b8",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/baa30b892b789587907ffc0702fa4e71f3133b587925eddd83322fd0697fb1b8",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:00.813667+00:00",
+      "sha256": "fd7e4daa61afc9578d9786f5705a00024cdccd34c1f47b8acd4791dd28391d11",
+      "bytes": 6365
+    },
+    {
+      "txid": "b6c035d2aeecc0efeb4d641aaa65e0436525ee8a81490dedb6c6681b039826bd",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/b6c035d2aeecc0efeb4d641aaa65e0436525ee8a81490dedb6c6681b039826bd",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:01.359876+00:00",
+      "sha256": "facea4503bfa4c20a25c79b429b33fcd42e2919ad8acd0cf6f7fa53538561e6f",
+      "bytes": 6364
+    },
+    {
+      "txid": "7b57cc3ed8af9531643621defdf3ad4e2a8c09fc80e11fc219989169c49723c1",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/7b57cc3ed8af9531643621defdf3ad4e2a8c09fc80e11fc219989169c49723c1",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:01.316069+00:00",
+      "sha256": "da69b6de6683f9f895692eb696cbfc5b106e0c6c838812767532f9eb6acf56eb",
+      "bytes": 4672
+    },
+    {
+      "txid": "964cda4700133d31d62e54f7f9cef394742073d403d57db937ac4c6317213bc7",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/964cda4700133d31d62e54f7f9cef394742073d403d57db937ac4c6317213bc7",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:02.148557+00:00",
+      "sha256": "7ee7f9c3925e86ae52186482479806a867cc3f5209a58317a0b425be2dbe8f1c",
+      "bytes": 6365
+    },
+    {
+      "txid": "265dbc9cb610594eb9bdc74bb8ac5261029ccdc3c8aec1231508f3e19207b8cb",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/265dbc9cb610594eb9bdc74bb8ac5261029ccdc3c8aec1231508f3e19207b8cb",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:01.855276+00:00",
+      "sha256": "df184c078da8fdc81d11b514886560f5e08339d8f51778f6748de67f20359a1d",
+      "bytes": 6365
+    },
+    {
+      "txid": "194ad4029e7129468b74d839dba7da5f5503b3e7d6b85c5fe7d39f1d84bb23d5",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/194ad4029e7129468b74d839dba7da5f5503b3e7d6b85c5fe7d39f1d84bb23d5",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:02.686139+00:00",
+      "sha256": "9464f4696911f021a1360a1476b99774ff441a023773c5a840ac74095c40a1ad",
+      "bytes": 6364
+    },
+    {
+      "txid": "cc87ae5b4d8da72147dd07fb891a653c0e3e7318d76e291fca82e5f37d9290de",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/cc87ae5b4d8da72147dd07fb891a653c0e3e7318d76e291fca82e5f37d9290de",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:02.645034+00:00",
+      "sha256": "145f42f2cf638eb38aa766df570c6906d735a276ec08e080493307a311ec9728",
+      "bytes": 6364
+    },
+    {
+      "txid": "23c156c133206dcf8bdff31b130524197351cdcf223adfd78e0edccd7993d4ee",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/23c156c133206dcf8bdff31b130524197351cdcf223adfd78e0edccd7993d4ee",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:03.192296+00:00",
+      "sha256": "658abe77d336ca2617fe2809d5aedfebfe55444139cf1fa65dacb436285e80a8",
+      "bytes": 6365
+    },
+    {
+      "txid": "1b79941cfe58e64d68deabb151def9548bf3a032ee67ff27566ab9d4cd7e652a",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/1b79941cfe58e64d68deabb151def9548bf3a032ee67ff27566ab9d4cd7e652a",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:03.180971+00:00",
+      "sha256": "e35e5b545176f67b8d6aa8b855e71d723099f013f5d275144bcfa9b0460d60b7",
+      "bytes": 6364
+    },
+    {
+      "txid": "8e3026c1e4bbfc134c6644a3565e75202988a3b726abe9bc7239508ce92edb1f",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/8e3026c1e4bbfc134c6644a3565e75202988a3b726abe9bc7239508ce92edb1f",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:03.696038+00:00",
+      "sha256": "366311f94abc6235273949e7d7ea164b6e144374c9f506872793456cb1ac86ca",
+      "bytes": 6364
+    },
+    {
+      "txid": "6210e276ca1f62ff8b454250e85b79bb73f11765baaf51fae8a369230cb6b24a",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/6210e276ca1f62ff8b454250e85b79bb73f11765baaf51fae8a369230cb6b24a",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:03.701807+00:00",
+      "sha256": "12f4172beda7d2dad006dd8c2ba628f99ed71dbb33739d832129e1dbf01c8cca",
+      "bytes": 7206
+    },
+    {
+      "txid": "91e1ce55991679140cda57fff41d60168eb30b613062ec9083c691de9e1524c5",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/91e1ce55991679140cda57fff41d60168eb30b613062ec9083c691de9e1524c5",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:04.199164+00:00",
+      "sha256": "e265a1b15fa0cb7c05713cf6d98e7fe39c7e3520935221699793cb8aa896a576",
+      "bytes": 6364
+    },
+    {
+      "txid": "a354c7993d0361a8c104753f97cafcd108589adfecd577f0ded51ad6525167e0",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/a354c7993d0361a8c104753f97cafcd108589adfecd577f0ded51ad6525167e0",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:04.260612+00:00",
+      "sha256": "2bf6d0701d61bb6828e3435d25863a88926cccd0e5cab1b091905ead0449b00f",
+      "bytes": 6364
+    },
+    {
+      "txid": "f3fc024d38ac156f61fbdc2c679c94554093317ce730bb2bb64c70146b9cf459",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/f3fc024d38ac156f61fbdc2c679c94554093317ce730bb2bb64c70146b9cf459",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:04.774732+00:00",
+      "sha256": "1eaa8b69beeca6f16d80c0ae42f0490dc3be3ee0208b43c485bf1804ffe636a6",
+      "bytes": 6364
+    },
+    {
+      "txid": "5cca2e7f7fb4b2e29a2c4915e328f5505e2bc63ca742f82bafc1a24180cee1e0",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/5cca2e7f7fb4b2e29a2c4915e328f5505e2bc63ca742f82bafc1a24180cee1e0",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:04.799169+00:00",
+      "sha256": "4bf57d489f0746a7fc72d7bd23aae8ee987faf1370059389ab0ba44469c4afeb",
+      "bytes": 6364
+    },
+    {
+      "txid": "209989d85b02571194b412757bf66995009d235982fd709581f4df33c40f1543",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/209989d85b02571194b412757bf66995009d235982fd709581f4df33c40f1543",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:05.294361+00:00",
+      "sha256": "5eb35e4a38931bf7a7e6293ea300a63e93c9d4b121cedb97e6e16c3fb645661a",
+      "bytes": 6364
+    },
+    {
+      "txid": "328a1be73fce1f78ae42f836afdbdd911ebcdd5cab52645c1d8fe35a1d0028e8",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/328a1be73fce1f78ae42f836afdbdd911ebcdd5cab52645c1d8fe35a1d0028e8",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:05.325634+00:00",
+      "sha256": "31a62195fbeace7e5005fb7bd9b98dce176746611d6d891d3a883c7704e033f9",
+      "bytes": 7206
+    },
+    {
+      "txid": "891411ab0ca0f17211748bf0fa35f58a02888dc6de02eb645fc81ecf73bc2a1d",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/891411ab0ca0f17211748bf0fa35f58a02888dc6de02eb645fc81ecf73bc2a1d",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:05.829406+00:00",
+      "sha256": "99bf6e9d3ecbade2046f335208e9efae3ce83b57ff9a3339560057905765ee4e",
+      "bytes": 6364
+    },
+    {
+      "txid": "9d6c83269c40a3ee92b7549c3661bc872b3abc276c947d68ebfa30799543df32",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/9d6c83269c40a3ee92b7549c3661bc872b3abc276c947d68ebfa30799543df32",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:05.836604+00:00",
+      "sha256": "92ba7c061fe8b715b9b245e8b278f3384ad6fc93e144b0d2d1c6b80badc0c567",
+      "bytes": 6364
+    },
+    {
+      "txid": "77d246942d5c51bc78729951d22a819dbc1900c9c8dd43bbdce61f763d31ee58",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/77d246942d5c51bc78729951d22a819dbc1900c9c8dd43bbdce61f763d31ee58",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:06.366513+00:00",
+      "sha256": "48cac990cbeea842499128661855df9035da30469e970122c849d5a299894357",
+      "bytes": 6364
+    },
+    {
+      "txid": "e6d68ced84b117dac47b04cb89f1dbf03088d1b98974f1a4eb356c8b36930d40",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/e6d68ced84b117dac47b04cb89f1dbf03088d1b98974f1a4eb356c8b36930d40",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:06.366345+00:00",
+      "sha256": "028ce6a0193ebc9895de8f199ee10496846942b8c5244f0d7423ea576c75bc09",
+      "bytes": 6364
+    },
+    {
+      "txid": "02fd753d4c120a45534d0eee0c2dc24840c829721beba9fbb909f24cc8803754",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/02fd753d4c120a45534d0eee0c2dc24840c829721beba9fbb909f24cc8803754",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:06.898023+00:00",
+      "sha256": "ccccbaba914ae573aed70ebcbbbfb1ccc1d8dea1fa2fae06c94cdc541f8e519b",
+      "bytes": 7206
+    },
+    {
+      "txid": "f91a368bcab1501aebba4dc3055602ee813cc26362f69c0f64f85fbb53683d00",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/f91a368bcab1501aebba4dc3055602ee813cc26362f69c0f64f85fbb53683d00",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:06.988340+00:00",
+      "sha256": "8a7606ddb99c1b23894cc926af06350c5e5c3d7d7274871a61fd501a232e1c67",
+      "bytes": 6364
+    },
+    {
+      "txid": "dbe6faa9ff37f94d282598321d8ae3e5c8f32da6e45715486a0c643b2842ad48",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/dbe6faa9ff37f94d282598321d8ae3e5c8f32da6e45715486a0c643b2842ad48",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:07.516600+00:00",
+      "sha256": "df989adf41811490ecd1a839d2cf6bcd6d8dffc6ad0465b9c04db92ec46d1fc3",
+      "bytes": 7206
+    },
+    {
+      "txid": "10d0a917862bfacb3f9a5c32393e4938a814b8ab6ec41132583d3e7bb705bdef",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/10d0a917862bfacb3f9a5c32393e4938a814b8ab6ec41132583d3e7bb705bdef",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:07.507676+00:00",
+      "sha256": "bfcfd4f1b472dbdfcbc2875a85fe292d3327648edf63687bd65f2dd8b0aaf8fe",
+      "bytes": 5522
+    },
+    {
+      "txid": "ea9bc85aaef1ac87664b1291b1f6aa9f71429eac21c9dff200cb6058847a6ada",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/ea9bc85aaef1ac87664b1291b1f6aa9f71429eac21c9dff200cb6058847a6ada",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:08.011889+00:00",
+      "sha256": "002a28d4aaf1da9ab9e701f4c8b022b5b0dbad463a503d4d463b0b4e1f2d6cec",
+      "bytes": 6364
+    },
+    {
+      "txid": "42f5e5305b397d7bc4b780a8b6e38de504bff0420e761f620b4a4747a7a68ceb",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/42f5e5305b397d7bc4b780a8b6e38de504bff0420e761f620b4a4747a7a68ceb",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:08.033999+00:00",
+      "sha256": "5f4a607933a10bad143343c943805dd010878655210e7e2a4e3f943b9eddb194",
+      "bytes": 7206
+    },
+    {
+      "txid": "22a506f9f03004de00c6f6e7ea4ba68dec56f98fb233ca2bba036d6a05d15278",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/22a506f9f03004de00c6f6e7ea4ba68dec56f98fb233ca2bba036d6a05d15278",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:08.551409+00:00",
+      "sha256": "def6c9bd9735df99edc4245648d32cd61d6b9b5e47fe43f07c2f603e552eeb25",
+      "bytes": 5522
+    },
+    {
+      "txid": "953fb840f59eb77a530e381c0fbf7c5323ad1d53356cdd0abe2ec7a0ee162a0d",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/953fb840f59eb77a530e381c0fbf7c5323ad1d53356cdd0abe2ec7a0ee162a0d",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:08.529774+00:00",
+      "sha256": "cb423c7af12f7edda59aa77bf11d717a43af595d2bf023c9c9d760f54b1158c6",
+      "bytes": 6364
+    },
+    {
+      "txid": "d48abf7f166205c6dcc041cb243e1a0c52d5f315a885ef76d79d0088fded5686",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/d48abf7f166205c6dcc041cb243e1a0c52d5f315a885ef76d79d0088fded5686",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:09.075715+00:00",
+      "sha256": "bf694c36e84f28899f6316d359cede07e408e067f050cc8fb6d2c412037253af",
+      "bytes": 6364
+    },
+    {
+      "txid": "23ce702a2d69bdde18f05b125df0e84f4e3928e4c39e0eef469f3403b2f79910",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/23ce702a2d69bdde18f05b125df0e84f4e3928e4c39e0eef469f3403b2f79910",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:09.087323+00:00",
+      "sha256": "0bc8e24d1b209ed08126849327e3f5abc09ccb441bd4f464b488236728613940",
+      "bytes": 7206
+    },
+    {
+      "txid": "d401e0e0b9f911a23f663cc874303ab3bc48c83e652a4583a9f13b7e52c62071",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/d401e0e0b9f911a23f663cc874303ab3bc48c83e652a4583a9f13b7e52c62071",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:09.629378+00:00",
+      "sha256": "e87290eba741cb92424675fd6961c4fe1bebb8389eea192fc611178d1fe7beeb",
+      "bytes": 7206
+    },
+    {
+      "txid": "ad31069506c394068b60fd4aef1cb34d6e629ed085f230187132625301f9f36c",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/ad31069506c394068b60fd4aef1cb34d6e629ed085f230187132625301f9f36c",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:09.582559+00:00",
+      "sha256": "3b9eab2f17630b48290034d8dc98717617e4cfaddd9393429dd8588ab215b5ef",
+      "bytes": 6364
+    },
+    {
+      "txid": "7c57043be6b2d2c5fcd69ab41b69e63b796a3e8dfd941c66bd29d0fb54389a14",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/7c57043be6b2d2c5fcd69ab41b69e63b796a3e8dfd941c66bd29d0fb54389a14",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:10.147287+00:00",
+      "sha256": "1d8c830621fb40090ede701bf0935800d95bb0775b6e63a77a87a47d87567294",
+      "bytes": 9732
+    },
+    {
+      "txid": "c5deec09eb71d4be81bc5e302c8599e76e634f470fcd2f5cbea620529a660141",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/c5deec09eb71d4be81bc5e302c8599e76e634f470fcd2f5cbea620529a660141",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:10.155635+00:00",
+      "sha256": "2667baca2ca81a5084268d564832aac6b8e1cdecb2bf94ed14409eefaaf339b6",
+      "bytes": 9732
+    },
+    {
+      "txid": "ee4dfe6aba3a1e4e9bd8ca1d6d786673edb20879ce1efabd9b3baecd5ae63ea7",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/ee4dfe6aba3a1e4e9bd8ca1d6d786673edb20879ce1efabd9b3baecd5ae63ea7",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:10.675999+00:00",
+      "sha256": "08ae1ce907cf62247860150bbc1b3bb381310e13e8919a1b0dad1c6ae431ccb6",
+      "bytes": 9732
+    },
+    {
+      "txid": "dd3d03b8462ea29f3853be354845777c7e04cf45af9f856b9350e068e8735780",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/dd3d03b8462ea29f3853be354845777c7e04cf45af9f856b9350e068e8735780",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:10.699616+00:00",
+      "sha256": "7e997abaf40e51da828f580fc90bbc2f3f90dad9412a842c1a7e9f91866437cc",
+      "bytes": 10573
+    },
+    {
+      "txid": "ee1bf93a2f5b96dfdb9be1b4f11eb7e21baa6a4c247f8d702d28ea484e4f3f6d",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/ee1bf93a2f5b96dfdb9be1b4f11eb7e21baa6a4c247f8d702d28ea484e4f3f6d",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:11.261475+00:00",
+      "sha256": "cef45efcd5b5e1c9fdab4ae06f3d4f0d1833268b54e72c755d117af0a9c40ffb",
+      "bytes": 10573
+    },
+    {
+      "txid": "5ba366f2b8589b87079756a388fda05f1de193f1782650e73565d06956ef94bb",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/5ba366f2b8589b87079756a388fda05f1de193f1782650e73565d06956ef94bb",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:11.189138+00:00",
+      "sha256": "c07932c24a26a0268fb3098ab292c23c7a0e338ea3d980e57b46b00d429552c1",
+      "bytes": 10573
+    },
+    {
+      "txid": "7c3eb317a6f709a2263dbad81901f788709c38e076a0018e0acce03da31e823b",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/7c3eb317a6f709a2263dbad81901f788709c38e076a0018e0acce03da31e823b",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:59.432643+00:00",
+      "sha256": "aeca6a9d82061c246a4c92f562c0c27f3187a913e03ded9d2973ff8ec141402a",
+      "bytes": 1866,
+      "scope": "transparent-grandparent"
+    },
+    {
+      "txid": "2d24ddcc73f899f1205bf4562cc1259ccbeeaa2a0ec56472cd6738f5a2efad45",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/2d24ddcc73f899f1205bf4562cc1259ccbeeaa2a0ec56472cd6738f5a2efad45",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:59.377520+00:00",
+      "sha256": "e05a61f66436f349ccbfad4ce5a16dd0550cad6cb55ac0915939c5556a3269f0",
+      "bytes": 1866,
+      "scope": "transparent-grandparent"
+    },
+    {
+      "txid": "fb0f2757c097e7354a9bf112540a213038565b059b7aeda628ca6c19813a98a3",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/fb0f2757c097e7354a9bf112540a213038565b059b7aeda628ca6c19813a98a3",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:27:00.021290+00:00",
+      "sha256": "e4ebc23d8abeab885b9bd82f17d3e7cc35dc5f8fd26aded9b854d41e5ba20693",
+      "bytes": 1948,
+      "scope": "transparent-grandparent"
+    },
+    {
+      "txid": "569ccdb4ab2d50f4f353b00b17df098560770e246a5e7b5c1be57434dcca1bea",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/569ccdb4ab2d50f4f353b00b17df098560770e246a5e7b5c1be57434dcca1bea",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:26:59.960768+00:00",
+      "sha256": "5e995e09ae31000cd8e8956557c0a488dd17fbe628cffe8ef01d247a5ef9c144",
+      "bytes": 2637,
+      "scope": "transparent-grandparent"
+    },
+    {
+      "txid": "5293014a408620631374abb0600e917d0e8a26ed04cdc953201d10418c258bfc",
+      "url": "https://explorer.zcl.zelcore.io/api/tx/5293014a408620631374abb0600e917d0e8a26ed04cdc953201d10418c258bfc",
+      "status": 200,
+      "retrievedAt": "2026-09-13T18:27:00.585921+00:00",
+      "sha256": "1faf6391df7137365449339cc3f34554280648d6013c9a00efe74d72e59d1854",
+      "bytes": 4657,
+      "scope": "transparent-grandparent"
+    }
+  ],
+  "retrievalFinishedAt": "2026-09-13T18:27:00.908847+00:00"
+}

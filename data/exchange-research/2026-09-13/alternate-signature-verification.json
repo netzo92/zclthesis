@@ -1,0 +1,309 @@
+{
+  "message": "NonKYC Cryptocurrency Exchange",
+  "conventions": {
+    "zclassic-native": "195a636c6173736963205369676e6564204d6573736167653a0a",
+    "bitcoin-native": "18426974636f696e205369676e6564204d6573736167653a0a",
+    "zcash-native": "165a63617368205369676e6564204d6573736167653a0a",
+    "legacy-electrum-zcl-literal": "195a63617368205369676e6564204d6573736167653a0a",
+    "community-electrum-zcl-literal": "185a636c6173736963205369676e6564204d6573736167653a0a"
+  },
+  "results": [
+    {
+      "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0207410e55f26e12d724d4eef52415dd004e02556858021cad3af28bb9477e8ade",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0221ea16bcfcbd975710bdb535b76c119563d74b832114a79ca392c9c584cabb02",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1Pgisoo6ac4LB2fzTd1yTaaqmSVb4SxZMf",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03aa49de2fe7ea580199b31416f84de1ae7813bbb1e5ca4c6e16d8bc279e3ee1ea",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1KGpguqJRTBDYxSxvuPM4vteZpmwV9VNzD",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0298f45ce3b80e03e514589d2dce32a37a9fba7645f57a3c49e915da36e3d192d1",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1egQCVE8Ry37F6mr36e1YzV3m4eEhDW8QU",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "028b0e241962de72254579bb255b6d9a9149f01a9e9cdfcdc34b063d56e980e4c1",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1XqRk7bHatN9pPGHkexQg1Re4aHpHM2deM",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0397e4b2c69231c53d24aae35ae333e999472950c9e305f98c91f9a7d2bd901582",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1NdAn7TFW7oQg9ZEFLeGrrbrALwBkqPXNP",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "037485f18f29df8b7cb364f4f1c0905246bc4443ab3946ebe81fff2e59f4e7ce75",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1Zmuxgy4sPyBpSkgfZiM6dYWj865B9dnDh",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03fc5a7df055d46120831d0a8fbb10f2dbd0f2b639442a94698c143ca9686e0827",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02c56b09e7829f33fccbc4b1afb9566b1241a034ae9526e01f4a1c09ecf7072689",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "026f2cbb7049e5e27b0436ff9c821f2cac8a9c09ba1be388ba3bd5c641c0bcf691",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1TsoEie2pL49CiQbBPMPQC7X53HxspW2dz",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03dfd21a65d23232ac8ea46f028c3404b732fbeead49ed5bad8c7f2b0e324df743",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1NkXDf84xFkGTbdMkGPjPm2i9TuZVhAyye",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02f16ff19f101bfb20d3443c1662d8087a3d5efa396107a6f17fe9e690e6f51eaf",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1SXbyu1fGa2UCdcvH3Jo215abEjeAaZkuX",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0218e04678e217084b30ac737c8fe97593ea9a360c98c50cfdcefb0dc4dc0d1003",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1RpRrhb3ySQDWy6xdhqKLzVSotEEd8T4uk",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03f6e8ecd669749af3204facde599f3fa4f6f09d329902ff4412ee850d7851cdfc",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1dqm1TuuQZaqTHBPANpBmzEbHEcThYaUvh",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "036e8499a00c7938efb5a147e86e90c18f61370a9b721fbf49405c82e3687edfac",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1QdvsRYZ1NPqwcma2rZxaP1u2MeGS4gxon",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0390fd48496ef50f4e6c36e5c884afac42977a58e74b8ef4d6d8fabb178f196487",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1TYwey4RZpx4Y7hRpYbKU2X6zSoWihxSkd",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "021b41057fbe9221d4af80a80f2932da98b70138e45734217734e9ff6e3b18f4b8",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1U9VTztEwUyn2bATjaefNp8KA7rZcxmBrg",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03f66e4957af8a6aa709bd17529cef48fa1daa4b344c4fd6fdea4b7e30044d88b9",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1PXVSPDtDxC7xPZH7bAnRibkoQB2gJWPva",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02385314b25e8aab2c324dbe0a1e1e7a74c3abc0ab4adbda1c89b3bfdf5ef9a60b",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1JQ9giko8ubEnzr5rv9i49d2vZXvNszNTe",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "0398c813d0a1e47dfcdd683c90ac826af4a2a19f7ba2e4b6a34318c5bffd6e6ecb",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1gfjAozbyyoYMtHU54qsSFhucCEy81wWFY",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "021705228d0a2e9b21bb11f25ca343d968e251bc60feabac2de6cdf29539335f3e",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1NMMWyG7U1JVqNUMoMeLzDYkhswbwwyFdi",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02825c59a0e3d7387cafd54b567998b72c360a66306157f665285e970278baa25f",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1ehnj28ZwUZJ3GRLSFAkKkpMEswZCMzYZ7",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02637c2086c7d81be4d9c8a51810363cd14d9ca247367d3c068b6e8a31e1265d66",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1YMMvbqXP2H29g5jgmut1a3zSPUEB5Gbud",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "03c77c7367280f79ad978e1d95819ea85de6a4855131a5d4738f1d38a9ea5b1f09",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1T1Xt6y3dVPMM8Ja39i3rCN7QMJxYRNhDo",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "039ed396cddbeedcf35c50d4a8e8aca45125985efe633c027ba163829415865ab5",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1SwgXtobhui5EqZUMLHJxBH4wgZR8Zrs85",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "02cdd4f8425366335177a9434ea8682aca3eed1c9ac90f9fac43f8d31d2aeeb525",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    },
+    {
+      "address": "t1MqFZUiAVXLyfFNK8y99aSdtobcC492WDS",
+      "matches": [
+        {
+          "convention": "zcash-native",
+          "publicKeyHex": "036b2f4b63e6d3825c84f2954457a162d786bfd72caa36bde383add0bc9cd18cbd",
+          "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+          "prefixHex": "165a63617368205369676e6564204d6573736167653a0a"
+        }
+      ]
+    }
+  ]
+}

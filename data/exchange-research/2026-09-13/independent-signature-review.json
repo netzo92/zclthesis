@@ -1,0 +1,226 @@
+{
+  "reviewedAt": "2026-09-13T18:32:55.727819+00:00",
+  "message": "NonKYC Cryptocurrency Exchange",
+  "prefix": "Zcash Signed Message:\n",
+  "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+  "wireHex": "165a63617368205369676e6564204d6573736167653a0a1e4e6f6e4b59432043727970746f63757272656e63792045786368616e6765",
+  "method": "Independent reconstruction from original public API signature strings and root recovered public keys, independent Base58Check/HASH160/digest/DER encoding, local OpenSSL verification with mutated-digest negative controls. No private keys.",
+  "results": [
+    {
+      "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1Pgisoo6ac4LB2fzTd1yTaaqmSVb4SxZMf",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1KGpguqJRTBDYxSxvuPM4vteZpmwV9VNzD",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1egQCVE8Ry37F6mr36e1YzV3m4eEhDW8QU",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1XqRk7bHatN9pPGHkexQg1Re4aHpHM2deM",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1NdAn7TFW7oQg9ZEFLeGrrbrALwBkqPXNP",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1Zmuxgy4sPyBpSkgfZiM6dYWj865B9dnDh",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1TsoEie2pL49CiQbBPMPQC7X53HxspW2dz",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1NkXDf84xFkGTbdMkGPjPm2i9TuZVhAyye",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1SXbyu1fGa2UCdcvH3Jo215abEjeAaZkuX",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1RpRrhb3ySQDWy6xdhqKLzVSotEEd8T4uk",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1dqm1TuuQZaqTHBPANpBmzEbHEcThYaUvh",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1QdvsRYZ1NPqwcma2rZxaP1u2MeGS4gxon",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1TYwey4RZpx4Y7hRpYbKU2X6zSoWihxSkd",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1U9VTztEwUyn2bATjaefNp8KA7rZcxmBrg",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1PXVSPDtDxC7xPZH7bAnRibkoQB2gJWPva",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1JQ9giko8ubEnzr5rv9i49d2vZXvNszNTe",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1gfjAozbyyoYMtHU54qsSFhucCEy81wWFY",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1NMMWyG7U1JVqNUMoMeLzDYkhswbwwyFdi",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1ehnj28ZwUZJ3GRLSFAkKkpMEswZCMzYZ7",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1YMMvbqXP2H29g5jgmut1a3zSPUEB5Gbud",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1T1Xt6y3dVPMM8Ja39i3rCN7QMJxYRNhDo",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1SwgXtobhui5EqZUMLHJxBH4wgZR8Zrs85",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    },
+    {
+      "address": "t1MqFZUiAVXLyfFNK8y99aSdtobcC492WDS",
+      "publicAPIBytesMatched": true,
+      "addressChecksumValid": true,
+      "hash160Matched": true,
+      "opensslVerified": true,
+      "mutatedDigestRejected": true
+    }
+  ]
+}

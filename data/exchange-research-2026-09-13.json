@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "savedAt": "2026-09-13T18:35:17.527552+00:00",
+  "scope": "Public organizational ZCL attribution and a bounded transparent transaction trace; no customer identity or shielded-origin attribution.",
+  "supersedes": "exchange-research.json (September 12 incomplete public-page check retained as historical evidence)",
+  "conclusion": "NonKYC publishes all three input addresses as Deposit and the large destination as Withdraw; their address signatures verify using the Zcash message convention. An internal deposit-to-withdrawal-wallet consolidation is strongly supported, while exact historical purpose remains an inference.",
+  "attributionStatus": "official-publication-and-verified-address-signatures",
+  "signatureVerification": {
+    "message": "NonKYC Cryptocurrency Exchange",
+    "messageUTF8Hex": "4e6f6e4b59432043727970746f63757272656e63792045786368616e6765",
+    "messageLengthBytes": 30,
+    "matchingPrefix": "Zcash Signed Message:\n",
+    "matchingPrefixByteLength": 22,
+    "digestHex": "0f7b9cdb313a091645909cb958bb14457e41e37ae4cf037f482666774a78e649",
+    "publishedAddressCount": 27,
+    "compactRecoveryAddressMatches": 27,
+    "opensslVerified": 27,
+    "modifiedDigestRejected": 27,
+    "independentReviewVerified": 27,
+    "nativeZclassicVerified": 0,
+    "nativeZclassicRPCSuccessful": 27,
+    "nativeMismatchReason": "Native Zclassic serializes Zclassic Signed Message:\n instead of the Zcash prefix used by these signatures.",
+    "verifiedAt": "2026-09-13T18:32:05.564438+00:00",
+    "publicSource": "https://nonkyc.io/api/v1/system/allreserves",
+    "observedAt": "2026-09-13T18:28:47.037Z",
+    "limits": "The static message does not sign a timestamp, balance, block height, wallet role, liabilities, exclusive current control or historical transaction purpose."
+  },
+  "officialAddresses": [
+    {
+      "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "97232.00000000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "25221.17943047",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1Pgisoo6ac4LB2fzTd1yTaaqmSVb4SxZMf",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "11391.90979755",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1KGpguqJRTBDYxSxvuPM4vteZpmwV9VNzD",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "5500.00000000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1egQCVE8Ry37F6mr36e1YzV3m4eEhDW8QU",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "2574.68959755",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1XqRk7bHatN9pPGHkexQg1Re4aHpHM2deM",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "1844.59379340",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1NdAn7TFW7oQg9ZEFLeGrrbrALwBkqPXNP",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "1000.00000000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1Zmuxgy4sPyBpSkgfZiM6dYWj865B9dnDh",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "1000.00000000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "988.25912039",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "858.18461104",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1TsoEie2pL49CiQbBPMPQC7X53HxspW2dz",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "742.39057580",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1NkXDf84xFkGTbdMkGPjPm2i9TuZVhAyye",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "412.76213000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1SXbyu1fGa2UCdcvH3Jo215abEjeAaZkuX",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "169.95403765",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1RpRrhb3ySQDWy6xdhqKLzVSotEEd8T4uk",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "151.96828378",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1dqm1TuuQZaqTHBPANpBmzEbHEcThYaUvh",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "131.31412747",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1QdvsRYZ1NPqwcma2rZxaP1u2MeGS4gxon",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "113.63232860",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1TYwey4RZpx4Y7hRpYbKU2X6zSoWihxSkd",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "100.00000000",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1U9VTztEwUyn2bATjaefNp8KA7rZcxmBrg",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "39.50889171",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1PXVSPDtDxC7xPZH7bAnRibkoQB2gJWPva",
+      "publishedRole": "Deposit",
+      "reportedBalanceZCL": "37.84700727",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1JQ9giko8ubEnzr5rv9i49d2vZXvNszNTe",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "29.58349755",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1gfjAozbyyoYMtHU54qsSFhucCEy81wWFY",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "21.71449755",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1NMMWyG7U1JVqNUMoMeLzDYkhswbwwyFdi",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "12.14779755",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1ehnj28ZwUZJ3GRLSFAkKkpMEswZCMzYZ7",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "0.84971520",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1YMMvbqXP2H29g5jgmut1a3zSPUEB5Gbud",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "0.48831179",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1T1Xt6y3dVPMM8Ja39i3rCN7QMJxYRNhDo",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "0.16419576",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1SwgXtobhui5EqZUMLHJxBH4wgZR8Zrs85",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "0.08595632",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    },
+    {
+      "address": "t1MqFZUiAVXLyfFNK8y99aSdtobcC492WDS",
+      "publishedRole": "Withdraw",
+      "reportedBalanceZCL": "0.03315965",
+      "reportedBlock": 3249437,
+      "signatureVerifiedWithZcashPrefix": true
+    }
+  ],
+  "reserveSnapshot": {
+    "source": "https://nonkyc.io/api/v1/system/allreserves",
+    "observedAt": "2026-09-13T18:28:47.037Z",
+    "reportedBlock": 3249437,
+    "reportedSumZCL": "149575.26086405",
+    "rows": 27,
+    "coverage": "Published tracked address subset; page says addresses under $10 are not tracked. Balances are exchange-reported and are not signed by this static message.",
+    "individualAssetPage": {
+      "url": "https://nonkyc.io/asset/ZCL",
+      "observedAt": "2026-09-13T18:26:02.762Z",
+      "reportedBlock": 3249467,
+      "depositZCL": "38260.77481754",
+      "withdrawZCL": "111546.94893772",
+      "safeZCL": "0",
+      "reportedTotalZCL": "149807.7238",
+      "pendingSweepsZCL": "0.00000000",
+      "signatureData": {
+        "Deposit": {},
+        "Withdraw": {},
+        "Safe": {}
+      },
+      "note": "Individual asset signature data remains empty although the separate all-reserves table and public API provide signatures. This later snapshot must not be conflated with block3249437 reserve table."
+    }
+  },
+  "transaction": {
+    "txid": "b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+    "url": "https://explorer.zcl.zelcore.io/tx/b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+    "blockHeight": 3240270,
+    "blockHash": "00000aa8c6a499f42ff80326eff791df554c120d1446ed3f9872b251eec9e1ab",
+    "blockTime": "2026-09-05T15:55:33Z",
+    "inputCount": 52,
+    "distinctInputAddresses": 3,
+    "inputs": [
+      {
+        "address": "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+        "inputCount": 1,
+        "amountZat": "3109365040",
+        "publishedRole": "Deposit"
+      },
+      {
+        "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+        "inputCount": 50,
+        "amountZat": "264950000000",
+        "publishedRole": "Deposit"
+      },
+      {
+        "address": "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L",
+        "inputCount": 1,
+        "amountZat": "341671206",
+        "publishedRole": "Deposit"
+      }
+    ],
+    "totalInputZat": "268401036246",
+    "outputs": [
+      {
+        "index": 0,
+        "address": "t1VVQNCnVMH6YPawV7UAfnBevFT8MzTTsAq",
+        "amountZat": "1028183",
+        "publishedRole": null
+      },
+      {
+        "index": 1,
+        "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+        "amountZat": "268400000000",
+        "publishedRole": "Withdraw"
+      }
+    ],
+    "feeZat": "8063"
+  },
+  "inputTrace": {
+    "parentsChecked": 52,
+    "exactPreviousOutputChecksPassed": true,
+    "shieldedToTransparentParents": 51,
+    "coinbaseParents": 0,
+    "recurringAddress": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+    "recurringInputs": 50,
+    "recurringTotalZat": "264950000000",
+    "recurringAmounts": [
+      {
+        "count": 44,
+        "amountZat": "4999000000"
+      },
+      {
+        "count": 6,
+        "amountZat": "7499000000"
+      }
+    ],
+    "recurringParentDateRange": [
+      "2026-06-03T16:45:16Z",
+      "2026-09-05T13:46:53Z"
+    ],
+    "recurringParentNetworkFeeZat": "10000",
+    "limits": "Shielded source identities are not revealed; input counts do not identify people or customer counts. The 0.01 below round receipt values is not evidence of an exchange withdrawal fee."
+  },
+  "laterSpend": {
+    "txid": "01b66a4a7e137a1daa0faf41ed079f519f6398442da471a879246b6a02991512",
+    "url": "https://explorer.zcl.zelcore.io/tx/01b66a4a7e137a1daa0faf41ed079f519f6398442da471a879246b6a02991512",
+    "blockHeight": 3242580,
+    "blockTime": "2026-09-07T16:26:14Z",
+    "spends": {
+      "txid": "b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+      "vout": 1,
+      "amountZat": "268400000000"
+    },
+    "outputs": [
+      {
+        "address": "t1crZ58AraG9Pw5oGKU8DFVzNaA3mCUvZHt",
+        "amountZat": "265441650000",
+        "publishedRole": null
+      },
+      {
+        "address": "t1JQ9giko8ubEnzr5rv9i49d2vZXvNszNTe",
+        "amountZat": "2958349755",
+        "publishedRole": "Withdraw"
+      }
+    ],
+    "feeZat": "245",
+    "limits": "The smaller output goes to another exchange-published Deposit address. The larger recipient is unidentified; payment/change purpose is not proven."
+  },
+  "remainderReuse": {
+    "txid": "670ec048421e237147c29341b2f99544a2e39f83de5f62e543169318c27b537b",
+    "url": "https://explorer.zcl.zelcore.io/tx/670ec048421e237147c29341b2f99544a2e39f83de5f62e543169318c27b537b",
+    "elapsedSeconds": 64,
+    "inputCount": 47,
+    "sameWithdrawDestinationZat": "217400000000",
+    "spendsTargetVout": 0
+  },
+  "ownNodeCrossCheck": {
+    "verifiedAt": "2026-09-13T18:27:16.295554+00:00",
+    "canonicalHashMatches": true,
+    "target52InputOutpointsMatch": true,
+    "target2OutputScriptsAndAmountsMatch": true,
+    "oneShieldedParentSampleMatches": true,
+    "bootstrapValidation": "anchored-fast-sync",
+    "scope": "Target transaction and canonical block hash plus one parent sample; all-parent history was inspected through the public explorer, not replayed from genesis."
+  },
+  "correction": "The September 12 individual asset-page inspection was incomplete: its empty signature categories did not establish absence of public signed ZCL reserve addresses elsewhere. All Reserves and the public API provide them.",
+  "limitations": [
+    "Signature message is static and contains neither timestamp, block height, balance nor liability commitment. A valid signature supports key control for that message, not a solvency audit or proof of current exclusive ownership.",
+    "Public listing associates the organization with the address; a bare cryptographic signature does not independently establish real-world organizational identity.",
+    "Published walletType is the exchange description, not chain consensus metadata.",
+    "All-reserves page says addresses under$10 are not tracked; listed rows must not be described as all exchange assets or all customer holdings.",
+    "Public API/asset-page snapshots have different heights and observation times; no exact identity of their totals is inferred.",
+    "The signature convention is Zcash, while current Zclassic nodes use Zclassic message magic; reporting native ZCL verification as successful would be incorrect. Cross-chain message-domain compatibility does not establish a Zcash transfer, change the ZCL transaction, or sign a balance."
+  ],
+  "sourceNotes": {
+    "defillama": {
+      "oldUrl": "https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/projects/nonkyc/index.js",
+      "oldUrlStatus": "404 on direct request; web search held older cached content",
+      "migrationCommit": "ca9a0728f51b0c8c78e5f85703e17c70b0e87a81",
+      "migrationAt": "2026-06-22T19:24:09Z",
+      "currentUrl": "https://github.com/DefiLlama/DefiLlama-Adapters/blob/7a4bf0abe88ab3525e5f6a7eeadd75db1b6da38a/cex/nonkyc.js",
+      "observedAt": "2026-09-13T18:25:58.100561+00:00",
+      "sha256": "fe6cd3fd924b989d0dc538fba4d921feedd914b4305dc1437de1b6550c520982",
+      "finding": "Current migrated adapter and NonKYC own fork list other-chain wallets but no ZCL. This absence does not contradict the official ZCL reserve API."
+    },
+    "searchScope": {
+      "queriedExact": [
+        "b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+        "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+        "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x"
+      ],
+      "queriedTerms": [
+        "site:nonkyc.io ZCL reserves address",
+        "NonKYC Zclassic ZCL wallet richlist address exchange",
+        "site:github.com DefiLlama NonKYC ZCL",
+        "NonKYC reserves ZCL",
+        "site:nonkyc.io Zclassic signature",
+        "site:github.com ZCL nonkyc address"
+      ],
+      "finding": "No independently indexed organizational attribution for the exact hash/addresses was returned in these bounded web searches. Direct official public reserve data provides new attribution despite that negative search result. This is not exhaustive proof of absence of third-party labels."
+    }
+  },
+  "evidenceDirectory": "exchange-research/2026-09-13/"
+}

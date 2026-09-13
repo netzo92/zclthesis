@@ -1,0 +1,115 @@
+{
+  "source": "https://nonkyc.io/allreserves",
+  "observedAt": "2026-09-13T18:27:02.160Z",
+  "message": "NonKYC Cryptocurrency Exchange",
+  "addresses": [
+    {
+      "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "signature": "H1Wqq8EscaojYvApJ7mrp2aMqjh+3cVPTs7iXZ4Mv4zxcUsR5SFkkNFnIg8hY5UhQ9RIF/7mqPiHrv/PYz7BG/M="
+    },
+    {
+      "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "signature": "H/5GXZVKhGwV3y3OBWHbs0ZSX68F3FVUPvl0i5KBHgdgeTIBAI/UuVZpfenOPQw3FQfj02/AAw1hmYv3kcqfeeY="
+    },
+    {
+      "address": "t1Pgisoo6ac4LB2fzTd1yTaaqmSVb4SxZMf",
+      "signature": "INLVCdIPskTmLGf4RlJZc1G1DoTypy1CZGDpIBOAbp0ZLv+kzHbJMZl9dQm0hcrza1z2VTGR4OudbfYcoecKwPA="
+    },
+    {
+      "address": "t1KGpguqJRTBDYxSxvuPM4vteZpmwV9VNzD",
+      "signature": "IB4Pd8VvGnnVD2PbE4t2hDoZ42jRpW+IssFcSdckIs/9TKCX93yWlIDFkoxGG6BVgB1fLZOIG82KDfwWQmOKlN0="
+    },
+    {
+      "address": "t1egQCVE8Ry37F6mr36e1YzV3m4eEhDW8QU",
+      "signature": "IB7Z9yx7NfrLKFSSH9DKVNBQFvCdFOIumNURkeXjhefEU3awEkJWhQ8QxtXobEAAmmwwRSAOPdv3KMD9CAnKCGA="
+    },
+    {
+      "address": "t1XqRk7bHatN9pPGHkexQg1Re4aHpHM2deM",
+      "signature": "H4OP1q2UhKkgyR771IV3TLGtsMHx63qKxLfvY0/LBY9tY/3b3xV0dFqtvYe8WxlgYJXEtS98iyOmSeizS/LUG0M="
+    },
+    {
+      "address": "t1NdAn7TFW7oQg9ZEFLeGrrbrALwBkqPXNP",
+      "signature": "H0qMrDwLM02e0sLafz6Ly+bUF6aFNJL6j5d2jlsUtjP2U1EDm1TUAUDQ43vVpNzyec5fl/NTyJ7HkYLvC7g61jY="
+    },
+    {
+      "address": "t1Zmuxgy4sPyBpSkgfZiM6dYWj865B9dnDh",
+      "signature": "H10di6f0I/l9dvTF2E6ctJFQyCDw7bPlMVsbhwiQTJWcG2aItqi8wHoSN+R9f2Q05Z7IKyZEJCVH+Tb8fsCDCko="
+    },
+    {
+      "address": "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L",
+      "signature": "H9OVAtuT6CXIEpdlFwtXt9RNacZm9EsE0BrhyoCdT+yZZiPdgv3VHp/nowp9TAMWoRWcdYarEXooeTk4KFG81ew="
+    },
+    {
+      "address": "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+      "signature": "H5cdFrIQSf1Adgi0xo1q2jtLzcvNKxi7Rvl14j/mH3t+auoPcclNaUbiuD5ReLGfyMX2fjQBo8NaElkP2W4xcts="
+    },
+    {
+      "address": "t1TsoEie2pL49CiQbBPMPQC7X53HxspW2dz",
+      "signature": "H8UfjMD6vkJGVPWiMipQZcd+wN1dQas4e2oP1cKBmIxnffSJE358vVHHjbYDlMZgfb8nUXZSQeKTZDQtt0U3KC4="
+    },
+    {
+      "address": "t1NkXDf84xFkGTbdMkGPjPm2i9TuZVhAyye",
+      "signature": "IDi1g0mClgdMXKfTqwue1y9jS9Yhk4uZRzup4yGbzBpERYFFBjok+VqDPRHWZQ8Ae/GGo+ZYPsfv8D6mAJ21Gr4="
+    },
+    {
+      "address": "t1SXbyu1fGa2UCdcvH3Jo215abEjeAaZkuX",
+      "signature": "ICcjghqlevyl7R5o2Pl77Pu/o6GxR1z1M/+5ubAM2r//WwvNW0lIALgPSomfJN/Jfw+kiqO1LJxVR3GgBXXa0c4="
+    },
+    {
+      "address": "t1RpRrhb3ySQDWy6xdhqKLzVSotEEd8T4uk",
+      "signature": "Hwud1wzk6Z7K9pzN1pb1yXM0hrSDo31fi2lnViBb1LUwGA2PS/iuuVFTEZAHmOnLSBzrx4ag8/4EI5pcNswFMXg="
+    },
+    {
+      "address": "t1dqm1TuuQZaqTHBPANpBmzEbHEcThYaUvh",
+      "signature": "H/QT/mpxKnSfPo8NRiT4BnrzJXE4xJUE6lz9Nn2CvRFcW5d9/egl7VZqa1+CvcL4WMIm+uhsM8e0jMsIPx3e3bc="
+    },
+    {
+      "address": "t1QdvsRYZ1NPqwcma2rZxaP1u2MeGS4gxon",
+      "signature": "H9TAN4Shcjbpy5JxEZDB95T5KL+DdQShBlmKhukRmxdFZR23EYaaL8RoLiFuPvlMZS0Drh4YfsHS/DWTF53Wdig="
+    },
+    {
+      "address": "t1TYwey4RZpx4Y7hRpYbKU2X6zSoWihxSkd",
+      "signature": "IADHT7hXidFBQVQJB+gdCCxRh2NCS0AdswuAxpFJvDv0F8sNHMB7S+UMTxpW7BqDaFsAIV5lYE9ESmJOqpZFmjQ="
+    },
+    {
+      "address": "t1U9VTztEwUyn2bATjaefNp8KA7rZcxmBrg",
+      "signature": "H9sIieYxwkpn51e6jw7D0GjXteWxkgRmk1nrTTgRQSFJSDnihpFC1YsOWER0YhC+qShYqHqKx+Lt/Qa5+7GceWw="
+    },
+    {
+      "address": "t1PXVSPDtDxC7xPZH7bAnRibkoQB2gJWPva",
+      "signature": "H/hs7VWYJYyPAhVjxWnycBD1tdw+lv/Gnn6JQaBxQUbkVMyQc4S5w1AAwpiiD7U7MyeRvm5pW8vdYXrErFGPJfk="
+    },
+    {
+      "address": "t1JQ9giko8ubEnzr5rv9i49d2vZXvNszNTe",
+      "signature": "ICjdKsdKRkFhxZl51fp8tGd6YPbcwZnmjGInAaNgUoSgXkkPjN+NZf7EFNfCmHFuH15ebEMyiKSZg6ZXEpRMwok="
+    },
+    {
+      "address": "t1gfjAozbyyoYMtHU54qsSFhucCEy81wWFY",
+      "signature": "H4rlcGdSBaNtfqnDnxK03fcR0QFpddx8jpfvNJC34FICJjV6YF0cxoUE2YzhZb1PpmyR5VPuKw+vgFEXCAzJ4Bk="
+    },
+    {
+      "address": "t1NMMWyG7U1JVqNUMoMeLzDYkhswbwwyFdi",
+      "signature": "ICsgPnoSzhxaJu+FGk3uhdAzVdTBQMnjcF/UmB7eUm5qcEHiaOFtsfuwB+RSabGFQzVPCz0HjtCZTgh0Ad9jRUg="
+    },
+    {
+      "address": "t1ehnj28ZwUZJ3GRLSFAkKkpMEswZCMzYZ7",
+      "signature": "IPsb5eqfgefMXeJ1nrbfPcbOQ2nJrseHH5KXFQJHP7H9EXwtDWKtz2Houf19E3WMSHTqsubdXTXSLbuF1x353Q8="
+    },
+    {
+      "address": "t1YMMvbqXP2H29g5jgmut1a3zSPUEB5Gbud",
+      "signature": "IOhzybAIX3dJ6FE9tfHSOIvWSfHOhv8XHXzY3TDj/9McKUCP3X4Et3jAe4zuq/SuFfCTt09Rj1XcWtRl+va986k="
+    },
+    {
+      "address": "t1T1Xt6y3dVPMM8Ja39i3rCN7QMJxYRNhDo",
+      "signature": "IJ5REf2GpoIE61LdHX0D+VZKpJzuYG6OqDdKhbEf9LPGCAt+G8ZshIlJus5Sm4u66Koug8X4UrmfDcu1eG6236k="
+    },
+    {
+      "address": "t1SwgXtobhui5EqZUMLHJxBH4wgZR8Zrs85",
+      "signature": "H51MCQqfce2IoWW5cJojrVlLPITscXky8Apd8SM4/NSDVMzqEUTv5y4W3Air13VAB9e8LsgRz0nx73p1qIhXEsI="
+    },
+    {
+      "address": "t1MqFZUiAVXLyfFNK8y99aSdtobcC492WDS",
+      "signature": "H3rT2RUWVdoM+Aa/6xdaHfzY5TCj4yewxCONndUGDN2+OXMNUruiiV25mqFvZ4gJE2fzjJe2yLbR95EzKf64RoA="
+    }
+  ]
+}

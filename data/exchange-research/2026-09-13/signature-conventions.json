@@ -1,0 +1,42 @@
+{
+  "savedAt": "2026-09-13T18:31:03.522164+00:00",
+  "nativeNode": {
+    "source": "https://github.com/ZclassicCommunity/zclassic/blob/v2.1.2-beta6/src/main.cpp#L120",
+    "magic": "Zclassic Signed Message:\n",
+    "magicByteLength": 25,
+    "serialization": "CompactSize length followed by magic bytes, then CompactSize message length and exact message bytes; CHashWriter double SHA256; recover compact pubkey and compare HASH160 to transparent address keyID",
+    "verificationSource": "https://github.com/ZclassicCommunity/zclassic/blob/v2.1.2-beta6/src/rpc/misc.cpp#L445"
+  },
+  "documentedAlternateImplementations": [
+    {
+      "repository": "z-classic/electrum-zcl",
+      "commit": "4694a655928a19fcd21b67164fcbd7e6911d1739",
+      "url": "https://github.com/z-classic/electrum-zcl/blob/4694a655928a19fcd21b67164fcbd7e6911d1739/lib/bitcoin.py",
+      "rawUrl": "https://raw.githubusercontent.com/z-classic/electrum-zcl/4694a655928a19fcd21b67164fcbd7e6911d1739/lib/bitcoin.py",
+      "sha256": "3e704e388b2e33dab0c95dedec6be4027586bc56a6355828088f86ac76b77a96",
+      "observedAt": "2026-09-13T18:31:02.328088+00:00",
+      "hits": [
+        {
+          "line": 652,
+          "context": "from ecdsa.ecdsa import curve_secp256k1, generator_secp256k1\nfrom ecdsa.curves import SECP256k1\nfrom ecdsa.ellipticcurve import Point\nfrom ecdsa.util import string_to_number, number_to_string\n\n\ndef msg_magic(message):\n    length = bfh(var_int(len(message)))\n    return b\"\\x19Zcash Signed Message:\\n\" + length + message\n\n\ndef verify_message(address, sig, message):"
+        }
+      ]
+    },
+    {
+      "repository": "ZclassicCommunity/electrum-zcl",
+      "commit": "854b91c9bc3cf93e814596a417b474c584c7f589",
+      "url": "https://github.com/ZclassicCommunity/electrum-zcl/blob/854b91c9bc3cf93e814596a417b474c584c7f589/lib/bitcoin.py",
+      "rawUrl": "https://raw.githubusercontent.com/ZclassicCommunity/electrum-zcl/854b91c9bc3cf93e814596a417b474c584c7f589/lib/bitcoin.py",
+      "sha256": "f7fbd27d5b3524be52862be9ea3ba1f0327e034cee1abc6675c83d1b86d68497",
+      "observedAt": "2026-09-13T18:31:03.521202+00:00",
+      "hits": [
+        {
+          "line": 553,
+          "context": "from ecdsa.ecdsa import curve_secp256k1, generator_secp256k1\nfrom ecdsa.curves import SECP256k1\nfrom ecdsa.ellipticcurve import Point\nfrom ecdsa.util import string_to_number, number_to_string\n\n\ndef msg_magic(message):\n    length = bfh(var_int(len(message)))\n    return b\"\\x18Zclassic Signed Message:\\n\" + length + message\n\n\ndef verify_message(address, sig, message):"
+        }
+      ]
+    }
+  ],
+  "nonKyc": "Public API signMessage and UI static text agree exactly: NonKYC Cryptocurrency Exchange. Inspected public UI JavaScript displays server signatures but does not document its server wallet-signing prefix or implement a verifier. Bounded search for NonKYC/verifymessage/signatures did not identify an official alternate convention.",
+  "conclusion": "The alternate source constants justify bounded compatibility checks but do not establish which convention NonKYC used. Keep exchange-published, signatures not verified by native node unless an independent exact-key recovery succeeds. A failure does not by itself establish forgery."
+}

@@ -531,10 +531,16 @@ entry times describe the current local admission and can reset on readmission. M
 The server fetches one fixed public JSON URL; it offers no arbitrary RPC proxy,
 wallet methods, or URL/transaction lookup passthrough.
 
-`data/exchange-research.json` preserves dated public research evidence. NonKYC's
-ZCL reserve page reported balances but supplied empty signature/address data when
-inspected. The linked consolidation transactions are unattributed research leads,
-not verified NonKYC labels. Large balances, round amounts and common inputs are
+`data/exchange-research.json` preserves the incomplete September 12 inspection.
+The [September 13 follow-up](data/exchange-research-2026-09-13.json) supersedes its
+unattributed conclusion: NonKYC's separate All Reserves API lists all three input
+addresses as Deposit and the 2,684 ZCL destination as Withdraw. All 27 published
+ZCL address signatures match their keys using the Zcash message prefix, with
+independent OpenSSL verification and rejected modified-digest controls. Native
+Zclassic verification fails because its message prefix differs. The static
+signed message commits to no balance, date, wallet role or liabilities; these
+are organizational address attestations, not a solvency audit. Historical sweep
+purpose remains an inference. Large balances and common inputs alone remain
 insufficient attribution evidence. The research section is dated, not a live
 reserve audit. The homepage price separately uses NonKYC's official ZCL/USDT API
 and shows the last actual trade time; market-cap comparisons remain CoinGecko USD.
