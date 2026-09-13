@@ -340,6 +340,14 @@ transaction-signing application. No owner's private wallet exists in this repo.
 
 ## Separate pool and browser miner
 
+The English and Spanish homepages place a prominent mining-pool panel immediately
+below the header, before market-cap and volume charts. It links directly to the
+localized pool dashboard and browser GPU miner, with wallet and miner setup guides.
+The panel shows the configured 0.8% fee and the specific comparison with a 1% fee;
+visitors check current admission on the dashboard. The existing top-right pool
+shortcut remains available. Private analytics and pool administration remain
+accessible through their authenticated operator launchers, not public site links.
+
 - Pool software: <https://github.com/netzo92/zclthesis-pool>
 - Browser GPU miner: <https://github.com/netzo92/zclthesis-webminer>
 - Pool status: <https://pool.zclthesis.com/>

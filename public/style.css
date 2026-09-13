@@ -14,3 +14,23 @@ header{gap:24px;flex-wrap:wrap}.language-switch{display:flex;gap:4px;font-size:1
 header .header-pool{margin-left:auto;white-space:nowrap;text-decoration:none;background:var(--ink);color:var(--paper);padding:10px 13px;font-size:12px;border-radius:3px}header .header-pool:hover{text-decoration:underline}header .header-pool:focus-visible{outline:3px solid #8ba957;outline-offset:4px}
 @media(max-width:1100px){header nav{order:3;width:100%;flex-wrap:wrap;gap:16px 24px}}
 @media(max-width:600px){header .brand{order:0}header .header-pool{order:1;font-size:11px;padding:9px 10px}header .language-switch{order:2;width:100%;justify-content:flex-end}header nav{order:3}}
+
+/* The pool is a main entry point, before market data and the thesis. */
+.pool-feature{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:center;padding:36px 56px;background:var(--ink);color:var(--paper);border-bottom:4px solid #a8c96a}
+.pool-feature .eyebrow{margin:0 0 14px;color:var(--green);font-size:10px;letter-spacing:1.2px}
+.pool-feature h2{font-size:clamp(38px,4.3vw,58px);line-height:1.03;letter-spacing:-1.6px;margin:0 0 16px}
+.pool-feature-copy>p:not(.eyebrow){font-size:14px;line-height:1.65;max-width:580px;color:#d4ddd0;margin:0}
+.pool-feature-copy .pool-feature-fee{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:18px}
+.pool-feature-fee strong{color:var(--green);font-size:16px;font-weight:600}
+.pool-feature-fee span{font-size:11px}
+.pool-feature-actions{min-width:0;display:flex;flex-direction:column;gap:12px}
+.pool-feature-primary,.pool-feature-secondary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:19px 22px;text-decoration:none;line-height:1.45}
+.pool-feature-primary{background:var(--green);color:var(--ink);font-size:17px;font-weight:600}
+.pool-feature-primary:hover{background:#d4e7a4}
+.pool-feature-secondary{border:1px solid #768b6e;color:var(--paper);font-size:14px}
+.pool-feature-secondary:hover{background:#294633}
+.pool-feature-actions a:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.pool-feature-guides{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:12px;margin-top:4px;text-underline-offset:4px;line-height:1.6}
+.pool-feature-actions>p{font-size:11px;line-height:1.6;color:#c3cfbc;margin:0}
+@media(max-width:850px){.pool-feature{padding:32px 24px;gap:30px}.pool-feature-primary,.pool-feature-secondary{padding:16px}.pool-feature-primary{font-size:16px}}
+@media(max-width:600px){.pool-feature{grid-template-columns:minmax(0,1fr);gap:24px;padding:28px 24px}.pool-feature h2{font-size:43px}.pool-feature-copy>p:not(.eyebrow){font-size:13px}.pool-feature .eyebrow{font-size:9px}.pool-feature-primary,.pool-feature-secondary{padding:16px 18px}.pool-feature-guides{font-size:11px}}
