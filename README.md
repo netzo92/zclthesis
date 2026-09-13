@@ -617,8 +617,12 @@ available when market or block data providers fail. The source is
 since November 6, 2016. Dates are calendar dates, not inferred timestamps.
 
 English and Spanish hero, history and valuation copy emphasize a native Layer 1
-privacy blockchain with its own PoW miners and roots in 2016. Its age and Lindy
-appeal are part of the owner's rediscovery thesis. The explicit memecoin
+privacy blockchain with its own PoW miners and roots in 2016. Both top age panels
+link to the named **Lindy effect** explanation in the history section. The
+definition links to [Taleb's technical explanation](https://fooledbyrandomness.com/prophecy/index.html):
+for some enduring technologies and ideas, survival can indicate a longer expected
+remaining life. Its application to ZCL is the owner's rediscovery thesis, not a
+measured lifetime forecast or evidence of future returns. The explicit memecoin
 distinction concerns the chain's identity; calling it overlooked does not
 establish mispricing. The separate PoW/funding arguments, source links and
 valuation qualifications remain in place.
