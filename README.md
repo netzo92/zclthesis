@@ -468,3 +468,13 @@ not verified NonKYC labels. Large balances, round amounts and common inputs are
 insufficient attribution evidence. The research section is dated, not a live
 reserve audit. The homepage price separately uses NonKYC's official ZCL/USDT API
 and shows the last actual trade time; market-cap comparisons remain CoinGecko USD.
+
+The transaction/nav/price update is deployed from `718663ac` on Cloud Run revision
+`myzclthesis-00018-fxf`, serving 100% of traffic (September 13, 2026 UTC). All 81
+Node tests passed. Live EN/ES browser checks at 320 and 1,440 pixels verified real
+transaction data, reward filtering, output details, refresh with preserved focus,
+and visible pool shortcuts. All eight changed public HTML/CSS/JS assets matched
+source bytes. The live price source was the official NonKYC ZCL/USDT API, the pinned
+launch market-cap reference remained intact, and private/RPC paths returned 404.
+Headless/GPC checks generated no analytics events. The pool exporter is documented
+in `netzo92/zclthesis-pool` commit `85450ca`; its implementation is `2167a45`.
