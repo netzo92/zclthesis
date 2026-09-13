@@ -545,6 +545,18 @@ insufficient attribution evidence. The research section is dated, not a live
 reserve audit. The homepage price separately uses NonKYC's official ZCL/USDT API
 and shows the last actual trade time; market-cap comparisons remain CoinGecko USD.
 
+The exchange follow-up from `e373564` is deployed on Cloud Run revision
+`myzclthesis-00024-7t6`, serving 100% of traffic. Fourteen existing network and
+transaction-page tests passed. Local and live English/Spanish browser checks at
+320 and 1,440 pixels verified the input table, evidence links, expandable details
+and viewport bounds, with no JavaScript errors or analytics events. All three
+deployed HTML/CSS assets matched committed bytes. The 71 archived evidence files
+passed their manifest hashes; all 52 parent records matched the spent outputs.
+Signature recovery, OpenSSL checks and independent review matched all 27 public
+address attestations and rejected all 27 modified-digest controls. These are
+dated research and publication checks, not transactions, mining or a reserves
+solvency audit.
+
 The transaction/nav/price update is deployed from `718663ac` on Cloud Run revision
 `myzclthesis-00018-fxf`, serving 100% of traffic (September 13, 2026 UTC). All 81
 Node tests passed. Live EN/ES browser checks at 320 and 1,440 pixels verified real
