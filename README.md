@@ -51,8 +51,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00019-fgw` (100% traffic, September 13, 2026 UTC)
-- Latest deployment source commit: `9a9bf9a`
+- Latest revision: `myzclthesis-00020-f98` (100% traffic, September 13, 2026 UTC)
+- Latest deployment source commit: `06ba1ce`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
