@@ -20,6 +20,8 @@ const getRichList=await createRichListStore();
 const getRichListComparison=createRichListComparison({getZcl:getRichList});
 import {readFile} from 'node:fs/promises';
 const files = new Map([
+  ['/robots.txt', ['robots.txt', 'text/plain; charset=utf-8']],
+  ['/sitemap.xml', ['sitemap.xml', 'application/xml; charset=utf-8']],
   ['/', ['index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
   ['/es', ['es/index.html', 'text/html; charset=utf-8']],

@@ -17,6 +17,24 @@ Open http://localhost:8080. `PORT` overrides the listener port.
 Edit `public/index.html` for copy and sources and `public/style.css` for design.
 Restart the server after edits because assets are loaded at startup.
 
+## Search and sharing metadata
+
+The English and Spanish thesis, network, and privacy pages have localized titles,
+descriptions, and Open Graph/Twitter summary metadata. Each HTML head identifies
+its canonical URL on `https://zclthesis.com` and links to both language versions
+with reciprocal `en`, `es`, and `x-default` alternatives. English is the default
+for each page pair. Canonical URLs omit language query parameters and use the
+existing trailing-slash page paths; aliases still work without new redirects.
+
+`/robots.txt` permits crawling and points to `/sitemap.xml`. The sitemap lists
+the six canonical public pages, excluding API responses and wallet downloads.
+It omits modification dates rather than treating live data polling as an
+editorial update. Both files are explicit static routes with their appropriate
+text/XML content types. No structured data, tracking changes, or inline scripts
+are introduced by this metadata. The offline wallet and its checksum are
+unchanged. Search-engine discovery and ranking remain external to the site;
+publishing a sitemap does not establish that its pages have been indexed.
+
 ## GCP Cloud Run
 
 Choose a billing-enabled project and authenticate gcloud. Source deployment needs
