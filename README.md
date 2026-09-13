@@ -560,3 +560,26 @@ proxy both reported verified zero blocks/rewards in all three windows at
 observation, not a fixed counter. Nine live homepage/pool assets matched the
 reviewed source. Both sites passed EN/ES desktop/mobile checks, with no overflow,
 renderer/CSP errors, analytics events or real mining during verification.
+
+## Chain age and Zclassic's heritage
+
+The top mining-pool panel and live information strip display Zclassic's numeric
+age. `/api/live` computes calendar years, months and days from its documented
+public launch date, **November 6, 2016**, using the server's current UTC date.
+The browser displays years/months and the total calendar-day count, refreshing
+with the existing minute-based live request. This date is independent of the
+website's launch date and does not represent uninterrupted uptime. It remains
+available when market or block data providers fail. The source is
+[Zclassic's official site](https://zclassic.org/), which identifies PoW mining
+since November 6, 2016. Dates are calendar dates, not inferred timestamps.
+
+English and Spanish hero, history and valuation copy emphasize a native Layer 1
+privacy blockchain with its own PoW miners and roots in 2016. Its age and Lindy
+appeal are part of the owner's rediscovery thesis. The explicit memecoin
+distinction concerns the chain's identity; calling it overlooked does not
+establish mispricing. The separate PoW/funding arguments, source links and
+valuation qualifications remain in place.
+
+Age checks cover the launch boundary, tenth anniversary, leap-year month
+boundaries and UTC midnight while upstream sources are unavailable. All 94 Node
+tests passed.

@@ -1,9 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseChain,parseMarket,createLiveData,SOURCES,parseOwnNode,NODE_SOURCE} from '../live-data.mjs';
+import {parseChain,parseMarket,createLiveData,SOURCES,parseOwnNode,NODE_SOURCE,chainAge} from '../live-data.mjs';
 const now=Date.parse('2026-09-12T04:00:00Z');
 const block={blocks:[{height:3247603,hash:'a'.repeat(64),time:now/1000-60,isMainChain:true}]};
 const market={symbol:'ZCL/USDT',lastPrice:'0.29',lastTradeAt:now-60000,volumeSecondary:'430.2',changePercent:'-4.8',isActive:true};
+test('chain age uses the public launch calendar date and UTC rather than page launch or elapsed-year rounding',()=>{
+ const age=chainAge(Date.parse('2026-09-13T02:00:00Z'));
+ assert.deepEqual([age.years,age.months,age.days,age.totalDays],[9,10,7,3598]);
+ assert.equal(age.launchedAt,'2016-11-06');assert.equal(age.asOfDate,'2026-09-13');
+ assert.equal(age.basis,'public-launch-date-utc');assert.equal(age.source,'https://zclassic.org/');
+ for(const [at,expected] of [['2016-11-06T23:59:59Z',[0,0,0]],['2026-11-05T23:59:59Z',[9,11,30]],['2026-11-06T00:00:00Z',[10,0,0]],['2024-03-05T23:59:59Z',[7,3,28]],['2024-03-06T00:00:00Z',[7,4,0]]]){
+  const a=chainAge(Date.parse(at));assert.deepEqual([a.years,a.months,a.days],expected,at);
+ }
+ assert.equal(chainAge(Date.parse('2016-11-05T23:59:59Z')),null);assert.equal(chainAge(NaN),null);
+});
+test('chain age remains available when price and block sources are unavailable and advances across UTC midnight',async()=>{
+ let time=Date.parse('2026-11-05T23:59:59Z');
+ const get=createLiveData({clock:()=>time,load:async()=>{throw Error('offline');}});
+ assert.equal((await get()).chainAge.years,9);
+ time+=1000;const data=await get();assert.equal(data.chainAge.years,10);assert.equal(data.chainAge.months,0);
+ assert.equal(data.market.status,'unavailable');
+});
 test('validates asset, price and block identity instead of accepting misleading data',()=>{
  assert.equal(parseChain(block,now).height,3247603);
  assert.equal(parseMarket(market,now).quote,'USDT');

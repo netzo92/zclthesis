@@ -16,7 +16,20 @@
     failed:'Refresh failed. Any displayed values are from the last successful fetch.'
   };
   let snapshot, busy=false;
+  function renderAge(age) {
+    const valid=age?.asset==='ZCL'&&age.launchedAt==='2016-11-06'&&age.basis==='public-launch-date-utc'
+      &&['years','months','days','totalDays'].every(key=>Number.isSafeInteger(age[key])&&age[key]>=0)
+      &&age.months<12&&age.days<32;
+    const unit=(value,name)=>new Intl.NumberFormat(locale,{style:'unit',unit:name,unitDisplay:'long'}).format(value);
+    const value=valid?`${unit(age.years,'year')} · ${unit(age.months,'month')}`:'—';
+    for(const node of document.querySelectorAll('[data-chain-age]'))node.textContent=value;
+    const detail=el('chain-age-detail');
+    if(detail)detail.textContent=valid
+      ?`${number.format(age.totalDays)} ${spanish?'días de calendario desde el lanzamiento · 6 nov 2016':'calendar days since launch · 6 Nov 2016'}`
+      :(spanish?'Lanzamiento: 6 de noviembre de 2016.':'Launched November 6, 2016.');
+  }
   function render(data) {
+    renderAge(data.chainAge);
     const chain=data.chain,market=data.market;
     el('block-value').textContent=chain?.value?number.format(chain.value.height):t.unavailable;
     el('block-detail').textContent=chain?.value?`${chain.status==='stale'?t.stale:''}${chain.source==='https://pool.zclthesis.com/api/node.json'?t.node:t.fallback} · ${t.block} ${date(chain.value.blockAt)} · ${t.fetched} ${date(chain.fetchedAt)}`:t.explorer;

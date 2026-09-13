@@ -3,6 +3,22 @@ export const SOURCES = {
   market: 'https://api.nonkyc.io/api/v2/market/getbysymbol/ZCL_USDT',
 };
 export const NODE_SOURCE = 'https://pool.zclthesis.com/api/node.json';
+export const ZCL_LAUNCH_DATE = '2016-11-06';
+/** Calendar age since the public launch, not a measurement of uninterrupted uptime. */
+export function chainAge(now=Date.now()) {
+  if(!Number.isFinite(now))return null;
+  const date=new Date(now),start=Date.UTC(2016,10,6);
+  const today=Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),date.getUTCDate());
+  if(!Number.isFinite(today)||today<start)return null;
+  let years=date.getUTCFullYear()-2016;
+  if(date.getUTCMonth()<10||(date.getUTCMonth()===10&&date.getUTCDate()<6))years--;
+  let months=(date.getUTCMonth()-10+12)%12;
+  if(date.getUTCDate()<6)months=(months+11)%12;
+  const anniversary=Date.UTC(2016+years,10+months,6);
+  return {asset:'ZCL',launchedAt:ZCL_LAUNCH_DATE,basis:'public-launch-date-utc',
+    years,months,days:(today-anniversary)/86400000,totalDays:(today-start)/86400000,
+    asOfDate:new Date(today).toISOString().slice(0,10),source:'https://zclassic.org/'};
+}
 const numeric = value => (typeof value === 'number' || (typeof value === 'string' && value.trim() !== '')) ? Number(value) : NaN;
 function validTime(value, now) { return Number.isFinite(value) && value > 1480000000000 && value <= now + 300000; }
 export function parseChain(data, now = Date.now()) {
@@ -48,7 +64,7 @@ export function createLiveData({load=fetchJSON, clock=Date.now, ttl=60000}={}) {
   return async function getLiveData() {
     if(pending) await pending;
     else if(clock()-lastAttempt>=ttl) {lastAttempt=clock();pending=refresh();try{await pending;}finally{pending=null;}}
-    const now=clock();const result={generatedAt:new Date(now).toISOString()};
+    const now=clock();const result={generatedAt:new Date(now).toISOString(),chainAge:chainAge(now)};
     for(const name of Object.keys(SOURCES)) {
       const entry=cache[name];const observed=entry?.value?.[name==='chain'?'blockAt':'tradeAt'];
       const aged=observed && now-Date.parse(observed)>(name==='chain'?1800000:3600000);
