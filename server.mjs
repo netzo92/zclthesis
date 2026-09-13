@@ -7,11 +7,13 @@ import {createMarketComparison} from './market-comparison.mjs';
 import {parseLaunchBaseline} from './market-performance.mjs';
 import {createNetworkData} from './network-data.mjs';
 import {createTransactionsData} from './transactions-data.mjs';
+import {createVolumeData} from './volume-data.mjs';
 import {createRichListStore,createRichListComparison} from './richlist-feeds.mjs';
 const launchBaseline=parseLaunchBaseline(JSON.parse(await readFile(new URL('./data/market-baseline.json',import.meta.url),'utf8')));
 const getComparison=createMarketComparison({baseline:launchBaseline});
 const getNetworkData=createNetworkData();
 const getTransactionsData=createTransactionsData();
+const getVolumeData=createVolumeData();
 const getRichList=await createRichListStore();
 const getRichListComparison=createRichListComparison({getZcl:getRichList});
 import {readFile} from 'node:fs/promises';
@@ -42,6 +44,8 @@ const files = new Map([
   ['/comparison.js', ['comparison.js', 'text/javascript; charset=utf-8']],
   ['/performance.js', ['performance.js', 'text/javascript; charset=utf-8']],
   ['/performance.css', ['performance.css', 'text/css; charset=utf-8']],
+  ['/volume.js', ['volume.js', 'text/javascript; charset=utf-8']],
+  ['/volume.css', ['volume.css', 'text/css; charset=utf-8']],
   ['/comparison.css', ['comparison.css', 'text/css; charset=utf-8']],
   ['/richlist.js', ['richlist.js', 'text/javascript; charset=utf-8']],
   ['/richlist.css', ['richlist.css', 'text/css; charset=utf-8']],
@@ -75,11 +79,11 @@ http.createServer(async (req,res) => {
     res.end(req.method==='HEAD'?undefined:body);
     return;
   }
-  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison'||path==='/api/network'||path==='/api/transactions') {
+  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison'||path==='/api/network'||path==='/api/transactions'||path==='/api/volume') {
     res.setHeader('Cache-Control','no-store');
     res.setHeader('Content-Type','application/json; charset=utf-8');
     if(req.method==='HEAD'){res.end();return;}
-    try {res.end(JSON.stringify(await (path==='/api/transactions'?getTransactionsData():path==='/api/network'?getNetworkData():path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
+    try {res.end(JSON.stringify(await (path==='/api/volume'?getVolumeData():path==='/api/transactions'?getTransactionsData():path==='/api/network'?getNetworkData():path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
     return;
   }
   const asset = assets.get(path);

@@ -82,8 +82,9 @@ The button opens a new tab and retains sponsored-link metadata.
 returns independent chain/market status and timestamps. Each instance caches
 successful results for 60 seconds, coalesces concurrent refreshes and throttles
 failed retries. The node probe times out after 2.5 seconds; external requests after 8 seconds, each with a 256 KiB response limit.
-No credentials or user-selected upstream URLs are accepted. Memory-only caches
-are lost on cold starts; no historical observations are persisted.
+No credentials or user-selected upstream URLs are accepted. Website memory caches
+are lost on cold starts. Separate VM recorders persist price observations and
+actual trades, as described below.
 
 Sources:
 - https://pool.zclthesis.com/api/node.json
@@ -113,6 +114,35 @@ lost-key probabilities, or lost supply. Shielded balances cannot be ranked.
 
 Validate with `node --test tests/*.test.mjs` and browser checks of `/api/live`,
 mobile layout, referral links and failure/stale states after each publication.
+
+## Observed market volume
+
+The English and Spanish homepages show observed NonKYC ZCL/USDT volume near the
+top: all collected trades since the site's September 12, 2026, 03:23:13.198605 UTC
+launch, and hourly bars for the most recent 24 or 168 hours. Visitors can switch
+between ZCL and USDT and inspect exact hourly quantities using pointer, touch, or
+keyboard controls. The launch-hour bar starts at launch; the current hour is
+in progress. Uncovered intervals are labeled as gaps, and stale values retain
+their original timestamps. The since-launch total does not attribute trades to
+this site or its referrals.
+
+`volume-data.mjs` validates the fixed public VM export
+`https://pool.zclthesis.com/api/prices/zcl-usdt-volume.json` and exposes a bounded,
+allowlisted `/api/volume` response. Fetches time out after eight seconds, reject
+redirects, and are limited to 128 KiB. Refreshes coalesce and retry at most once
+per minute. Export or coverage timestamps older than three minutes are stale;
+failed refreshes retain the last validated response without advancing its times.
+First-load failures return null totals rather than invented zeros.
+
+The pool repository's `deploy/zcl/record-volume.py` deduplicates actual public
+`getTrades` executions by provider ID and sums exact quantities and price ×
+quantity. It never adds overlapping ticker 24-hour volume snapshots. A pinned
+800-trade launch backfill seeds its separate persistent SQLite database on the
+existing VM. Every-minute polling fills the gap to the present and advances
+coverage only after exhausting a fixed interval's pages. This is exchange-reported
+activity from one market, not an independent audit of every execution; USDT is the
+quote currency, not USD. The public chart is bounded to seven days while the
+private database retains all collected trades and since-launch totals.
 
 ## Custom domain
 
