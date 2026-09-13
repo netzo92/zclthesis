@@ -1,0 +1,35 @@
+.transactions{min-width:0;max-width:100%;border-bottom:1px solid var(--line,#d7d9ce)}
+.transactions h2{max-width:780px}.transactions>p,.transactions .transactions-intro{max-width:920px;color:var(--muted,#59645c);font-size:14px;line-height:1.8}
+.transactions-controls{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;margin:26px 0 20px}
+.transactions-controls label{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.6;cursor:pointer}
+.transactions-controls input{width:17px;height:17px;accent-color:#375638;margin:0;flex-shrink:0}
+#transactions-refresh{padding:10px 15px;font:12px Arial,Helvetica,sans-serif;background:#e9eedf;border:1px solid #a7b59b;color:var(--ink,#172e25);cursor:pointer}
+#transactions-refresh:disabled{opacity:.65;cursor:wait}#transactions-refresh:hover{background:#dfe8cf}
+.transactions :is(button,input,summary,a):focus-visible,.transactions-table-scroll:focus-visible{outline:3px solid #8ba957;outline-offset:4px}
+#transactions-status{font-size:17px;font-weight:600;color:var(--ink,#172e25);margin:22px 0 8px}
+#transactions-status-detail,#transactions-coverage,#transactions-mempool-status{font-size:12px;line-height:1.8;overflow-wrap:anywhere;color:var(--muted,#59645c)}
+.transactions[data-status=stale] #transactions-status,.transactions[data-status=disconnected] #transactions-status,.transactions[data-status=syncing] #transactions-status{color:#795521}
+.transactions[data-status=unavailable] #transactions-status{color:#59645c}
+.transactions-times{display:grid;grid-template-columns:1fr 2fr;gap:20px;margin:24px 0}
+.transactions-times dt{font-size:10px;color:var(--muted,#59645c);margin-bottom:8px}.transactions-times dd{margin:0;font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+#transactions-published{font-variant-numeric:tabular-nums}#transactions-tip{font:11px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere}
+.transactions-table-scroll{max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:20px 0 28px;scrollbar-color:#8ba957 #e9eedf}
+.transactions-table{width:100%;min-width:790px;border-collapse:collapse;table-layout:fixed;text-align:left;font-size:12px;line-height:1.7}
+.transactions-table caption{text-align:left;font-size:12px;color:var(--muted,#59645c);padding-bottom:12px}
+.transactions-table th,.transactions-table td{padding:16px 14px;border:1px solid var(--line,#d7d9ce);vertical-align:top;overflow-wrap:anywhere}
+.transactions-table th{font-weight:600;background:#e9eedf;color:var(--ink,#172e25)}
+.transactions-table tbody tr:nth-child(even){background:#f0f1e8}
+.transactions-table th:nth-child(1){width:25%}.transactions-table th:nth-child(2){width:24%}.transactions-table th:nth-child(3){width:23%}.transactions-table th:nth-child(4){width:28%}
+.transactions-table .transactions-empty{padding:22px;color:var(--muted,#59645c);font-size:12px}
+.transactions-id{font:11px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-underline-offset:3px;white-space:nowrap}
+.transactions-amount{font:12px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;overflow-wrap:normal}
+.transactions-table .transactions-note{font-size:11px;line-height:1.7;color:var(--muted,#59645c);margin:8px 0 0;overflow-wrap:anywhere}
+.transactions-badge{display:inline-block;background:#e2e9d6;padding:3px 7px;font-size:10px;line-height:1.6}.transactions-reward{background:#eae5d5}
+.transactions-details{border:0;padding:0;margin-top:12px;max-width:100%}
+.transactions-details summary{display:list-item;list-style:disclosure-closed;font-size:11px;line-height:1.7;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.transactions-details summary::-webkit-details-marker{display:revert}.transactions-details[open] summary{list-style:disclosure-open}
+.transactions-details code{font:10px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere}
+.transactions-outputs{padding:0;list-style:none;margin:14px 0 0}.transactions-outputs li{padding:10px 0;border-top:1px solid var(--line,#d7d9ce)}
+.transactions-outputs strong{font-size:11px;line-height:1.7;font-weight:600}.transactions-address{display:block;margin-top:6px}
+@media(max-width:850px){.transactions-table th,.transactions-table td{padding:14px 12px}}
+@media(max-width:600px){.transactions-controls{align-items:flex-start;margin:22px 0 16px}.transactions-controls label{font-size:12px;max-width:210px}.transactions-times{grid-template-columns:1fr;gap:16px}.transactions-table-scroll{margin-top:16px}.transactions-table{min-width:790px}.transactions>p{font-size:13px}#transactions-status{font-size:16px}}

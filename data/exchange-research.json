@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "savedAt": "2026-09-12T23:56:45.994139+00:00",
+  "scope": "Public organizational ZCL exchange research; no account access, deposits, withdrawals, trades or private-person identification.",
+  "assumedExchange": "NonKYC.io",
+  "verifiedNonKycZclAddresses": [],
+  "conclusion": "No verified NonKYC ZCL wallet address found in the inspected public evidence. The pair below is an unattributed transaction-pattern lead only.",
+  "officialReserveObservation": {
+    "url": "https://nonkyc.io/asset/ZCL",
+    "observedAt": "2026-09-12T22:43:51.854Z",
+    "reportedBlock": 3248510,
+    "depositZCL": "37924.63140858",
+    "withdrawZCL": "113400.34884262",
+    "safeZCL": "0",
+    "reportedTotalZCL": "151324.9803",
+    "pendingSweepsZCL": "0.00000000",
+    "signatureData": {
+      "Deposit": {},
+      "Withdraw": {},
+      "Safe": {}
+    },
+    "limitation": "Page labels verification beta and unfinished automated signatures. All three signature data objects were empty; the public Deposit signature dialog contained no address or signature. These are exchange-reported balances, not independently verified ownership or a solvency audit.",
+    "access": "Ordinary fresh anonymous Chrome context loaded200 with no login or challenge interaction; CLI/web-reader requests returned403."
+  },
+  "thirdPartyReserveSource": {
+    "url": "https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/projects/nonkyc/index.js",
+    "rawUrl": "https://raw.githubusercontent.com/DefiLlama/DefiLlama-Adapters/main/projects/nonkyc/index.js",
+    "finding": "Adapter attributes wallets to NonKYC on other chains and cites nonkyc.io/allreserves, but has no ZCL/Zclassic entry. Other-chain labels cannot establish ZCL wallet ownership."
+  },
+  "snapshot": {
+    "verification": "own-node-snapshot",
+    "source": "https://pool.zclthesis.com",
+    "height": 3248487,
+    "hash": "00000b0b1552aea0ae4d969d5299cf47adac336027ebb28feecaa30976d6112e",
+    "commitment": "50b03e62d1b6a9a89477aee7f7c575a047807616452f2204bcf0e7e062b34c3e",
+    "blockAt": "2026-09-12T22:00:44Z",
+    "totalZatoshis": "1043906593971606",
+    "utxoCount": 1346398,
+    "bootstrapValidation": "anchored-fast-sync",
+    "generatedAt": "2026-09-12T22:04:14.425Z",
+    "scope": "transparent-utxos",
+    "addressCount": 64482,
+    "unattributedZatoshis": "494777654985"
+  },
+  "snapshotUrl": "https://pool.zclthesis.com/api/richlist/zcl.json",
+  "snapshotSha256": "8539b11ddd845408c7eb6a6862f43053cf0e4e5a0771de183a7defd1dadfab28",
+  "candidateObservationAt": "2026-09-12T23:54:54.828Z",
+  "candidates": [
+    {
+      "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "url": "https://explorer.zcl.zelcore.io/address/t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+      "owner": "unknown",
+      "nonKycAttribution": "unverified",
+      "snapshotRow": {
+        "address": "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+        "balanceZatoshis": "10054600000000",
+        "utxoCount": 14,
+        "oldestHeight": 3240259,
+        "newestHeight": 3240266,
+        "aged100kZatoshis": "0",
+        "aged500kZatoshis": "0",
+        "aged1mZatoshis": "0"
+      },
+      "explorerSummary": {
+        "totalReceivedZCL": "744841.25042577",
+        "totalSentZCL": "644295.25042577",
+        "balanceZCL": "100546.00000000",
+        "transactions": 177
+      }
+    },
+    {
+      "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "url": "https://explorer.zcl.zelcore.io/address/t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+      "owner": "unknown",
+      "nonKycAttribution": "unverified",
+      "snapshotRow": {
+        "address": "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+        "balanceZatoshis": "2498683131747",
+        "utxoCount": 543,
+        "oldestHeight": 3076141,
+        "newestHeight": 3248203,
+        "aged100kZatoshis": "617288000000",
+        "aged500kZatoshis": "0",
+        "aged1mZatoshis": "0"
+      },
+      "explorerSummary": {
+        "totalReceivedZCL": "65545.31467140",
+        "totalSentZCL": "40558.48335393",
+        "balanceZCL": "24986.83131747",
+        "transactions": 1869
+      }
+    }
+  ],
+  "transactionEvidence": [
+    {
+      "txid": "2e0970888ba4ca02818407831e76bacbbc20ba5a2dfa6d93c2ba5bcc1d2ee9e6",
+      "url": "https://explorer.zcl.zelcore.io/tx/2e0970888ba4ca02818407831e76bacbbc20ba5a2dfa6d93c2ba5bcc1d2ee9e6",
+      "blockHeight": 3244946,
+      "blockHash": "000012b5aa84508d84760c230f88a9d50edc43bd5190dfd113fe26c61f66a7b1",
+      "minedAt": "2026-09-09T18:11:01+00:00",
+      "inputCount": 2,
+      "inputAddresses": [
+        "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG",
+        "t1XWJ2kbEYsbqdQmutqjxixy6M1LDW8T8yJ"
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "amountZCL": "12.14779755",
+          "addresses": [
+            "t1NMMWyG7U1JVqNUMoMeLzDYkhswbwwyFdi"
+          ]
+        },
+        {
+          "index": 1,
+          "amountZCL": "2418.97100000",
+          "addresses": [
+            "t1ZZuNYq2Msm8osxLGVEpiymDmjUZcc3QEY"
+          ]
+        }
+      ],
+      "shieldedSpendCount": 0,
+      "shieldedOutputCount": 0,
+      "joinSplitCount": 0
+    },
+    {
+      "txid": "b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+      "url": "https://explorer.zcl.zelcore.io/tx/b48d02a6d354527612af43cf8fbb1ab3e49df210e58433550b4d36a1c0060f3a",
+      "blockHeight": 3240270,
+      "blockHash": "00000aa8c6a499f42ff80326eff791df554c120d1446ed3f9872b251eec9e1ab",
+      "minedAt": "2026-09-05T15:55:33+00:00",
+      "inputCount": 52,
+      "inputAddresses": [
+        "t1WVgt8fu9CVrcFtjGYLJG9ZLW9XJof2Yz3",
+        "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+        "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L"
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "amountZCL": "0.01028183",
+          "addresses": [
+            "t1VVQNCnVMH6YPawV7UAfnBevFT8MzTTsAq"
+          ]
+        },
+        {
+          "index": 1,
+          "amountZCL": "2684.00000000",
+          "addresses": [
+            "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG"
+          ]
+        }
+      ],
+      "shieldedSpendCount": 0,
+      "shieldedOutputCount": 0,
+      "joinSplitCount": 0
+    },
+    {
+      "txid": "9d74fdf2a504ed76c45b50b0fb68c551d04e2f971d9e0552d5dda4afc7220813",
+      "url": "https://explorer.zcl.zelcore.io/tx/9d74fdf2a504ed76c45b50b0fb68c551d04e2f971d9e0552d5dda4afc7220813",
+      "blockHeight": 3240270,
+      "blockHash": "00000aa8c6a499f42ff80326eff791df554c120d1446ed3f9872b251eec9e1ab",
+      "minedAt": "2026-09-05T15:55:33+00:00",
+      "inputCount": 50,
+      "inputAddresses": [
+        "t1TsoEie2pL49CiQbBPMPQC7X53HxspW2dz",
+        "t1a7bRK7CHg1G98paVGWpnaZuYTqVLKit6x",
+        "t1fzjSR4uwG9mUcWZtW9xH51DiuaYXiSB4L"
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "amountZCL": "2416.00000000",
+          "addresses": [
+            "t1LFsPWGi2mMGcf8SHjRvvGUGcrQKJsfNGG"
+          ]
+        },
+        {
+          "index": 1,
+          "amountZCL": "0.01086886",
+          "addresses": [
+            "t1K8Lp94hH8NhfAut7TG9ujxo5o1Jjxhtkc"
+          ]
+        }
+      ],
+      "shieldedSpendCount": 0,
+      "shieldedOutputCount": 0,
+      "joinSplitCount": 0
+    }
+  ],
+  "pattern": "Two September5 transactions have50 and52 inputs including t1a7... and send round2416/2684ZCL outputs to t1LF... with approximately0.01ZCL second outputs. A September9 transaction spends a2416ZCL input from t1LF... plus another input into two outputs. This supports repeated consolidation and subsequent spending, not exchange ownership.",
+  "alternativeExplanations": [
+    "Another exchange or custodial service",
+    "Mining-related consolidation or treasury maintenance",
+    "A single holder managing UTXOs",
+    "Collaborative transactions; common-input ownership is a heuristic, not proof"
+  ],
+  "limitations": [
+    "UTXO snapshot covers currently unspent transparent outputs, not complete last-spend history or shielded holdings.",
+    "Explorer and snapshot observation times differ; no exact balance-to-reserve identity claim is made.",
+    "Round amounts, shared inputs, high transaction counts and a large balance do not establish NonKYC identity.",
+    "No public signature or independently verified exchange withdrawal/deposit seed was obtained.",
+    "This is a bounded research pass, not an exhaustive proof that no public ZCL label exists."
+  ],
+  "nextEvidenceNeeded": [
+    "An official ZCL reserve address with a verifiable signed message",
+    "A user-provided transaction ID known to be their own NonKYC withdrawal; never a login, API secret, seed phrase or private key",
+    "A published explorer organizational label with its source and date; corroborate rather than accepting a bare label"
+  ]
+}

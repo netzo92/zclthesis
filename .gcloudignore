@@ -8,6 +8,7 @@
 !market-comparison.mjs
 !market-performance.mjs
 !network-data.mjs
+!transactions-data.mjs
 !richlist-data.mjs
 !richlist-feeds.mjs
 !data/

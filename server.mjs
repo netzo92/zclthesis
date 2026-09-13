@@ -6,10 +6,12 @@ const getLiveData=createLiveData();
 import {createMarketComparison} from './market-comparison.mjs';
 import {parseLaunchBaseline} from './market-performance.mjs';
 import {createNetworkData} from './network-data.mjs';
+import {createTransactionsData} from './transactions-data.mjs';
 import {createRichListStore,createRichListComparison} from './richlist-feeds.mjs';
 const launchBaseline=parseLaunchBaseline(JSON.parse(await readFile(new URL('./data/market-baseline.json',import.meta.url),'utf8')));
 const getComparison=createMarketComparison({baseline:launchBaseline});
 const getNetworkData=createNetworkData();
+const getTransactionsData=createTransactionsData();
 const getRichList=await createRichListStore();
 const getRichListComparison=createRichListComparison({getZcl:getRichList});
 import {readFile} from 'node:fs/promises';
@@ -25,6 +27,8 @@ const files = new Map([
   ['/es/network', ['es/network/index.html', 'text/html; charset=utf-8']],
   ['/es/network/', ['es/network/index.html', 'text/html; charset=utf-8']],
   ['/es/network/index.html', ['es/network/index.html', 'text/html; charset=utf-8']],
+  ['/transactions.js', ['transactions.js', 'text/javascript; charset=utf-8']],
+  ['/transactions.css', ['transactions.css', 'text/css; charset=utf-8']],
   ['/network.js', ['network.js', 'text/javascript; charset=utf-8']],
   ['/network.css', ['network.css', 'text/css; charset=utf-8']],
   ['/analytics.js', ['analytics.js', 'text/javascript; charset=utf-8']],
@@ -71,11 +75,11 @@ http.createServer(async (req,res) => {
     res.end(req.method==='HEAD'?undefined:body);
     return;
   }
-  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison'||path==='/api/network') {
+  if(path==='/api/live'||path==='/api/comparison'||path==='/api/richlist-comparison'||path==='/api/network'||path==='/api/transactions') {
     res.setHeader('Cache-Control','no-store');
     res.setHeader('Content-Type','application/json; charset=utf-8');
     if(req.method==='HEAD'){res.end();return;}
-    try {res.end(JSON.stringify(await (path==='/api/network'?getNetworkData():path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
+    try {res.end(JSON.stringify(await (path==='/api/transactions'?getTransactionsData():path==='/api/network'?getNetworkData():path==='/api/comparison'?getComparison():path==='/api/richlist-comparison'?getRichListComparison():getLiveData())));} catch {res.writeHead(503);res.end(JSON.stringify({error:'Data temporarily unavailable'}));}
     return;
   }
   const asset = assets.get(path);

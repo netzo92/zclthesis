@@ -443,3 +443,28 @@ observation; the full site launch timestamp is 03:23:13 UTC, displayed separatel
 At widths up to 360px, the cap cells stack so complete numbers and currency labels
 remain readable. The stylesheet URL is versioned, and final live HTML/CSS/JS bytes
 matched the tested source after publication.
+
+## Live transactions and exchange research
+
+The bilingual `/network/#transactions` view consumes `/api/transactions`, a bounded,
+allowlisted view of our existing ZCL node. The public exporter scans the latest 100
+canonical blocks and returns at most 100 confirmed transactions, plus at most 50
+local mempool entries. The browser polls every 30 seconds while visible and marks
+observations older than 90 seconds stale. Mining rewards are hidden by default;
+toggling them does not change the source window. Confirmations belong to the
+reported tip and are replaced on refresh, including after a reorganization.
+
+Amounts use integer zatoshis and eight-decimal display. Visible output totals include
+change and exclude hidden values; they are not payment amounts. Output details are
+bounded to 32 outputs and 8 addresses per output, with truncation disclosed. Mempool
+entry times describe the current local admission and can reset on readmission. Missing observations never become zero.
+The server fetches one fixed public JSON URL; it offers no arbitrary RPC proxy,
+wallet methods, or URL/transaction lookup passthrough.
+
+`data/exchange-research.json` preserves dated public research evidence. NonKYC's
+ZCL reserve page reported balances but supplied empty signature/address data when
+inspected. The linked consolidation transactions are unattributed research leads,
+not verified NonKYC labels. Large balances, round amounts and common inputs are
+insufficient attribution evidence. The research section is dated, not a live
+reserve audit. The homepage price separately uses NonKYC's official ZCL/USDT API
+and shows the last actual trade time; market-cap comparisons remain CoinGecko USD.
