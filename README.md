@@ -35,6 +35,13 @@ are introduced by this metadata. The offline wallet and its checksum are
 unchanged. Search-engine discovery and ranking remain external to the site;
 publishing a sitemap does not establish that its pages have been indexed.
 
+Published source `12626e0` as Cloud Run revision `myzclthesis-00023-wvr` on
+September 13, 2026, serving all traffic. All six HTML pages plus robots.txt and
+sitemap.xml matched committed source over HTTPS. Independent browser checks
+verified canonical URLs, the three language alternatives and localized titles
+in both homepages, without renderer or CSP errors. All 22 focused checks and
+local route smoke checks passed before publication.
+
 ## GCP Cloud Run
 
 Choose a billing-enabled project and authenticate gcloud. Source deployment needs
