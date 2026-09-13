@@ -583,3 +583,11 @@ valuation qualifications remain in place.
 Age checks cover the launch boundary, tenth anniversary, leap-year month
 boundaries and UTC midnight while upstream sources are unavailable. All 94 Node
 tests passed.
+
+Published source `14969cf` as Cloud Run revision `myzclthesis-00022-d8v`, serving
+100% of traffic on September 13, 2026. At 02:27:31 UTC the live API reported
+9 years, 10 months and 7 days (3,598 calendar days). Both HTML pages, CSS and
+live JavaScript matched the reviewed source byte for byte. Independent headless
+browser checks passed in English and Spanish at 320, 768, 1050 and 1440 pixels:
+both age counters agreed, with no horizontal overflow or renderer/CSP errors.
+Verification used separate browser sessions and did not start mining.
