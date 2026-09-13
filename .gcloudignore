@@ -8,6 +8,7 @@
 !market-comparison.mjs
 !market-performance.mjs
 !volume-data.mjs
+!pool-mined-data.mjs
 !network-data.mjs
 !transactions-data.mjs
 !richlist-data.mjs

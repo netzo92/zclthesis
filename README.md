@@ -523,3 +523,32 @@ source bytes. The live price source was the official NonKYC ZCL/USDT API, the pi
 launch market-cap reference remained intact, and private/RPC paths returned 404.
 Headless/GPC checks generated no analytics events. The pool exporter is documented
 in `netzo92/zclthesis-pool` commit `85450ca`; its implementation is `2167a45`.
+
+## ZCL mined by our pool
+
+The homepage mining-pool panel and public pool dashboard show total recorded ZCL,
+the rolling last 24 hours, and the rolling last hour. These are gross coinbase
+rewards including transaction fees, before the 0.8% pool fee. Mature and immature
+rewards are displayed separately; they are not wallet balances or paid amounts.
+
+`pool-mined-data.mjs` fetches only the fixed public pool-status URL and publishes
+allowlisted aggregates at `/api/pool-mined`. The pool's read-only exporter matches
+its block records to exact reward-journal amounts and checks current node headers.
+Orphaned/rejected blocks, estimated shares and incoming deposits do not become
+mined rewards. Windows use pool-recorded block times; total means retained pool
+history, without an invented history start date.
+
+Amounts remain integer zatoshi strings through the proxy and are formatted without
+floating-point conversion. The proxy verifies maturity sums, block counts and
+nested windows, caps the upstream body at 32 KiB, rejects redirects and coalesces
+30-second refreshes. The existing VM exporter runs once a minute. Both language
+versions refresh while visible every 30 seconds and mark observations older than
+three minutes stale. Missing evidence is partial or unavailable; it never becomes
+a verified zero. Partial positive totals are marked as known minima. A failed
+browser refresh retains the last verified observation with its original timestamp.
+
+Validation covers exact monetary reconciliation, window boundaries, maturity,
+reorganizations, duplicates, incomplete history, staleness and bounded fetches.
+All 92 Node tests passed. Browser fixtures passed on both languages and both pages
+at desktop and mobile sizes. These checks used synthetic data and performed no
+mining, payment or wallet operation.
