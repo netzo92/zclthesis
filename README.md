@@ -552,3 +552,11 @@ reorganizations, duplicates, incomplete history, staleness and bounded fetches.
 All 92 Node tests passed. Browser fixtures passed on both languages and both pages
 at desktop and mobile sizes. These checks used synthetic data and performed no
 mining, payment or wallet operation.
+
+Published September 13, 2026 from `1381cd3` on Cloud Run revision
+`myzclthesis-00021-xzx`, serving 100% of traffic. The live pool export and website
+proxy both reported verified zero blocks/rewards in all three windows at
+01:55:47 UTC, with no unknown blocks or accounting hold. This is a dated
+observation, not a fixed counter. Nine live homepage/pool assets matched the
+reviewed source. Both sites passed EN/ES desktop/mobile checks, with no overflow,
+renderer/CSP errors, analytics events or real mining during verification.
