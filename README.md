@@ -51,8 +51,8 @@ Deployed September 12, 2026 (UTC):
 - Region: `us-central1`
 - Service: `myzclthesis`
 - Initial revision: `myzclthesis-00001-5rv`
-- Latest revision: `myzclthesis-00017-cmg` (100% traffic, September 12, 2026)
-- Latest deployment source commit: `b7b3a8d`
+- Latest revision: `myzclthesis-00019-fgw` (100% traffic, September 13, 2026 UTC)
+- Latest deployment source commit: `9a9bf9a`
 - Runtime identity: `myzclthesis-web@myzclthesis-20260912.iam.gserviceaccount.com`, with no project roles granted; it has access only to the dedicated analytics relay secret at the secret resource level.
 
 Billing is connected. The service is public and uses the managed Cloud Run HTTPS
@@ -64,7 +64,14 @@ Live validation passed: desktop and 390px mobile layouts, no horizontal overflow
 anchor targets, expandable objections, HTTP method guard, and private-file 404s.
 The browser reported no JavaScript or console errors.
 
-The latest deployment adds the ZCL launch-reference market-cap banner and full
+The volume release adds bilingual since-launch totals and interactive hourly bars
+near the top of the homepage. Both HTML pages and chart assets matched deployed
+source byte-for-byte; `/api/volume` returned fresh, reconciled data. The website's
+87 tests and the price/volume collectors' 31 tests passed. Browser checks covered
+English/Spanish, 320–1440px layouts, exact-decimal details, keyboard and unit/range
+controls, stale/partial/empty states, and the site's strict CSP.
+
+Earlier deployments added the ZCL launch-reference market-cap banner and full
 launch date/time in English and Spanish. It preserves private visitor/referral
 analytics, bilingual privacy controls and the consensus/funding thesis sections. Both public HTML
 documents matched the clean deployment source byte-for-byte. Guide validation
