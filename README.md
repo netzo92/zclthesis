@@ -569,10 +569,12 @@ in `netzo92/zclthesis-pool` commit `85450ca`; its implementation is `2167a45`.
 
 ## ZCL mined by our pool
 
-The homepage mining guide (`#mine`), directly below the pool introduction
-(`#our-pool`), and the public pool dashboard show total recorded ZCL, the rolling
-last 24 hours, and the rolling last hour. The top pool feature retains its dashboard
-and browser-miner links; the reward cards appear with the mining instructions. These are gross coinbase
+The homepage pool panel (`#mining-pool`), immediately before the mining guide
+(`#mine`) and after wallet setup, and the public pool dashboard show total recorded
+ZCL, the rolling last 24 hours, and the rolling last hour. The entire pool panel,
+including its dashboard/miner links, chain-age badge, fee and reward cards, appears
+with the mining content. The header retains its compact Mining pool link. These
+are gross coinbase
 rewards including transaction fees, before the 0.8% pool fee. Mature and immature
 rewards are displayed separately; they are not wallet balances or paid amounts.
 
