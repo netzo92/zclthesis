@@ -99,10 +99,12 @@ function preview(){
 }
 function renderConfig(){
   const ready=fresh(),accepting=ready&&(config.acceptingDeposits||config.acceptingRedemptions);
-  $('bridge-status-box').dataset.status=accepting?'ready':'paused';
-  $('bridge-status').textContent=accepting?say('Test bridge available','Puente de prueba disponible'):say('Test bridge paused','Puente de prueba en pausa');
+  const processing=ready&&config.schemaVersion===2&&config.processingAvailable;
+  $('bridge-status-box').dataset.status=accepting||processing?'ready':'paused';
+  $('bridge-status').textContent=accepting?say('Test bridge available','Puente de prueba disponible'):processing?say('New transfers paused; existing transfers can finish','Nuevas transferencias en pausa; las actuales pueden finalizar'):say('Test bridge paused','Puente de prueba en pausa');
   $('bridge-status-detail').textContent=accepting?say('Verified test configuration: ZCL regtest and Solana devnet. No mainnet funds.','Configuración de prueba verificada: ZCL regtest y Solana devnet. Sin fondos de mainnet.'):
-    say('Actions remain disabled until the test service publishes valid, available configuration.','Las acciones siguen desactivadas hasta que el servicio publique una configuración válida y disponible.');
+    processing?say('The test service is processing existing transfers. New requests are temporarily paused.','El servicio de prueba está procesando las transferencias actuales. Las nuevas solicitudes están en pausa temporalmente.'):
+      say('Actions remain disabled until the test service publishes valid, available configuration.','Las acciones siguen desactivadas hasta que el servicio publique una configuración válida y disponible.');
   $('bridge-zcl-status').textContent=ready?'Regtest':say('Not verified','Sin verificar');
   $('bridge-solana-status').textContent=ready?'Devnet':say('Not verified','Sin verificar');
   $('bridge-mint').textContent=ready&&config.mint?config.mint:say('Not published','Sin publicar');

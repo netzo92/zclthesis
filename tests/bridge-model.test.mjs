@@ -62,7 +62,7 @@ test('operation states never invent completion or accept unrelated account field
 });
 test('v2 status requires the exact percentage policy and never substitutes old zero fee fields',()=>{
  assert.equal(validBridgeStatus(feeConfig()),true);
- for(const patch of [{depositFeeBps:0},{redemptionFeeBps:100},{depositFeeAsset:'ZCL'},{redemptionFeeAsset:'SOL'},{feePolicyVersion:'unknown'},{depositFeeBps:undefined,depositFeeZat:'0'}])assert.equal(validBridgeStatus({...feeConfig(),...patch}),false);
+ for(const patch of [{depositFeeBps:0},{redemptionFeeBps:100},{depositFeeAsset:'ZCL'},{redemptionFeeAsset:'SOL'},{feePolicyVersion:'unknown'},{depositFeeBps:undefined,depositFeeZat:'0'},{processingAvailable:undefined},{processingAvailable:'true'},{processingAvailable:false},{mint:null,acceptingDeposits:false,acceptingRedemptions:false}])assert.equal(validBridgeStatus({...feeConfig(),...patch}),false);
 });
 test('quotes verify single-ceiling SOL conversion and exact ZCL fee/net arithmetic',()=>{
  assert.equal(bridgePercentageFee('1'),'1');assert.equal(bridgePercentageFee('100000001'),'100001');

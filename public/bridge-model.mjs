@@ -81,7 +81,8 @@ export function validBridgeStatus(value,now=Date.now()){
   const fees=value.schemaVersion===2?typeof value.processingAvailable==='boolean'&&value.depositFeeBps===10&&value.redemptionFeeBps===10&&value.depositFeeAsset==='SOL'&&value.redemptionFeeAsset==='ZCL'&&value.feePolicyVersion===BRIDGE_FEE_POLICY:
     [value.depositFeeZat,value.redemptionFeeZat].every(isBridgeUnits)&&BigInt(value.depositFeeZat)<BigInt(value.maximumZat)&&BigInt(value.redemptionFeeZat)<BigInt(value.maximumZat);
   return fees&&BigInt(value.minimumZat)>0n&&BigInt(value.maximumZat)>=BigInt(value.minimumZat)&&
-    (!(value.acceptingDeposits||value.acceptingRedemptions)||value.mint!==null);
+    (!(value.acceptingDeposits||value.acceptingRedemptions||value.processingAvailable===true)||value.mint!==null)&&
+    (value.schemaVersion!==2||value.processingAvailable||!(value.acceptingDeposits||value.acceptingRedemptions));
 }
 const operationStates={
   deposit:['preparing','awaiting_deposit','faucet_prepared','faucet_submitted','confirming','awaiting_mint_signature','mint_prepared','mint_submitted','completed','failed','needs_review'],

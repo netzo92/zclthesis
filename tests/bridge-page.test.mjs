@@ -204,3 +204,12 @@ test('both HTML pages expose equivalent explicit review controls and version the
   assert.match(html,/bridge\.mjs\?v=20260915-fees/);assert.match(html,/0[.,]1\s?%/);
  }
 });
+test('full admission capacity still permits existing fee settlement, but missing or false processing readiness blocks it',async()=>{
+ const h=harness({fees:true});await h.flush();await h.click('bridge-wallet-connect');await h.click('bridge-quote-request');await h.review();await h.submit();
+ h.config={...h.config,acceptingDeposits:false,acceptingRedemptions:false};await h.click('bridge-status-refresh');
+ assert.equal(h.get('bridge-faucet').disabled,false);assert.match(h.get('bridge-status').textContent,/existing transfers can finish/);await h.click('bridge-faucet');assert.equal(h.get('bridge-sign').disabled,false);
+ for(const processingAvailable of [false,undefined,'true']){h.config={...h.config,processingAvailable};await h.click('bridge-status-refresh');assert.equal(h.get('bridge-sign').disabled,true);}
+ h.config={...feeConfig(),acceptingDeposits:false,acceptingRedemptions:false};await h.click('bridge-status-refresh');await h.click('bridge-sign');assert.equal(h.current.state,'completed');
+ const op={id:'c'.repeat(32),kind:'redemption',state:'awaiting_signature',owner:walletAddress,recipient:regtest,amountZat:'100000000',feeQuote:quoteFixture({kind:'redemption'}),transactionBase64:'fixture'};
+ const redemption=harness({fees:true,resume:op});await redemption.flush();await redemption.click('bridge-wallet-connect');redemption.config={...redemption.config,acceptingDeposits:false,acceptingRedemptions:false};await redemption.click('bridge-status-refresh');assert.equal(redemption.get('bridge-sign').disabled,false);
+});
