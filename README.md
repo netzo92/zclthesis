@@ -118,6 +118,16 @@ zero. [Finalized devnet burn](https://explorer.solana.com/tx/5VSWU9oyjyju8XsSiZK
 The first unsigned quote expired without burning or paying out; its reference
 was retained. This verifies the tested path, not a mainnet bridge or reserve audit.
 
+The 0.1% fee update was published from `58bf579` on Cloud Run revision
+`myzclthesis-00032-h42`. A hosted browser roundtrip completed at
+2026-09-15T22:07:18.784Z: 1 test ZCL minted 1 token with a separately collected
+0.000017156 devnet SOL service fee; burning it paid 0.9989 test ZCL after the
+0.001 ZCL service fee and 0.0001 native transaction fee. A direct regtest CLI
+read independently verified the exact recipient amount and six confirmations.
+The token balance returned to zero and both completed fees were accounted once.
+The EN/ES pages passed 320px/1440px browser checks, and all five deployed bridge
+HTML/JS assets matched source bytes. This remains a valueless test bridge.
+
 ## Deployment record
 
 Deployed September 12, 2026 (UTC):
