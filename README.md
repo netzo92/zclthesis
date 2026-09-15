@@ -97,7 +97,16 @@ Isolated English and Spanish browser fixtures at 320px and 1440px verified the
 rendered flows with mocked wallets and API responses, without real transactions.
 Predeployment validation passed all 118 website tests and 22 analytics collector
 tests, plus the eight-page sitemap/canonical metadata and localized navigation
-checks. This records local validation, not a website deployment.
+checks. This records the initial local validation.
+
+Published September 15, 2026 UTC: the EN/ES bridge and isolated backend are live.
+The hosted browser deposit minted exactly 1 wZCL-TEST. After fixing the SPL
+library’s browser Buffer dependency in `daee3de`, the existing token was burned
+and exactly 1 test ZCL was released with six regtest confirmations. Browser
+completion was observed at 04:35:34 UTC and the test token balance returned to
+zero. [Finalized devnet burn](https://explorer.solana.com/tx/5VSWU9oyjyju8XsSiZKMdnr2Y2m5Uv67NhNZ3fXmtBHg5DSr3opKm2HFri9SZMCez3FJr74KZMCjcb69bjHByjFN?cluster=devnet).
+The first unsigned quote expired without burning or paying out; its reference
+was retained. This verifies the tested path, not a mainnet bridge or reserve audit.
 
 ## Deployment record
 
