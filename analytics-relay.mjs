@@ -11,7 +11,7 @@ export function validAnalyticsEvent(event) {
     && Object.keys(event).sort().join(',') === 'id,path,session,source,type,visitor'
     && ['id', 'visitor', 'session'].every(key => typeof event[key] === 'string' && uuid.test(event[key]))
     && paths.has(event.path) && sources.has(event.source)
-    && (event.type === 'pageview' || (event.type === 'referral_click' && ['/', '/es/'].includes(event.path)));
+    && (event.type === 'pageview' || event.type === 'referral_click');
 }
 
 function readBody(req) {

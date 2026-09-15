@@ -78,8 +78,6 @@ def validate_event(value):
         normalized[field] = str(parsed)
     if value['type'] not in EVENT_TYPES or value['path'] not in PATHS or value['source'] not in SOURCES:
         raise InvalidEvent('Invalid event category')
-    if value['type'] == 'referral_click' and value['path'] not in ('/', '/es/'):
-        raise InvalidEvent('Referral clicks are restricted to thesis pages')
     return normalized
 
 

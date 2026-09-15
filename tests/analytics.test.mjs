@@ -12,7 +12,11 @@ test('only bounded, anonymous event fields are accepted', () => {
   assert.equal(validAnalyticsEvent(event()), true);
   for (const bad of [{wallet:'private'}, {ip:'1.2.3.4'}, {path:'/offline-wallet.html'},
     {path:'/?key=secret'}, {source:'https://personal.example'}, {id:'not-a-uuid'},
-    {type:'referral_click',path:'/network/'}]) assert.equal(validAnalyticsEvent(event(bad)), false);
+    {type:'referral_click',path:'/bridge/'}, {type:'referral_click',path:'/network'},
+    {type:'referral_click',path:'/es/network/?ref=private'}, {type:'trade'}]) assert.equal(validAnalyticsEvent(event(bad)), false);
+  for (const path of ['/', '/es/', '/network/', '/es/network/']) {
+    for (const type of ['pageview','referral_click']) assert.equal(validAnalyticsEvent(event({path,type})),true);
+  }
 });
 
 test('public relay is write-only, checks origin, and never forwards browser headers', async t => {
@@ -40,6 +44,12 @@ test('public relay is write-only, checks origin, and never forwards browser head
   assert.equal(forwarded.length, 1);
   assert.deepEqual(forwarded[0][1].headers, {'Content-Type':'application/json',Origin:'https://zclthesis.com',Authorization:'Bearer test-only-credential'});
   assert.deepEqual(JSON.parse(forwarded[0][1].body), good);
+  for (const path of ['/network/','/es/network/']) {
+    const click=event({type:'referral_click',path});
+    assert.equal((await post({},JSON.stringify(click))).status,204);
+    assert.deepEqual(JSON.parse(forwarded.at(-1)[1].body),click);
+  }
+  assert.equal(forwarded.length,3);
 });
 
 test('collector outages and throttling remain failures', async t => {
@@ -69,6 +79,9 @@ function browser({path='/',local=storage(),session=storage(),nav={},referrer='',
   return {sent,listeners,local,session};
 }
 async function payloads(b) { return Promise.all(b.sent.map(async e=>JSON.parse(await e.body.text()))); }
+const referralCode='69d580940a7d426e95b803c5';
+const referralUrls=['/','/allreserves','/api/v1/system/allreserves'].map(path=>'https://nonkyc.io'+path+'?ref='+referralCode);
+const clickLink=(b,href,type='click',button=0)=>b.listeners.get(type)?.({type,button,target:{closest:()=>({href})}});
 
 test('visitor and session persist across page views; referral goes only to expected link', async () => {
   const first=browser({referrer:'https://www.google.com/search?q=private+search'});
@@ -81,6 +94,57 @@ test('visitor and session persist across page views; referral goes only to expec
   click('https://nonkyc.io/?ref=69d580940a7d426e95b803c5');assert.equal(first.sent.length,2);
   const [,c]=await payloads(first);assert.equal(c.type,'referral_click');assert.equal(c.session,a.session);
   assert.deepEqual(Object.keys(c).sort(),['id','path','session','source','type','visitor']);
+});
+
+test('all three approved referral destinations track from the four allowlisted public pages', async () => {
+  for (const path of ['/','/es/','/network/','/es/network/']) {
+    const b=browser({path,lang:path.startsWith('/es/')?'es':'en'});
+    for (const href of referralUrls) clickLink(b,href);
+    clickLink(b,referralUrls[1],'auxclick',1);
+    const rows=await payloads(b);
+    assert.equal(rows.length,5,path);assert.equal(rows[0].type,'pageview');
+    for (const row of rows.slice(1)) {
+      assert.equal(row.path,path);assert.equal(row.type,'referral_click');assert.equal(row.session,rows[0].session);
+      assert.deepEqual(Object.keys(row).sort(),['id','path','session','source','type','visitor']);
+      assert.equal(validAnalyticsEvent(row),true);
+    }
+    assert.equal(b.sent.every(({url})=>url==='/api/analytics/event'),true);
+  }
+});
+
+test('referral recognition rejects wrong origins, paths, codes and duplicate or extra parameters', async () => {
+  const b=browser({path:'/network/'}),good=referralUrls[1];
+  const rejected=[
+    good.replace('https:','http:'),good.replace('nonkyc.io','www.nonkyc.io'),
+    good.replace('nonkyc.io','nonkyc.io.evil.example'),good.replace('nonkyc.io','nonkyc.io:8443'),
+    good.replace('nonkyc.io','user@nonkyc.io'),good.replace('nonkyc.io','user:password@nonkyc.io'),
+    good.replace('/allreserves','/market/ZCL_USDT'),good.replace('/allreserves','/allreserves/'),
+    good.replace(referralCode,'wrong'),good.replace('?ref=','?REF='),
+    good+'&ref='+referralCode,good+'&ref=wrong',good.replace('?ref=','?ref=wrong&ref='),
+    good+'&%72ef='+referralCode,good+'&extra=1',good+'#section',
+    'https://nonkyc.io/allreserves','/allreserves?ref='+referralCode,'javascript:alert(1)',undefined,
+  ];
+  for(const href of rejected){clickLink(b,href);assert.equal(b.sent.length,1,String(href));}
+  clickLink(b,good,'click',1);clickLink(b,good,'click',2);clickLink(b,good,'auxclick',0);clickLink(b,good,'auxclick',2);
+  assert.equal(b.sent.length,1);
+  clickLink(b,good);assert.equal(b.sent.length,2);assert.equal((await payloads(b))[1].type,'referral_click');
+});
+
+test('network referral clicks preserve privacy and page exclusions, including opt-out after a page view', () => {
+  for(const path of ['/network/','/es/network/']) {
+    for(const nav of [{doNotTrack:'1'},{globalPrivacyControl:true},{webdriver:true}]) {
+      const b=browser({path,lang:path.startsWith('/es/')?'es':'en',nav});
+      for(const href of referralUrls)clickLink(b,href);assert.equal(b.sent.length,0);
+    }
+    const b=browser({path,lang:path.startsWith('/es/')?'es':'en'});assert.equal(b.sent.length,1);
+    b.local.setItem('zcl-analytics-disabled','1');for(const href of referralUrls)clickLink(b,href);
+    assert.equal(b.sent.length,1);assert.equal(b.local.getItem('zcl-analytics-visitor'),null);assert.equal(b.session.getItem('zcl-analytics-session'),null);
+  }
+  for(const path of ['/offline-wallet.html','/privacy/','/es/privacy/','/bridge/','/es/bridge/','/admin']) {
+    const b=browser({path});for(const href of referralUrls)clickLink(b,href);assert.equal(b.sent.length,0);
+  }
+  const blocked=browser({path:'/network/',local:{getItem:()=>{throw Error('storage blocked');}}});
+  for(const href of referralUrls)clickLink(blocked,href);assert.equal(blocked.sent.length,0);
 });
 
 test('privacy signals, offline wallet, automation, and explicit opt-out suppress tracking', () => {
@@ -108,7 +172,7 @@ test('expired identifiers rotate and a pending language redirect is not double c
 test('all four public pages track and link to localized privacy; wallet has no tracker', async () => {
   for (const path of ['index.html','es/index.html','network/index.html','es/network/index.html']) {
     const html=await readFile(new URL('../public/'+path,import.meta.url),'utf8');
-    assert.match(html, /src="\/analytics\.js"/);
+    assert.match(html, /src="\/analytics\.js(?:\?v=[a-zA-Z0-9-]+)?"/);
     assert.match(html,path.startsWith('es/')?/href="\/es\/privacy\//:/href="\/privacy\//);
   }
   const wallet=await readFile(new URL('../public/offline-wallet.html',import.meta.url),'utf8');

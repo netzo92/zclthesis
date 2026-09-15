@@ -10,6 +10,16 @@
   ]);
   const path = allowed.get(location.pathname);
   if (!path || location.protocol !== 'https:' || navigator.webdriver || !crypto.randomUUID) return;
+  const referralPaths = new Set(['/', '/allreserves', '/api/v1/system/allreserves']);
+  const isReferralLink = href => {
+    try {
+      const url = new URL(href);
+      const parameters = [...url.searchParams];
+      return url.origin === 'https://nonkyc.io' && !url.username && !url.password && !url.hash
+        && referralPaths.has(url.pathname) && parameters.length === 1
+        && parameters[0][0] === 'ref' && parameters[0][1] === '69d580940a7d426e95b803c5';
+    } catch { return false; }
+  };
   const blocked = () => {
     try {
       const disabled = navigator.doNotTrack === '1' || window.doNotTrack === '1'
@@ -58,7 +68,7 @@
       if (navigator.sendBeacon?.('/api/analytics/event', new Blob([body], {type: 'application/json'}))) return;
       fetch('/api/analytics/event', {method: 'POST', body, headers: {'Content-Type': 'application/json'},
         credentials: 'omit', keepalive: true}).catch(() => {});
-    } catch {} // Navigation and the buy link never depend on analytics succeeding.
+    } catch {} // Navigation and referral links never depend on analytics succeeding.
   };
   let viewed = false;
   const view = () => {
@@ -75,8 +85,8 @@
   document.addEventListener('visibilitychange', view);
   const click = event => {
     if ((event.type === 'click' && event.button !== 0) || (event.type === 'auxclick' && event.button !== 1)) return;
-    const link = event.target.closest?.('a');
-    if (link?.href !== 'https://nonkyc.io/?ref=69d580940a7d426e95b803c5') return;
+    const link = event.target?.closest?.('a');
+    if (!isReferralLink(link?.href)) return;
     view();
     send('referral_click');
   };

@@ -92,8 +92,8 @@ class StoreTests(unittest.TestCase):
                     for bad in (None, 12, str(uuid.uuid1()), valid[key].replace('-', ''), 'x' * 36)]
         invalid += [valid | {'type': 'trade'}, valid | {'source': 'https://secret.example/'},
                     valid | {'path': '/?private=1'}, valid | {'path': '/es/network'},
-                    valid | {'type': 'referral_click', 'path': '/network/'},
-                    valid | {'type': 'referral_click', 'path': '/es/network/'}]
+                    valid | {'type': 'referral_click', 'path': '/bridge/'},
+                    valid | {'type': 'referral_click', 'path': '/network/?ref=private'}]
         for bad in invalid:
             with self.subTest(value=bad), self.assertRaises(analytics.InvalidEvent):
                 self.store.record(bad)
@@ -102,6 +102,23 @@ class StoreTests(unittest.TestCase):
             self.assertTrue(self.store.record(event(path=path)))
         for source in analytics.SOURCES:
             self.assertTrue(self.store.record(event(source=source)))
+
+    def test_network_referral_clicks_keep_exact_fields_and_existing_deduplication(self):
+        for path in ('/network/', '/es/network/'):
+            value = event(type='referral_click', path=path)
+            self.assertTrue(self.store.record(value))
+            self.assertFalse(self.store.record(value))
+            with self.assertRaises(analytics.InvalidEvent):
+                self.store.record(value | {'id': str(uuid.uuid4()),
+                                           'url': 'https://nonkyc.io/allreserves?ref=private'})
+        rows = self.rows()
+        self.assertEqual(len(rows), 2)
+        self.assertEqual({row['path'] for row in rows}, {'/network/', '/es/network/'})
+        for row in rows:
+            self.assertEqual(row['event_type'], 'referral_click')
+            self.assertEqual(set(row), {'event_id', 'occurred_at', 'day', 'visitor_hash',
+                                       'session_hash', 'event_type', 'path', 'source'})
+        self.assertEqual(self.store.summary(1)['totals']['referralClicks'], 2)
 
     def test_deduplication_and_uppercase_uuid_normalization(self):
         value = event()
@@ -344,6 +361,16 @@ class HTTPTests(unittest.TestCase):
             status, _, body = self.post()
             self.assertEqual(status, 503)
             self.assertEqual(json.loads(body), {'error': 'collection_unavailable'})
+
+    def test_collector_accepts_network_referrals_without_new_paths_or_fields(self):
+        for path in ('/network/', '/es/network/'):
+            value = event(type='referral_click', path=path)
+            self.assertEqual(self.post(value)[0], 204)
+            self.assertEqual(self.post(value)[0], 204)
+            self.assertEqual(self.post(value | {'url': 'https://nonkyc.io/allreserves'})[0], 400)
+        for path in ('/bridge/', '/es/bridge/', '/network', '/network/?ref=private'):
+            self.assertEqual(self.post(event(type='referral_click', path=path))[0], 400)
+        self.assertEqual(self.store.summary(1)['totals']['referralClicks'], 2)
 
     def test_admin_host_origin_methods_assets_and_summary_ranges(self):
         for host in ('evil.example:8091', 'localhost', '127.0.0.1:8792', 'localhost:8091.evil.example', 'localhost:443'):

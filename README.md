@@ -105,8 +105,10 @@ section and source anchors, language switching, and ten layouts from 320 to 1,44
 pixels without overflow or JavaScript errors. Pool admission remains controlled
 by its current public readiness feed.
 
-The Where to buy section links to the owner-provided NonKYC.io referral URL.
-The button opens a new tab and retains sponsored-link metadata.
+All user-facing NonKYC links include the owner-provided referral code. The Where
+to buy button opens a new tab; the network research links retain their All Reserves
+page and public API paths. All keep sponsored-link metadata. An API URL carrying
+a referral parameter does not establish that NonKYC credits referral attribution.
 
 ## Live data and rich-list research
 
@@ -236,9 +238,10 @@ proposed/testnet reward allocations from mainnet facts and cites both the Januar
 2026 mechanism-design audit and May 2026 feature-net report. Safety of finalized
 history is distinguished from progress of finality and recovery from stalls.
 
-Only the Where to buy button uses the owner-provided referral URL. The visible
-commission notice was removed at the owner’s request. The live price panel links to that section; the
-backend continues to read the public market API for price data.
+The Where to buy button and both network research source links carry the owner’s
+referral code in each language. The visible commission notice was removed at the
+owner’s request. The live price panel links to Where to buy; backend market-data
+requests continue to use the original public API endpoints.
 
 ## English and Spanish
 
@@ -334,8 +337,8 @@ and its documented ZCL-only pool configuration. macOS has a wallet recipe, not
 a claimed native miniZ miner. Recheck upstream downloads and pool settings when
 updating. The shared-development section distinguishes potential reuse of Zcash
 research/code from automatic compatibility or adopting stake-based consensus.
-The owner requested removal of the visible commission notice; the sole referral
-URL per language remains in the Where to buy button with sponsored metadata.
+The owner requested removal of the visible commission notice. All three NonKYC
+links per language now carry the referral code and sponsored metadata.
 
 miniZ's optional localhost telemetry and a Mac SSH tunnel provide a documented
 web monitoring path. The guide does not provision GPU workers or pool services.
@@ -405,8 +408,11 @@ validates exact fields, canonical page/source categories, UUIDv4 identifiers, or
 privacy signals, body size, and concurrency/request budgets before forwarding to the
 fixed pool collector. It strips all browser headers and authenticates with a dedicated
 relay credential supplied through GCP Secret Manager. No analytics read API or admin
-HTML is exposed by Cloud Run. Referral links keep the owner's exact destination;
-measurement does not delay navigation and cannot report exchange registrations or trades.
+HTML is exposed by Cloud Run. Referral clicks are accepted on the existing thesis
+and network page categories. The browser recognizes only the three approved HTTPS
+NonKYC paths with the owner’s single exact referral parameter. Source-link paths
+remain intact; measurement does not delay navigation and cannot report exchange
+registrations, trades, or whether NonKYC credited a referral.
 
 `analytics/collector.py` is a Python standard-library service on the existing pool VM.
 A separate unprivileged account owns `/var/lib/zcl-analytics/analytics.sqlite3`, which
