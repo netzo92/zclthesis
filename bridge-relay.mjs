@@ -1,4 +1,4 @@
-const unavailable=()=>({schemaVersion:1,environment:'testnet',zclNetwork:'regtest',solanaNetwork:'devnet',tokenSymbol:'wZCL-TEST',decimals:8,mint:null,acceptingDeposits:false,acceptingRedemptions:false,minimumZat:'1000000',maximumZat:'1000000000',depositConfirmations:6,redemptionConfirmations:6,depositFeeZat:'0',redemptionFeeZat:'0',faucetEnabled:false,reason:'Test bridge is being prepared; deposits and redemptions are not open.',generatedAt:new Date().toISOString()});
+const unavailable=()=>({schemaVersion:2,environment:'testnet',zclNetwork:'regtest',solanaNetwork:'devnet',tokenSymbol:'wZCL-TEST',decimals:8,mint:null,acceptingDeposits:false,acceptingRedemptions:false,processingAvailable:false,minimumZat:'1000000',maximumZat:'1000000000',depositConfirmations:6,redemptionConfirmations:6,depositFeeBps:10,redemptionFeeBps:10,depositFeeAsset:'SOL',redemptionFeeAsset:'ZCL',feePolicyVersion:'2026-09-15-v1',faucetEnabled:false,reason:'Test bridge is being prepared; deposits and redemptions are not open.',generatedAt:new Date().toISOString()});
 function readUpload(req,timeoutMs){
  return new Promise((resolve,reject)=>{
   let size=0,finished=false;const chunks=[];
@@ -24,8 +24,10 @@ export function createBridgeRelay({endpoint=process.env.BRIDGE_TESTNET_URL,fetch
   const send=(code,body)=>{res.writeHead(code);res.end(req.method==='HEAD'?undefined:JSON.stringify(body));};
   const path=url.pathname.slice('/api/bridge'.length);
   if(!['GET','HEAD','POST'].includes(req.method)){res.setHeader('Allow','GET, HEAD, POST');send(405,{error:'Method not allowed'});return;}
-  if(!/^\/(?:status|wallet|deposits|redemptions|test-address|operations\/[a-f0-9]{32}|deposits\/[a-f0-9]{32}\/faucet|redemptions\/[a-f0-9]{32}\/submit)$/.test(path)){send(404,{error:'Unknown bridge endpoint'});return;}
+  const readable=/^\/(?:status|wallet|operations\/[a-f0-9]{32})$/.test(path),writable=/^\/(?:quotes|deposits|redemptions|test-address|deposits\/[a-f0-9]{32}\/(?:faucet|submit)|redemptions\/[a-f0-9]{32}\/submit)$/.test(path);
+  if(!readable&&!writable){send(404,{error:'Unknown bridge endpoint'});return;}
   const post=req.method==='POST';
+  if(post?!writable:!readable){res.setHeader('Allow',writable?'POST':'GET, HEAD');send(405,{error:'Method not allowed'});return;}
   if(post&&(req.headers.origin!=='https://zclthesis.com'||!/^application\/json(?:;|$)/i.test(req.headers['content-type']??''))){send(403,{error:'Use the ZCL Thesis test bridge page'});return;}
   if(!endpoint){send(path==='/status'&&!post?200:503,path==='/status'&&!post?unavailable():{error:'The test bridge is not open yet'});return;}
   let payload;

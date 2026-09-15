@@ -83,12 +83,22 @@ closed test networks and actions remain disabled. No node credentials or wallet
 keys belong in the website environment.
 
 Visitors explicitly create an intent, fund it with test ZCL, or review and sign
-a devnet redemption. The page requires fresh backend timestamps, checks wallet
+a devnet mint/fee transaction or redemption. The page requires fresh backend timestamps, checks wallet
 balance owner/mint identity, and retains unresolved-operation references when a
-visitor starts a separate transfer. Expired unsigned quotes require a new intent.
+visitor starts a separate transfer. Expired unsigned redemption transactions require a new intent; an unsigned mint refreshes within its existing funded operation.
 Backing is labeled service-reported, or not reported when absent. The relay
 limits uploads to 12,000 bytes and 10 seconds, upstream requests to 30 seconds,
 and responses to 128 KiB; it never retries a mutation automatically.
+
+New transfers use 0.1% service fees in each direction. Deposit fees are quoted
+in devnet SOL using NonKYC ZCL/USDT and SOL/USDT public market references; the full
+deposited amount is minted. Redemption fees are retained in test ZCL, with the
+native transaction fee deducted separately. Solana network costs and any account
+creation deposit are shown separately and are not bridge revenue. Quotes must be
+explicitly reviewed, expire after five minutes for new operations, and remain
+fixed once accepted. Historical operations keep their original zero-fee terms.
+The fee quote is a simulation using valueless test assets. No mainnet deposits or
+fees are enabled by this update.
 
 Run `node --test tests/*.test.mjs` for the website suite. Bridge checks cover
 closed/wrong-network/stale configurations, exact amounts, identity matching,

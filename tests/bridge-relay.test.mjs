@@ -78,3 +78,13 @@ test('aborted uploads return a bounded failure, while a complete split upload cl
  const result=await request(relay,{method:'POST',path:'/deposits',headers:authorized,body:['{"amountZat":','"1000000"}']});
  assert.equal(result.status,200);assert.deepEqual(result.body,{ok:true});assert.equal(forwarded,1);
 });
+test('fee quotes and deposit signatures use only bounded authorized POST routes',async()=>{
+ const paths=[],relay=createBridgeRelay({endpoint,fetcher:async(url)=>{paths.push(new URL(url).pathname);return new Response('{"ok":true}');}});
+ for(const path of ['/quotes','/deposits/'+'a'.repeat(32)+'/submit']){
+  assert.equal((await request(relay,{path,method:'POST',headers:authorized,body:['{}']})).status,200);
+  assert.equal((await request(relay,{path})).status,405);
+  assert.equal((await request(relay,{path,method:'POST',headers:authorized,body:['x'.repeat(12001)]})).status,413);
+ }
+ assert.deepEqual(paths,['/quotes','/deposits/'+'a'.repeat(32)+'/submit']);
+ assert.equal((await request(relay,{path:'/status',method:'POST',headers:authorized,body:['{}']})).status,405);
+});

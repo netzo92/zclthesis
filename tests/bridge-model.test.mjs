@@ -20,6 +20,8 @@ test('deposit and redemption previews keep source and destination distinct',()=>
 });
 
 import {isSolanaPublicAddress,isRegtestAddressFormat,validBridgeStatus,validBridgeOperation} from '../public/bridge-model.mjs';
+import {validBridgeQuote,sameBridgeQuote,bridgePercentageFee,bridgeDepositFeeLamports,formatBridgeSol} from '../public/bridge-model.mjs';
+import {feeConfig,quoteFixture} from './bridge-fee-fixtures.mjs';
 const publicKey='11111111111111111111111111111111';
 const regtest='tm'+'1'.repeat(33);
 const status=()=>({schemaVersion:1,environment:'testnet',zclNetwork:'regtest',solanaNetwork:'devnet',tokenSymbol:'wZCL-TEST',decimals:8,mint:publicKey,acceptingDeposits:true,acceptingRedemptions:true,minimumZat:'1000000',maximumZat:'1000000000',depositConfirmations:6,redemptionConfirmations:6,depositFeeZat:'0',redemptionFeeZat:'0',faucetEnabled:true,generatedAt:new Date().toISOString()});
@@ -57,4 +59,40 @@ test('operation states never invent completion or accept unrelated account field
   assert.equal(validBridgeOperation({...redemption,state:'completed',solanaSignature:'2'.repeat(88),withdrawalTxid:'c'.repeat(64)}),true);
   assert.equal(validBridgeOperation({...redemption,state:'expired'}),true);
   assert.equal(validBridgeOperation({...op,state:'expired'}),false,'only an unsigned redemption quote can expire');
+});
+test('v2 status requires the exact percentage policy and never substitutes old zero fee fields',()=>{
+ assert.equal(validBridgeStatus(feeConfig()),true);
+ for(const patch of [{depositFeeBps:0},{redemptionFeeBps:100},{depositFeeAsset:'ZCL'},{redemptionFeeAsset:'SOL'},{feePolicyVersion:'unknown'},{depositFeeBps:undefined,depositFeeZat:'0'}])assert.equal(validBridgeStatus({...feeConfig(),...patch}),false);
+});
+test('quotes verify single-ceiling SOL conversion and exact ZCL fee/net arithmetic',()=>{
+ assert.equal(bridgePercentageFee('1'),'1');assert.equal(bridgePercentageFee('100000001'),'100001');
+ assert.equal(bridgeDepositFeeLamports('1',{zclPrice:'1',solPrice:'1'}),'1','round only final lamports, not a preliminary ZCL fee');
+ assert.equal(bridgeDepositFeeLamports('100000001',{zclPrice:'0.39',solPrice:'130'}),'3001');
+ assert.equal(formatBridgeSol('3001'),'0.000003001');assert.equal(formatBridgeSol('3001','es'),'0,000003001');
+ for(const kind of ['deposit','redemption']){
+  const quote=quoteFixture({kind,amountZat:'100000001'});assert.equal(validBridgeQuote(quote),true);
+  for(const key of ['feeLamports','feeZat','networkFeeZat','netAmountZat'])assert.equal(validBridgeQuote({...quote,[key]:(BigInt(quote[key])+1n).toString()}),false,key);
+  assert.equal(validBridgeQuote(quote,{kind:kind==='deposit'?'redemption':'deposit'}),false);assert.equal(validBridgeQuote(quote,{amountZat:'100000000'}),false);
+ }
+ const quote=quoteFixture();
+ for(const patch of [{solPrice:'0'},{zclPrice:'NaN'},{zclPrice:'0.40'},{quoteCurrency:'USD'},{source:'unverified'},{solUrl:'https://example.com/price'}])assert.equal(validBridgeQuote({...quote,rate:{...quote.rate,...patch}}),false);
+});
+test('expired creation quotes fail closed while historical operation snapshots remain valid and immutable',()=>{
+ const now=Date.parse('2026-09-15T18:00:00Z'),quote=quoteFixture({now});
+ assert.equal(validBridgeQuote(quote,{now:now+299999}),true);assert.equal(validBridgeQuote(quote,{now:now+300000}),false);
+ assert.equal(validBridgeQuote({...quote,expiresAt:new Date(now+300001).toISOString()},{now}),false);
+ assert.equal(validBridgeQuote(quote,{now:now+86400000,allowExpired:true}),true);
+ const reordered=Object.fromEntries(Object.entries(quote).reverse());assert.equal(sameBridgeQuote(quote,reordered),true);assert.equal(sameBridgeQuote(quote,{...quote,quoteId:'f'.repeat(32)}),false);
+ const historical=quoteFixture({now:Date.now()-86400000});
+ const op={id:'a'.repeat(32),kind:'deposit',state:'awaiting_mint_signature',recipient:publicKey,depositAddress:regtest,amountZat:historical.amountZat,feeQuote:historical,transactionBase64:'fixture'};
+ assert.equal(validBridgeOperation(op),true);assert.equal(validBridgeOperation({...op,feeQuote:undefined}),false);assert.equal(validBridgeOperation({...op,feeQuote:{...quote,feeLamports:'1'}}),false);
+});
+test('historical quote rates must have been fresh when accepted, and redemption snapshots cannot add a SOL recipient',()=>{
+ const now=Date.now(),quote=quoteFixture({now:now-86400000});
+ for(const [key,maxAge]of [['observedAt',60000],['zclUpdatedAt',180000],['solUpdatedAt',180000],['zclLastTradeAt',900000],['solLastTradeAt',900000]]){
+  const changed={...quote,rate:{...quote.rate,[key]:new Date(Date.parse(quote.createdAt)-maxAge-1).toISOString()}};
+  assert.equal(validBridgeQuote(changed,{now,allowExpired:true}),false,key);
+ }
+ assert.equal(validBridgeQuote(quoteFixture({now:now+30001}),{now,allowExpired:true}),false);
+ const redemption=quoteFixture({kind:'redemption'});assert.equal(validBridgeQuote({...redemption,feeRecipient:publicKey}),false);assert.equal(validBridgeQuote({...redemption,rate:null}),false);
 });
