@@ -172,7 +172,7 @@ async function action(operationFn,failureMessage){
   finally{busy=false;preview();if(failure)showError(failureMessage);}
 }
 $('bridge-wallet-connect').addEventListener('click',()=>action(async()=>{
-  const {connectTestWallet}=await import('./bridge-wallet.mjs?v=20260914-testnet');
+  const {connectTestWallet}=await import('./bridge-wallet.mjs?v=20260915-buffer');
   const connected=await connectTestWallet();if(!isSolanaPublicAddress(connected?.address))throw new Error('Invalid wallet address');
   wallet=connected;$('bridge-wallet-address').textContent=wallet.address;$('bridge-wallet-connect').textContent=say('Reconnect wallet','Reconectar wallet');
   if(direction==='deposit'&&!$('bridge-recipient').value.trim())$('bridge-recipient').value=wallet.address;
@@ -202,7 +202,7 @@ $('bridge-sign').addEventListener('click',()=>{
   if($('bridge-sign').disabled||!operation||operation.owner!==wallet?.address)return;
   const expected={id:operation.id,owner:operation.owner,recipient:operation.recipient,amountZat:operation.amountZat,mint:config.mint};
   void action(async()=>{
-    const {signTestTransaction}=await import('./bridge-wallet.mjs?v=20260914-testnet');
+    const {signTestTransaction}=await import('./bridge-wallet.mjs?v=20260915-buffer');
     if(signedOperation?.id!==expected.id){
       if(typeof operation.transactionBase64!=='string')throw new Error('Unsigned transaction unavailable');
       const base64=await signTestTransaction({transactionBase64:operation.transactionBase64,expectedMint:expected.mint,owner:expected.owner,amountZat:expected.amountZat,intentId:expected.id,zclDestination:expected.recipient});

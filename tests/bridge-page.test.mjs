@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import * as model from '../public/bridge-model.mjs';
-const source=(await readFile(new URL('../public/bridge.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/,'').replaceAll("import('./bridge-wallet.mjs?v=20260914-testnet')",'Promise.resolve(walletModule)');
+const source=(await readFile(new URL('../public/bridge.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/,'').replace(/import\('\.\/bridge-wallet\.mjs\?v=[^']+'\)/g,'Promise.resolve(walletModule)');
 const walletAddress='11111111111111111111111111111111',regtest='tm'+'1'.repeat(33);
 const config=()=>({schemaVersion:1,environment:'testnet',zclNetwork:'regtest',solanaNetwork:'devnet',tokenSymbol:'wZCL-TEST',decimals:8,mint:walletAddress,acceptingDeposits:true,acceptingRedemptions:true,minimumZat:'1000000',maximumZat:'1000000000',depositConfirmations:6,redemptionConfirmations:6,depositFeeZat:'0',redemptionFeeZat:'0',faucetEnabled:true,generatedAt:new Date().toISOString()});
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
