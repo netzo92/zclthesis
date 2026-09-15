@@ -1,6 +1,7 @@
 *
 !Dockerfile
 !server.mjs
+!bridge-relay.mjs
 !analytics-relay.mjs
 !public/
 !public/**

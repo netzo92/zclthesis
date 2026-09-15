@@ -3,7 +3,8 @@
 Standalone, responsive editorial site about the ZCL counterweight thesis.
 The content distinguishes Braun's ZEC argument from the owner's ZCL interpretation,
 and treats consensus, development funding, and issuance timing as separate choices.
-No frontend dependencies or wallet connections. First-party analytics count
+The editorial pages use plain JavaScript; the separate test bridge connects a
+browser wallet only after an explicit click. First-party analytics count
 website visits and NonKYC referral clicks, with a private operator dashboard. A live strip reports
 explorer block height and the NonKYC ZCL/USDT last trade.
 
@@ -19,7 +20,7 @@ Restart the server after edits because assets are loaded at startup.
 
 ## Search and sharing metadata
 
-The English and Spanish thesis, network, and privacy pages have localized titles,
+The English and Spanish thesis, network, test bridge, and privacy pages have localized titles,
 descriptions, and Open Graph/Twitter summary metadata. Each HTML head identifies
 its canonical URL on `https://zclthesis.com` and links to both language versions
 with reciprocal `en`, `es`, and `x-default` alternatives. English is the default
@@ -27,7 +28,7 @@ for each page pair. Canonical URLs omit language query parameters and use the
 existing trailing-slash page paths; aliases still work without new redirects.
 
 `/robots.txt` permits crawling and points to `/sitemap.xml`. The sitemap lists
-the six canonical public pages, excluding API responses and wallet downloads.
+the eight canonical public pages, excluding API responses and wallet downloads.
 It omits modification dates rather than treating live data polling as an
 editorial update. Both files are explicit static routes with their appropriate
 text/XML content types. No structured data, tracking changes, or inline scripts
@@ -66,6 +67,37 @@ URL. A custom domain needs separate domain ownership and DNS configuration.
 
 Verify the returned URL, stylesheet, mobile layout, source links and expandable
 objections after deployment. `/server.mjs` should return 404.
+
+## Isolated test bridge
+
+`/bridge/` and `/es/bridge/` provide the English and Spanish ZCL regtest ↔ Solana
+devnet interface. They use valueless test ZCL and `wZCL-TEST` only; real ZCL and
+mainnet SOL are not accepted. The homepage and network-page navigation link to
+the matching language, and both bridge pages are included in the sitemap.
+
+Set the website runtime environment variable
+`BRIDGE_TESTNET_URL=https://bridge-testnet.zclthesis.com` to connect the existing
+`/api/bridge/*` relay to the separately deployed test backend. This is the only
+permitted upstream host. With the variable unset, status explicitly reports
+closed test networks and actions remain disabled. No node credentials or wallet
+keys belong in the website environment.
+
+Visitors explicitly create an intent, fund it with test ZCL, or review and sign
+a devnet redemption. The page requires fresh backend timestamps, checks wallet
+balance owner/mint identity, and retains unresolved-operation references when a
+visitor starts a separate transfer. Expired unsigned quotes require a new intent.
+Backing is labeled service-reported, or not reported when absent. The relay
+limits uploads to 12,000 bytes and 10 seconds, upstream requests to 30 seconds,
+and responses to 128 KiB; it never retries a mutation automatically.
+
+Run `node --test tests/*.test.mjs` for the website suite. Bridge checks cover
+closed/wrong-network/stale configurations, exact amounts, identity matching,
+explicit funding/signing, expired/review states, and relay upload deadlines.
+Isolated English and Spanish browser fixtures at 320px and 1440px verified the
+rendered flows with mocked wallets and API responses, without real transactions.
+Predeployment validation passed all 118 website tests and 22 analytics collector
+tests, plus the eight-page sitemap/canonical metadata and localized navigation
+checks. This records local validation, not a website deployment.
 
 ## Deployment record
 

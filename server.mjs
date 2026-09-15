@@ -1,4 +1,6 @@
 import http from 'node:http';
+import {createBridgeRelay} from './bridge-relay.mjs';
+const bridgeRelay=createBridgeRelay();
 import {createAnalyticsRelay} from './analytics-relay.mjs';
 const collectAnalytics=createAnalyticsRelay({enabled:process.env.ANALYTICS_ENABLED!=='0'});
 import {createLiveData} from './live-data.mjs';
@@ -27,6 +29,14 @@ const files = new Map([
   ['/es', ['es/index.html', 'text/html; charset=utf-8']],
   ['/es/', ['es/index.html', 'text/html; charset=utf-8']],
   ['/es/index.html', ['es/index.html', 'text/html; charset=utf-8']],
+  ['/bridge', ['bridge/index.html', 'text/html; charset=utf-8']],
+  ['/bridge/', ['bridge/index.html', 'text/html; charset=utf-8']],
+  ['/es/bridge', ['es/bridge/index.html', 'text/html; charset=utf-8']],
+  ['/es/bridge/', ['es/bridge/index.html', 'text/html; charset=utf-8']],
+  ['/bridge.css', ['bridge.css', 'text/css; charset=utf-8']],
+  ['/bridge.mjs', ['bridge.mjs', 'text/javascript; charset=utf-8']],
+  ['/bridge-model.mjs', ['bridge-model.mjs', 'text/javascript; charset=utf-8']],
+  ['/bridge-wallet.mjs', ['bridge-wallet.mjs', 'text/javascript; charset=utf-8']],
   ['/network', ['network/index.html', 'text/html; charset=utf-8']],
   ['/network/', ['network/index.html', 'text/html; charset=utf-8']],
   ['/network/index.html', ['network/index.html', 'text/html; charset=utf-8']],
@@ -68,6 +78,7 @@ http.createServer(async (req,res) => {
   res.setHeader('Content-Security-Policy',"default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
   let path;
   try { path = new URL(req.url,'http://localhost').pathname; } catch {res.writeHead(400);res.end();return;}
+  if(path.startsWith('/api/bridge/')){await bridgeRelay(req,res);return;}
   if(path==='/api/analytics/event'){await collectAnalytics(req,res);return;}
   if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}
   if(path==='/api/richlist') {
